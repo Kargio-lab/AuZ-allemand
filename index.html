@@ -6,91 +6,94 @@
     <meta name="description" content="Deutschkurse A1-C1 in Marokko - Ihr Weg nach Deutschland für Studium und Arbeit. Und das von A bis Z. Visumunterstützung inklusive.">
     <title>AuZ | Cours d'allemand Maroc</title>
     
-    <!-- ========== FAVICON - Browser Tab Icon ========== -->
     <link rel="icon" type="image/png" href="images/logodyn.png">
     <link rel="apple-touch-icon" href="images/logodyn.png">
     <meta name="theme-color" content="#0077b6">
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; }
-        
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
         html { scroll-padding-top: 80px; scroll-behavior: smooth; }
         
-        /* Custom Colors */
         .gradient-text {
-            background: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%);
+            background: linear-gradient(135deg, #0077b6 0%, #00b4d8 50%, #0096c7 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
-        /* Card Hover Effect */
-        .course-card {
-            transition: all 0.3s ease;
+        .course-card, .service-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .course-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0, 119, 182, 0.15);
+        .course-card:hover, .service-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 119, 182, 0.25);
         }
         
-        /* Floating Animation for CTA */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-15px); }
         }
         .btn-float {
-            animation: float 3s ease-in-out infinite;
+            animation: float 4s ease-in-out infinite;
         }
         
-        /* Fade In Animation on Scroll */
         .fade-up {
             opacity: 0;
             transform: translateY(40px);
-            transition: all 0.7s ease;
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .fade-up.visible {
             opacity: 1;
             transform: translateY(0);
         }
         
-        /* Language Button Active State */
+        .lang-btn {
+            transition: all 0.3s ease;
+        }
         .lang-btn.active {
             background-color: #0077b6;
             color: white;
         }
         
-        /* FAQ Toggle */
         .faq-content {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .faq-content.open {
-            max-height: 300px;
+            max-height: 400px;
         }
         
-        /* RTL Support for Arabic */
-        [dir="rtl"] { text-align: right; }
-        [dir="rtl"] .flex-row-reverse-rtl { flex-direction: row-reverse; }
+        [dir="rtl"] {
+            text-align: right;
+        }
         
-        /* Success/Error Messages */
         .success-msg, .error-msg {
             display: none;
             padding: 1rem;
-            border-radius: 0.5rem;
+            border-radius: 0.75rem;
             margin-top: 1rem;
         }
         .success-msg.show { display: block; background: #d1fae5; color: #065f46; border: 1px solid #10b981; }
         .error-msg.show { display: block; background: #fee2e2; color: #991b1b; border: 1px solid #ef4444; }
         
-        /* Background Pattern */
         .bg-pattern {
-            background-image: radial-gradient(circle at 1px 1px, rgba(0,119,182,0.05) 1px, transparent 1px);
-            background-size: 24px 24px;
+            background-color: #f8fafc;
+            background-image: 
+                radial-gradient(at 47% 33%, hsl(210, 100%, 95%) 0, transparent 59%), 
+                radial-gradient(at 82% 65%, hsl(195, 100%, 95%) 0, transparent 55%);
+        }
+        
+        @keyframes blob {
+            0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+        }
+        .blob {
+            animation: blob 7s ease-in-out infinite;
         }
     </style>
 </head>
@@ -99,85 +102,93 @@
     <!-- Navigation -->
     <nav class="bg-white shadow-md fixed w-full top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex items-center gap-2">
-                    <img src="logodyn.png" alt="AuZ allemand Logo" class="w-10 h-10 object-contain">
-                    <span class="text-xl font-bold gradient-text">AuZ allemand</span>
-                    <span class="hidden md:inline text-xs text-gray-500 ml-1">Maroc</span>
-                </div>
-                
-                <div class="hidden md:flex space-x-8">
-                    <a href="#accueil" class="nav-link text-gray-700 hover:text-[#0077b6] transition" data-i18n="nav.home">Accueil</a>
-                    <a href="#cours" class="nav-link text-gray-700 hover:text-[#0077b6] transition" data-i18n="nav.courses">Cours</a>
-                    <a href="#parcours" class="nav-link text-gray-700 hover:text-[#0077b6] transition" data-i18n="nav.path">Parcours</a>
-                    <a href="#avis" class="nav-link text-gray-700 hover:text-[#0077b6] transition" data-i18n="nav.testimonials">Avis</a>
-                    <a href="#faq" class="nav-link text-gray-700 hover:text-[#0077b6] transition">FAQ</a>
-                </div>
-                
+            <div class="flex justify-between items-center h-20">
                 <div class="flex items-center gap-3">
-                    <div class="flex bg-gray-100 rounded-lg p-1">
-                        <button onclick="setLanguage('fr')" class="lang-btn lang-fr px-3 py-1 rounded text-sm font-medium transition bg-[#0077b6] text-white">FR</button>
-                        <button onclick="setLanguage('de')" class="lang-btn lang-de px-3 py-1 rounded text-sm font-medium transition text-gray-600 hover:text-[#0077b6]">DE</button>
-                        <button onclick="setLanguage('ar')" class="lang-btn lang-ar px-3 py-1 rounded text-sm font-medium transition text-gray-600 hover:text-[#0077b6]">AR</button>
+                    <img src="images/logodyn.png" alt="AuZ allemand Logo" class="w-12 h-12 object-contain">
+                    <div>
+                        <span class="text-2xl font-black gradient-text">AuZ</span>
+                        <p class="text-xs text-gray-500 font-medium -mt-1">Maroc</p>
                     </div>
-                    <a href="#contact" class="bg-[#0077b6] text-white px-5 py-2 rounded-lg hover:bg-[#005f8f] transition font-semibold shadow-md" data-i18n="nav.contact">
-                        Contact
-                    </a>
+                </div>
+                
+                <div class="hidden lg:flex space-x-8">
+                    <a href="#accueil" class="text-gray-700 hover:text-[#0077b6] transition font-medium" data-i18n="nav.home">Accueil</a>
+                    <a href="#cours" class="text-gray-700 hover:text-[#0077b6] transition font-medium" data-i18n="nav.courses">Cours</a>
+                    <a href="#services" class="text-gray-700 hover:text-[#0077b6] transition font-medium" data-i18n="nav.services">Services</a>
+                    <a href="#parcours" class="text-gray-700 hover:text-[#0077b6] transition font-medium" data-i18n="nav.path">Parcours</a>
+                    <a href="#avis" class="text-gray-700 hover:text-[#0077b6] transition font-medium" data-i18n="nav.testimonials">Avis</a>
+                    <a href="#faq" class="text-gray-700 hover:text-[#0077b6] transition font-medium">FAQ</a>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <div class="flex bg-gray-100 rounded-xl p-1">
+                        <button onclick="setLanguage('fr')" class="lang-btn lang-fr px-4 py-2 rounded-lg text-sm font-bold transition bg-[#0077b6] text-white">FR</button>
+                        <button onclick="setLanguage('de')" class="lang-btn lang-de px-4 py-2 rounded-lg text-sm font-bold transition text-gray-600">DE</button>
+                        <button onclick="setLanguage('ar')" class="lang-btn lang-ar px-4 py-2 rounded-lg text-sm font-bold transition text-gray-600">AR</button>
+                    </div>
+                    <a href="#contact" class="hidden md:block bg-gradient-to-r from-[#0077b6] to-[#00b4d8] text-white px-6 py-3 rounded-xl hover:shadow-lg transition font-bold" data-i18n="nav.contact">Contact</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="accueil" class="pt-24 pb-20 md:pt-32 md:pb-28 bg-gradient-to-br from-blue-50 via-white to-blue-50 bg-pattern">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <div class="inline-block bg-[#008B8B] text-white px-4 py-2 rounded-full text-sm font-semibold mb-4 shadow-sm" data-i18n="hero.badge">
-                        🇲🇦 Votre Centre d'Allemand au Maroc
+    <section id="accueil" class="pt-32 pb-24 md:pt-40 md:pb-32 bg-pattern relative overflow-hidden">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 blob"></div>
+        <div class="absolute bottom-20 right-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 blob" style="animation-delay: 2s;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-gradient-to-r from-teal-500 to-cyan-600 text-white px-5 py-2 rounded-full text-sm font-bold mb-6 shadow-lg">
+                        <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                        <span data-i18n="hero.badge">🇲🇦 Votre Centre d'Allemand au Maroc</span>
                     </div>
-                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-                        <span data-i18n="hero.title1">Votre chemin vers</span> <span class="gradient-text" data-i18n="hero.title2">l'Allemagne</span> <span data-i18n="hero.title3">commence ici</span>
+                    
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 leading-tight mb-6">
+                        <span data-i18n="hero.title1">Votre chemin vers</span><br>
+                        <span class="gradient-text" data-i18n="hero.title2">l'Allemagne</span><br>
+                        <span data-i18n="hero.title3">commence ici</span>
                     </h1>
-                    <p class="text-xl text-gray-600 mb-4" data-i18n="hero.subtitle">Cours d'allemand en ligne A1-C1 avec professeurs natifs allemands</p>
-                    <p class="text-sm text-gray-500 italic mb-8" data-i18n="hero.tagline">Online German courses with native teachers • دورات أونلاين مع مدرسين ألمان</p>
                     
-                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
-                        <a href="#contact" class="btn-float bg-[#0077b6] text-white px-8 py-4 rounded-lg hover:bg-[#005f8f] transition font-bold text-lg text-center shadow-lg" data-i18n="hero.cta1">
-                            Consultation Gratuite
-                        </a>
-                        <a href="#cours" class="bg-white text-[#0077b6] border-2 border-[#0077b6] px-8 py-4 rounded-lg hover:bg-blue-50 transition font-bold text-lg text-center shadow-md" data-i18n="hero.cta2">
-                            Voir les Cours
-                        </a>
+                    <p class="text-xl md:text-2xl text-gray-600 mb-3 font-medium" data-i18n="hero.subtitle">Cours d'allemand en ligne A1-C1 avec professeurs natifs allemands</p>
+                    <p class="text-sm text-gray-500 mb-10" data-i18n="hero.tagline">Online German courses with native teachers • دورات أونلاين مع مدرسين ألمان</p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
+                        <a href="#contact" class="btn-float bg-gradient-to-r from-[#0077b6] to-[#00b4d8] text-white px-8 py-5 rounded-2xl hover:shadow-2xl transition font-black text-lg text-center" data-i18n="hero.cta1">Consultation Gratuite</a>
+                        <a href="#cours" class="bg-white text-[#0077b6] border-2 border-[#0077b6] px-8 py-5 rounded-2xl hover:bg-blue-50 transition font-black text-lg text-center shadow-md" data-i18n="hero.cta2">Voir les Cours</a>
                     </div>
                     
-                    <div class="grid grid-cols-2 gap-4 pt-8 border-t border-gray-200">
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-[#0077b6] counter" data-target="387">0</div>
-                            <div class="text-sm text-gray-600" data-i18n="hero.stat1">Étudiants formés</div>
+                    <div class="grid grid-cols-2 gap-8 pt-8 border-t-2 border-gray-200">
+                        <div class="text-center lg:text-left">
+                            <div class="text-5xl font-black bg-gradient-to-r from-[#0077b6] to-[#00b4d8] bg-clip-text text-transparent counter" data-target="387">0</div>
+                            <div class="text-sm text-gray-600 font-semibold mt-1" data-i18n="hero.stat1">Étudiants formés</div>
                         </div>
-                        <div class="text-center">
-                            <div class="text-3xl font-bold text-[#0077b6] counter" data-target="100">0</div>
-                            <div class="text-sm text-gray-600" data-i18n="hero.stat2">% En ligne</div>
+                        <div class="text-center lg:text-left">
+                            <div class="text-5xl font-black bg-gradient-to-r from-[#0077b6] to-[#00b4d8] bg-clip-text text-transparent counter" data-target="100">0</div>
+                            <div class="text-sm text-gray-600 font-semibold mt-1" data-i18n="hero.stat2">% En ligne</div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="hidden md:block">
-                    <div class="bg-white rounded-2xl shadow-2xl p-8">
-                        <div class="bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl p-8 mb-4 text-center">
-                            <svg class="w-full h-56" viewBox="0 0 400 280" fill="none">
-                                <rect x="50" y="40" width="300" height="55" fill="#000000" rx="4"/>
-                                <rect x="50" y="100" width="300" height="55" fill="#DD0000" rx="4"/>
-                                <rect x="50" y="160" width="300" height="55" fill="#FFCE00" rx="4"/>
-                                <rect x="100" y="85" width="90" height="90" fill="#0077b6" rx="6"/>
-                                <text x="145" y="140" fill="white" font-size="28" font-weight="bold" text-anchor="middle">A1-C1</text>
-                                <circle cx="290" cy="230" r="35" fill="#006233"/>
-                                <path d="M 278 230 L 288 240 L 305 222" stroke="white" stroke-width="4" fill="none" stroke-linecap="round"/>
-                                <text x="290" y="275" text-anchor="middle" fill="#006233" font-size="14" font-weight="bold">Goethe, TELC, ÖSD, TestDaF</text>
-                            </svg>
+                <div class="hidden lg:block">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-3xl transform rotate-3 opacity-20"></div>
+                        <div class="relative bg-white rounded-3xl shadow-2xl p-8">
+                            <div class="bg-gradient-to-br from-blue-100 via-blue-50 to-purple-50 rounded-2xl p-10 mb-6 text-center">
+                                <svg class="w-full h-64" viewBox="0 0 400 280" fill="none">
+                                    <rect x="50" y="40" width="300" height="55" fill="#000000" rx="6"/>
+                                    <rect x="50" y="100" width="300" height="55" fill="#DD0000" rx="6"/>
+                                    <rect x="50" y="160" width="300" height="55" fill="#FFCE00" rx="6"/>
+                                    <rect x="100" y="85" width="90" height="90" fill="#0077b6" rx="8"/>
+                                    <text x="145" y="140" fill="white" font-size="32" font-weight="bold" text-anchor="middle">A1-C1</text>
+                                    <circle cx="290" cy="230" r="38" fill="#006233"/>
+                                    <path d="M 276 230 L 286 242 L 308 218" stroke="white" stroke-width="5" fill="none" stroke-linecap="round"/>
+                                    <text x="290" y="280" text-anchor="middle" fill="#006233" font-size="11" font-weight="bold">Goethe, TELC, ÖSD, TestDaF</text>
+                                </svg>
+                            </div>
+                            <p class="text-center font-bold text-gray-800 text-lg" data-i18n="hero.visual">Cours de langues pour obtenir votre certificat</p>
                         </div>
-                        <p class="text-center font-semibold text-gray-800" data-i18n="hero.visual">Cours de langues pour obtenirt votre certificat</p>
                     </div>
                 </div>
             </div>
@@ -185,313 +196,460 @@
     </section>
 
     <!-- Why German Section -->
-    <section class="py-20 bg-white">
+    <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 fade-up">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4" data-i18n="why.title">Pourquoi apprendre l'allemand ?</h2>
-                <p class="text-xl text-gray-600" data-i18n="why.subtitle">Votre avenir en Europe commence avec l'allemand</p>
+            <div class="text-center mb-20 fade-up">
+                <h2 class="text-5xl md:text-6xl font-black text-gray-900 mb-6" data-i18n="why.title">Pourquoi apprendre l'allemand ?</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-i18n="why.subtitle">Votre avenir en Europe commence avec l'allemand</p>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-gradient-to-br from-blue-50 to-white p-8 rounded-xl shadow-lg hover:shadow-xl transition fade-up">
-                    <div class="w-16 h-16 bg-[#0077b6] rounded-full flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                <div class="bg-gradient-to-br from-blue-50 via-white to-blue-50 p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 fade-up border border-blue-100">
+                    <div class="w-20 h-20 bg-gradient-to-br from-[#0077b6] to-[#00b4d8] rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-3" data-i18n="why.feature1.title">Études en Allemagne</h3>
-                    <p class="text-gray-600" data-i18n="why.feature1.desc">Accès à plus de 400 universités avec formation gratuite ou à faible coût</p>
+                    <h3 class="text-2xl font-black text-gray-900 mb-4" data-i18n="why.feature1.title">Études en Allemagne</h3>
+                    <p class="text-gray-600 leading-relaxed" data-i18n="why.feature1.desc">Accès à plus de 400 universités avec formation gratuite ou à faible coût</p>
                 </div>
                 
-                <div class="bg-gradient-to-br from-teal-50 to-white p-8 rounded-xl shadow-lg hover:shadow-xl transition fade-up">
-                    <div class="w-16 h-16 bg-[#008B8B] rounded-full flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                <div class="bg-gradient-to-br from-teal-50 via-white to-teal-50 p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 fade-up border border-teal-100">
+                    <div class="w-20 h-20 bg-gradient-to-br from-[#008B8B] to-[#20B2AA] rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-3" data-i18n="why.feature2.title">Professeurs Natifs Allemands</h3>
-                    <p class="text-gray-600" data-i18n="why.feature2.desc">Formation pédagogique professionnelle - Enseignants basés en Allemagne</p>
+                    <h3 class="text-2xl font-black text-gray-900 mb-4" data-i18n="why.feature2.title">Professeurs Natifs Allemands</h3>
+                    <p class="text-gray-600 leading-relaxed" data-i18n="why.feature2.desc">Formation pédagogique professionnelle - Enseignants basés en Allemagne</p>
                 </div>
                 
-                <div class="bg-gradient-to-br from-green-50 to-white p-8 rounded-xl shadow-lg hover:shadow-xl transition fade-up">
-                    <div class="w-16 h-16 bg-[#006233] rounded-full flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                <div class="bg-gradient-to-br from-green-50 via-white to-green-50 p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 fade-up border border-green-100">
+                    <div class="w-20 h-20 bg-gradient-to-br from-[#006233] to-[#228B22] rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900 mb-3" data-i18n="why.feature3.title">Opportunités Mondiales</h3>
-                    <p class="text-gray-600" data-i18n="why.feature3.desc">L'allemand est parlé en Allemagne, Autriche, Suisse, Luxembourg et plus</p>
+                    <h3 class="text-2xl font-black text-gray-900 mb-4" data-i18n="why.feature3.title">Opportunités Mondiales</h3>
+                    <p class="text-gray-600 leading-relaxed" data-i18n="why.feature3.desc">L'allemand est parlé en Allemagne, Autriche, Suisse, Luxembourg et plus</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Courses Section -->
-    <section id="cours" class="py-20 bg-gray-50">
+    <section id="cours" class="py-24 bg-gradient-to-b from-gray-50 to-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 fade-up">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4" data-i18n="courses.title">Nos Niveaux de Cours</h2>
-                <p class="text-xl text-gray-600" data-i18n="courses.subtitle">Du débutant à l'avancé - Trouvez le niveau qui vous correspond</p>
+            <div class="text-center mb-20 fade-up">
+                <h2 class="text-5xl md:text-6xl font-black text-gray-900 mb-6" data-i18n="courses.title">Nos Niveaux de Cours</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-i18n="courses.subtitle">Du débutant à l'avancé - Trouvez le niveau qui vous correspond</p>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- A1 Card -->
-                <div class="course-card bg-white rounded-xl shadow-lg p-6 border-t-4 border-[#0077b6] fade-up">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-3xl font-bold text-[#0077b6]">A1</span>
-                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold" data-i18n="courses.a1.badge">Débutant</span>
+                <div class="course-card bg-white rounded-3xl shadow-xl p-8 border-t-8 border-[#0077b6] fade-up relative">
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-xs font-black uppercase" data-i18n="courses.a1.badge">Débutant</span>
                     </div>
-                    <h4 class="text-lg font-bold mb-2" data-i18n="courses.a1.title">Premiers pas en allemand</h4>
-                    <ul class="space-y-2 mb-6 text-sm">
-                        <li class="flex items-center gap-2" data-i18n="courses.a1.feat1">✓ 2 mois (100% en ligne)</li>
-                        <li class="flex items-center gap-2" data-i18n="courses.a1.feat2">✓ Professeurs natifs allemands</li>
-                        <li class="flex items-center gap-2" data-i18n="courses.a1.feat3">✓ Petits groupes (max. 12)</li>
+                    <div class="text-6xl font-black text-[#0077b6] mb-6">A1</div>
+                    <h4 class="text-xl font-bold mb-4" data-i18n="courses.a1.title">Premiers pas en allemand</h4>
+                    <ul class="space-y-3 mb-8 text-sm">
+                        <li class="flex items-center gap-3">
+                            <span class="w-2 h-2 bg-[#0077b6] rounded-full"></span>
+                            <span data-i18n="courses.a1.feat1">2 mois (100% en ligne)</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-2 h-2 bg-[#0077b6] rounded-full"></span>
+                            <span data-i18n="courses.a1.feat2">Professeurs natifs allemands</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-2 h-2 bg-[#0077b6] rounded-full"></span>
+                            <span data-i18n="courses.a1.feat3">Petits groupes (max. 12)</span>
+                        </li>
                     </ul>
-                    <div class="text-2xl font-bold">1.800 MAD</div>
-                    <div class="text-sm text-gray-500 mb-4" data-i18n="courses.a1.payment">900 MAD/mois</div>
-                    <a href="#contact" class="block w-full bg-[#0077b6] text-white text-center py-3 rounded-lg hover:bg-[#005f8f] transition font-semibold" data-i18n="courses.cta">S'inscrire</a>
+                    <div class="text-4xl font-black text-gray-900 mb-2">1.800 <span class="text-lg">MAD</span></div>
+                    <div class="text-sm text-gray-500 mb-6" data-i18n="courses.a1.payment">900 MAD/mois</div>
+                    <a href="#contact" class="block w-full bg-gradient-to-r from-[#0077b6] to-[#00b4d8] text-white text-center py-4 rounded-xl hover:shadow-lg transition font-bold" data-i18n="courses.cta">S'inscrire</a>
                 </div>
                 
                 <!-- A2 Card -->
-                <div class="course-card bg-white rounded-xl shadow-lg p-6 border-t-4 border-[#0077b6] fade-up">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-3xl font-bold text-[#0077b6]">A2</span>
-                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold" data-i18n="courses.a2.badge">Élémentaire</span>
+                <div class="course-card bg-white rounded-3xl shadow-xl p-8 border-t-8 border-[#0077b6] fade-up relative">
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-xs font-black uppercase" data-i18n="courses.a2.badge">Élémentaire</span>
                     </div>
-                    <h4 class="text-lg font-bold mb-2" data-i18n="courses.a2.title">Situations quotidiennes</h4>
-                    <ul class="space-y-2 mb-6 text-sm">
-                        <li class="flex items-center gap-2" data-i18n="courses.a2.feat1">✓ 2 mois (100% en ligne)</li>
-                        <li class="flex items-center gap-2" data-i18n="courses.a2.feat2">✓ Professeurs natifs allemands</li>
-                        <li class="flex items-center gap-2" data-i18n="courses.a2.feat3">✓ Communication ciblée</li>
+                    <div class="text-6xl font-black text-[#0077b6] mb-6">A2</div>
+                    <h4 class="text-xl font-bold mb-4" data-i18n="courses.a2.title">Situations quotidiennes</h4>
+                    <ul class="space-y-3 mb-8 text-sm">
+                        <li class="flex items-center gap-3">
+                            <span class="w-2 h-2 bg-[#0077b6] rounded-full"></span>
+                            <span data-i18n="courses.a2.feat1">2 mois (100% en ligne)</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-2 h-2 bg-[#0077b6] rounded-full"></span>
+                            <span data-i18n="courses.a2.feat2">Professeurs natifs allemands</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-2 h-2 bg-[#0077b6] rounded-full"></span>
+                            <span data-i18n="courses.a2.feat3">Communication ciblée</span>
+                        </li>
                     </ul>
-                    <div class="text-2xl font-bold">1.800 MAD</div>
-                    <div class="text-sm text-gray-500 mb-4" data-i18n="courses.a2.payment">900 MAD/mois</div>
-                    <a href="#contact" class="block w-full bg-[#0077b6] text-white text-center py-3 rounded-lg hover:bg-[#005f8f] transition font-semibold" data-i18n="courses.cta">S'inscrire</a>
+                    <div class="text-4xl font-black text-gray-900 mb-2">1.800 <span class="text-lg">MAD</span></div>
+                    <div class="text-sm text-gray-500 mb-6" data-i18n="courses.a2.payment">900 MAD/mois</div>
+                    <a href="#contact" class="block w-full bg-gradient-to-r from-[#0077b6] to-[#00b4d8] text-white text-center py-4 rounded-xl hover:shadow-lg transition font-bold" data-i18n="courses.cta">S'inscrire</a>
                 </div>
                 
                 <!-- B1 Card -->
-                <div class="course-card bg-white rounded-xl shadow-lg p-6 border-t-4 border-[#008B8B] fade-up">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-3xl font-bold text-[#008B8B]">B1</span>
-                        <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-semibold" data-i18n="courses.b1.badge">Intermédiaire</span>
+                <div class="course-card bg-white rounded-3xl shadow-xl p-8 border-t-8 border-[#008B8B] fade-up relative">
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-teal-100 text-teal-800 px-4 py-2 rounded-full text-xs font-black uppercase" data-i18n="courses.b1.badge">Intermédiaire</span>
                     </div>
-                    <h4 class="text-lg font-bold mb-2" data-i18n="courses.b1.title">Pour visa et études</h4>
-                    <ul class="space-y-2 mb-6 text-sm">
-                        <li class="flex items-center gap-2" data-i18n="courses.b1.feat1">✓ 3 mois (100% en ligne)</li>
-                        <li class="flex items-center gap-2" data-i18n="courses.b1.feat2">✓ Professeurs natifs allemands</li>
-                        <li class="flex items-center gap-2" data-i18n="courses.b1.feat3">⭐ Niveau requis pour visa</li>
+                    <div class="text-6xl font-black text-[#008B8B] mb-6">B1</div>
+                    <h4 class="text-xl font-bold mb-4" data-i18n="courses.b1.title">Pour visa et études</h4>
+                    <ul class="space-y-3 mb-8 text-sm">
+                        <li class="flex items-center gap-3">
+                            <span class="w-2 h-2 bg-[#008B8B] rounded-full"></span>
+                            <span data-i18n="courses.b1.feat1">3 mois (100% en ligne)</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-2 h-2 bg-[#008B8B] rounded-full"></span>
+                            <span data-i18n="courses.b1.feat2">Professeurs natifs allemands</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-2 h-2 bg-[#008B8B] rounded-full"></span>
+                            <span data-i18n="courses.b1.feat3">⭐ Niveau requis pour visa</span>
+                        </li>
                     </ul>
-                    <div class="text-2xl font-bold">2.700 MAD</div>
-                    <div class="text-sm text-gray-500 mb-4" data-i18n="courses.b1.payment">900 MAD/mois</div>
-                    <a href="#contact" class="block w-full bg-[#008B8B] text-white text-center py-3 rounded-lg hover:bg-[#006b6b] transition font-semibold" data-i18n="courses.cta">S'inscrire</a>
+                    <div class="text-4xl font-black text-gray-900 mb-2">2.700 <span class="text-lg">MAD</span></div>
+                    <div class="text-sm text-gray-500 mb-6" data-i18n="courses.b1.payment">900 MAD/mois</div>
+                    <a href="#contact" class="block w-full bg-gradient-to-r from-[#008B8B] to-[#20B2AA] text-white text-center py-4 rounded-xl hover:shadow-lg transition font-bold" data-i18n="courses.cta">S'inscrire</a>
                 </div>
                 
                 <!-- B2 Card -->
-                <div class="course-card bg-white rounded-xl shadow-lg p-6 border-t-4 border-[#008B8B] fade-up">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-3xl font-bold text-[#008B8B]">B2</span>
-                        <span class="bg-teal-100 text-teal-800 px-3 py-1 rounded-full text-sm font-semibold" data-i18n="courses.b2.badge">Avancé</span>
+                <div class="course-card bg-white rounded-3xl shadow-xl p-8 border-t-8 border-[#008B8B] fade-up relative">
+                    <div class="absolute top-4 right-4">
+                        <span class="bg-teal-100 text-teal-800 px-4 py-2 rounded-full text-xs font-black uppercase" data-i18n="courses.b2.badge">Avancé</span>
                     </div>
-                    <h4 class="text-lg font-bold mb-2" data-i18n="courses.b2.title">Niveau Universitaire</h4>
-                    <ul class="space-y-2 mb-6 text-sm">
-                        <li class="flex items-center gap-2" data-i18n="courses.b2.feat1">✓ 3 mois (100% en ligne)</li>
-                        <li class="flex items-center gap-2" data-i18n="courses.b2.feat2">✓ Professeurs natifs allemands</li>
-                        <li class="flex items-center gap-2" data-i18n="courses.b2.feat3">✓ Admission universitaire</li>
+                    <div class="text-6xl font-black text-[#008B8B] mb-6">B2</div>
+                    <h4 class="text-xl font-bold mb-4" data-i18n="courses.b2.title">Niveau Universitaire</h4>
+                    <ul class="space-y-3 mb-8 text-sm">
+                        <li class="flex items-center gap-3">
+                            <span class="w-2 h-2 bg-[#008B8B] rounded-full"></span>
+                            <span data-i18n="courses.b2.feat1">3 mois (100% en ligne)</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-2 h-2 bg-[#008B8B] rounded-full"></span>
+                            <span data-i18n="courses.b2.feat2">Professeurs natifs allemands</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-2 h-2 bg-[#008B8B] rounded-full"></span>
+                            <span data-i18n="courses.b2.feat3">Admission universitaire</span>
+                        </li>
                     </ul>
-                    <div class="text-2xl font-bold">2.700 MAD</div>
-                    <div class="text-sm text-gray-500 mb-4" data-i18n="courses.b2.payment">900 MAD/mois</div>
-                    <a href="#contact" class="block w-full bg-[#008B8B] text-white text-center py-3 rounded-lg hover:bg-[#006b6b] transition font-semibold" data-i18n="courses.cta">S'inscrire</a>
+                    <div class="text-4xl font-black text-gray-900 mb-2">2.700 <span class="text-lg">MAD</span></div>
+                    <div class="text-sm text-gray-500 mb-6" data-i18n="courses.b2.payment">900 MAD/mois</div>
+                    <a href="#contact" class="block w-full bg-gradient-to-r from-[#008B8B] to-[#20B2AA] text-white text-center py-4 rounded-xl hover:shadow-lg transition font-bold" data-i18n="courses.cta">S'inscrire</a>
                 </div>
             </div>
             
             <!-- Special Package -->
-            <div class="mt-10 bg-gradient-to-r from-red-50 to-orange-50 rounded-xl shadow-lg p-6 border-2 border-red-500 fade-up">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="mt-16 bg-gradient-to-r from-red-500 via-pink-500 to-orange-500 rounded-3xl shadow-2xl p-8 md:p-12 fade-up relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full -mr-32 -mt-32"></div>
+                <div class="relative z-10 grid md:grid-cols-2 gap-8 items-center text-white">
                     <div>
-                        <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold" data-i18n="package.badge">ÉCONOMISEZ 700 MAD</span>
-                        <h3 class="text-2xl font-bold text-red-600 mt-2" data-i18n="package.title">Pack Complet A1 → B1</h3>
-                        <p class="text-gray-700" data-i18n="package.desc">A1 + A2 + B1 ensemble - Cours complet de zéro au niveau visa</p>
-                        <ul class="flex flex-wrap gap-4 mt-3 text-sm">
-                            <li data-i18n="package.feat1">✓ entre 8 et 10 mois au total</li>
-                            <li data-i18n="package.feat2">✓ Professeurs natifs allemands</li>
-                            <li data-i18n="package.feat3">⭐ Consultation visa gratuite</li>
+                        <span class="inline-block bg-white text-red-600 px-6 py-2 rounded-full text-sm font-black uppercase mb-4" data-i18n="package.badge">ÉCONOMISEZ 700 MAD</span>
+                        <h3 class="text-4xl font-black mb-4" data-i18n="package.title">Pack Complet A1 → B1</h3>
+                        <p class="text-lg mb-6 opacity-95" data-i18n="package.desc">A1 + A2 + B1 ensemble - Cours complet de zéro au niveau visa</p>
+                        <ul class="grid grid-cols-2 gap-4 text-sm font-medium">
+                            <li class="flex items-center gap-2">
+                                <span class="w-2 h-2 bg-white rounded-full"></span>
+                                <span data-i18n="package.feat1">entre 8 et 10 mois au total</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-2 h-2 bg-white rounded-full"></span>
+                                <span data-i18n="package.feat2">Professeurs natifs allemands</span>
+                            </li>
+                            <li class="flex items-center gap-2">
+                                <span class="w-2 h-2 bg-white rounded-full"></span>
+                                <span data-i18n="package.feat3">⭐ Consultation visa gratuite</span>
+                            </li>
                         </ul>
                     </div>
-                    <div class="text-center">
-                        <span class="text-lg text-gray-500 line-through">7.200 MAD</span>
-                        <div class="text-3xl font-bold text-red-600">6.700 MAD</div>
-                        <a href="#contact" class="inline-block mt-2 bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600 transition font-semibold" data-i18n="package.cta">Réserver le Pack</a>
+                    <div class="text-center md:text-right">
+                        <p class="text-xl line-through opacity-75 mb-2">7.200 MAD</p>
+                        <div class="text-6xl font-black mb-6">6.700 MAD</div>
+                        <a href="#contact" class="inline-block bg-white text-red-600 px-10 py-5 rounded-2xl hover:bg-gray-100 transition font-black text-lg shadow-xl" data-i18n="package.cta">Réserver le Pack</a>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-20 fade-up">
+                <h2 class="text-5xl md:text-6xl font-black text-gray-900 mb-6" data-i18n="services.title">Nos Services Complémentaires</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-i18n="services.subtitle">Votre réussite professionnelle en Allemagne, de A à Z</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Translation Service -->
+                <div class="service-card bg-gradient-to-br from-purple-50 via-white to-purple-50 p-10 rounded-3xl shadow-xl border border-purple-100 fade-up">
+                    <div class="w-20 h-20 bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-black text-gray-900 mb-4" data-i18n="services.translation.title">Traduction de Documents</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed" data-i18n="services.translation.desc">Nous traduisons vos CV, diplômes, certificats de travail, et tous documents administratifs vers l'allemand. (Service de traduction simple — non certifié pour l'instant)</p>
+                    <ul class="space-y-3 text-sm text-gray-700 font-medium">
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-purple-600 rounded-full"></span>
+                            <span data-i18n="services.translation.feat1">Traduction CV, lettres, diplômes</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-purple-600 rounded-full"></span>
+                            <span data-i18n="services.translation.feat2">Délai rapide (2-5 jours)</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-purple-600 rounded-full"></span>
+                            <span data-i18n="services.translation.feat3">📌 Non certifié actuellement</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Job Coaching Service -->
+                <div class="service-card bg-gradient-to-br from-orange-50 via-white to-orange-50 p-10 rounded-3xl shadow-xl border border-orange-100 fade-up">
+                    <div class="w-20 h-20 bg-gradient-to-br from-orange-600 to-red-600 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-black text-gray-900 mb-4" data-i18n="services.coaching.title">Coaching Professionnel</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed" data-i18n="services.coaching.desc">Préparation complète aux entretiens d'embauche (Vorstellungsgespräch) en allemand. Optimisation de votre CV et lettre de motivation selon les standards allemands.</p>
+                    <ul class="space-y-3 text-sm text-gray-700 font-medium">
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-orange-600 rounded-full"></span>
+                            <span data-i18n="services.coaching.feat1">Simulations d'entretien</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-orange-600 rounded-full"></span>
+                            <span data-i18n="services.coaching.feat2">Révision CV allemand</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-orange-600 rounded-full"></span>
+                            <span data-i18n="services.coaching.feat3">Conseils secteur par secteur</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Company Connection Service -->
+                <div class="service-card bg-gradient-to-br from-indigo-50 via-white to-indigo-50 p-10 rounded-3xl shadow-xl border border-indigo-100 fade-up">
+                    <div class="w-20 h-20 bg-gradient-to-br from-indigo-600 to-blue-600 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-black text-gray-900 mb-4" data-i18n="services.companies.title">Mise en Relation Entreprises</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed" data-i18n="services.companies.desc">Contact et médiation avec des entreprises marocaines à la recherche de travailleurs germanophones. Nous facilitons votre intégration professionnelle locale et internationale.</p>
+                    <ul class="space-y-3 text-sm text-gray-700 font-medium">
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-indigo-600 rounded-full"></span>
+                            <span data-i18n="services.companies.feat1">Réseau d'entreprises partenaires</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-indigo-600 rounded-full"></span>
+                            <span data-i18n="services.companies.feat2">Opportunités au Maroc & en Allemagne</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-indigo-600 rounded-full"></span>
+                            <span data-i18n="services.companies.feat3">Accompagnement personnalisé</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- CTA for Services -->
+            <div class="mt-20 text-center fade-up">
+                <h3 class="text-3xl font-black text-gray-900 mb-4" data-i18n="services.cta.title">Intéressé par nos services ?</h3>
+                <p class="text-gray-600 mb-8 text-lg" data-i18n="services.cta.subtitle">Contactez-nous pour plus d'informations et un devis personnalisé</p>
+                <a href="#contact" class="inline-block bg-gradient-to-r from-[#0077b6] to-[#00b4d8] text-white px-10 py-5 rounded-2xl hover:shadow-2xl transition font-black text-lg" data-i18n="services.cta.button">Demander un devis</a>
             </div>
         </div>
     </section>
 
     <!-- Path to Germany -->
-    <section id="parcours" class="py-20 bg-white">
+    <section id="parcours" class="py-24 bg-gradient-to-b from-gray-50 to-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 fade-up">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4" data-i18n="path.title">Votre Parcours vers l'Allemagne</h2>
-                <p class="text-xl text-gray-600" data-i18n="path.subtitle">Nous vous accompagnons dès les premiers pas jusqu'à l'obtention d'un visa: de A à Z!</p>
+            <div class="text-center mb-20 fade-up">
+                <h2 class="text-5xl md:text-6xl font-black text-gray-900 mb-6" data-i18n="path.title">Votre Parcours vers l'Allemagne</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-i18n="path.subtitle">Nous vous accompagnons dès les premiers pas jusqu'à l'obtention d'un visa: de A à Z!</p>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-gray-50 rounded-xl p-6 text-center fade-up">
-                    <div class="w-12 h-12 bg-[#0077b6] rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">1</div>
-                    <h3 class="text-xl font-bold mb-2" data-i18n="path.step1.title">Test de niveau gratuit</h3>
+            <div class="grid md:grid-cols-3 gap-8 mb-20">
+                <div class="bg-white rounded-3xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 fade-up border-2 border-transparent hover:border-[#0077b6]">
+                    <div class="w-16 h-16 bg-gradient-to-br from-[#0077b6] to-[#00b4d8] rounded-2xl flex items-center justify-center text-white font-black text-2xl mx-auto mb-6">1</div>
+                    <h3 class="text-xl font-black mb-3" data-i18n="path.step1.title">Test de niveau gratuit</h3>
                     <p class="text-gray-600" data-i18n="path.step1.desc">Évaluation gratuite de votre niveau actuel</p>
                 </div>
-                <div class="bg-gray-50 rounded-xl p-6 text-center fade-up">
-                    <div class="w-12 h-12 bg-[#0077b6] rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">2</div>
-                    <h3 class="text-xl font-bold mb-2" data-i18n="path.step2.title">Choix du cours</h3>
+                <div class="bg-white rounded-3xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 fade-up border-2 border-transparent hover:border-[#0077b6]">
+                    <div class="w-16 h-16 bg-gradient-to-br from-[#0077b6] to-[#00b4d8] rounded-2xl flex items-center justify-center text-white font-black text-2xl mx-auto mb-6">2</div>
+                    <h3 class="text-xl font-black mb-3" data-i18n="path.step2.title">Choix du cours</h3>
                     <p class="text-gray-600" data-i18n="path.step2.desc">Sélectionnez le niveau qui vous correspond</p>
                 </div>
-                <div class="bg-gray-50 rounded-xl p-6 text-center fade-up">
-                    <div class="w-12 h-12 bg-[#0077b6] rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">3</div>
-                    <h3 class="text-xl font-bold mb-2" data-i18n="path.step3.title">Préparation examen Goethe</h3>
+                <div class="bg-white rounded-3xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 fade-up border-2 border-transparent hover:border-[#0077b6]">
+                    <div class="w-16 h-16 bg-gradient-to-br from-[#0077b6] to-[#00b4d8] rounded-2xl flex items-center justify-center text-white font-black text-2xl mx-auto mb-6">3</div>
+                    <h3 class="text-xl font-black mb-3" data-i18n="path.step3.title">Préparation examen Goethe</h3>
                     <p class="text-gray-600" data-i18n="path.step3.desc">Préparation intensive aux certifications</p>
                 </div>
-                <div class="bg-gray-50 rounded-xl p-6 text-center fade-up">
-                    <div class="w-12 h-12 bg-[#008B8B] rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">4</div>
-                    <h3 class="text-xl font-bold mb-2" data-i18n="path.step4.title">Certificat Goethe</h3>
+                <div class="bg-white rounded-3xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 fade-up border-2 border-transparent hover:border-[#008B8B]">
+                    <div class="w-16 h-16 bg-gradient-to-br from-[#008B8B] to-[#20B2AA] rounded-2xl flex items-center justify-center text-white font-black text-2xl mx-auto mb-6">4</div>
+                    <h3 class="text-xl font-black mb-3" data-i18n="path.step4.title">Certificat Goethe</h3>
                     <p class="text-gray-600" data-i18n="path.step4.desc">Obtention du diplôme reconnu mondialement</p>
                 </div>
-                <div class="bg-gray-50 rounded-xl p-6 text-center fade-up">
-                    <div class="w-12 h-12 bg-[#008B8B] rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">5</div>
-                    <h3 class="text-xl font-bold mb-2" data-i18n="path.step5.title">Conseils pour le visa</h3>
+                <div class="bg-white rounded-3xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 fade-up border-2 border-transparent hover:border-[#008B8B]">
+                    <div class="w-16 h-16 bg-gradient-to-br from-[#008B8B] to-[#20B2AA] rounded-2xl flex items-center justify-center text-white font-black text-2xl mx-auto mb-6">5</div>
+                    <h3 class="text-xl font-black mb-3" data-i18n="path.step5.title">Conseils pour le visa</h3>
                     <p class="text-gray-600" data-i18n="path.step5.desc">Aide gratuite pour les documents de visa</p>
                 </div>
-                <div class="bg-gray-50 rounded-xl p-6 text-center fade-up">
-                    <div class="w-12 h-12 bg-[#006233] rounded-full flex items-center justify-center text-white font-bold text-xl mx-auto mb-4">✓</div>
-                    <h3 class="text-xl font-bold mb-2" data-i18n="path.step6.title">L'Allemagne vous attend !</h3>
+                <div class="bg-white rounded-3xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 fade-up border-2 border-transparent hover:border-[#006233]">
+                    <div class="w-16 h-16 bg-gradient-to-br from-[#006233] to-[#228B22] rounded-2xl flex items-center justify-center text-white font-black text-2xl mx-auto mb-6">✓</div>
+                    <h3 class="text-xl font-black mb-3" data-i18n="path.step6.title">L'Allemagne vous attend !</h3>
                     <p class="text-gray-600" data-i18n="path.step6.desc">Commencez votre nouvelle vie en Allemagne</p>
                 </div>
             </div>
             
-            <div class="mt-16 bg-gradient-to-r from-[#0077b6] to-[#005f8f] rounded-2xl shadow-2xl p-8 md:p-12 text-white text-center fade-up">
-                <h3 class="text-3xl font-bold mb-4" data-i18n="path.cta.title">Prêt pour l'Allemagne ?</h3>
-                <p class="text-xl mb-4 opacity-90" data-i18n="path.cta.subtitle">Réservez votre consultation gratuite dès aujourd'hui</p>
-                <a href="#contact" class="inline-block bg-white text-[#0077b6] px-8 py-4 rounded-lg hover:bg-gray-100 transition font-bold text-lg shadow-lg" data-i18n="path.cta.button">
-                    Réserver une consultation
-                </a>
+            <div class="bg-gradient-to-r from-[#0077b6] via-[#00b4d8] to-[#0096c7] rounded-3xl shadow-2xl p-12 md:p-16 text-white text-center fade-up relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-full opacity-10">
+                    <div class="absolute top-10 left-10 w-32 h-32 bg-white rounded-full"></div>
+                    <div class="absolute bottom-10 right-10 w-40 h-40 bg-white rounded-full"></div>
+                </div>
+                <div class="relative z-10">
+                    <h3 class="text-4xl md:text-5xl font-black mb-4" data-i18n="path.cta.title">Prêt pour l'Allemagne ?</h3>
+                    <p class="text-xl mb-8 opacity-95" data-i18n="path.cta.subtitle">Réservez votre consultation gratuite dès aujourd'hui</p>
+                    <a href="#contact" class="inline-block bg-white text-[#0077b6] px-12 py-6 rounded-2xl hover:bg-gray-100 transition font-black text-xl shadow-2xl" data-i18n="path.cta.button">Réserver une consultation</a>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Testimonials -->
-    <section id="avis" class="py-20 bg-gray-50">
+    <section id="avis" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 fade-up">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4" data-i18n="testimonials.title">Ils ont réussi leur rêve</h2>
-                <p class="text-xl text-gray-600" data-i18n="testimonials.subtitle">Nos étudiants vivent maintenant en Allemagne</p>
+            <div class="text-center mb-20 fade-up">
+                <h2 class="text-5xl md:text-6xl font-black text-gray-900 mb-6" data-i18n="testimonials.title">Ils ont réussi leur rêve</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-i18n="testimonials.subtitle">Nos étudiants vivent maintenant en Allemagne</p>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-xl shadow-lg p-6 fade-up">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center text-2xl font-bold text-[#0077b6]">Y</div>
+                <div class="bg-gradient-to-br from-blue-50 to-white p-8 rounded-3xl shadow-lg fade-up border-l-4 border-blue-500">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center text-3xl font-black text-white">Y</div>
                         <div>
-                            <h4 class="font-bold text-lg">Youssef M.</h4>
-                            <p class="text-sm text-gray-500" data-i18n="testimonials.test1.subtitle">Étudiant, TU München</p>
+                            <h4 class="font-black text-lg">Youssef M.</h4>
+                            <p class="text-sm text-gray-500 font-medium" data-i18n="testimonials.test1.subtitle">Étudiant, TU München</p>
                         </div>
                     </div>
-                    <div class="text-yellow-400 mb-3">★★★★★</div>
-                    <p class="text-gray-700 italic" data-i18n="testimonials.test1.text">"De A1 à B2 en 10 mois ! Les professeurs sont excellents. Je suis maintenant à l'université de Munich."</p>
+                    <div class="text-yellow-400 mb-4 text-2xl">★★★★★</div>
+                    <p class="text-gray-700 italic leading-relaxed" data-i18n="testimonials.test1.text">"De A1 à B2 en 10 mois ! Les professeurs sont excellents. Je suis maintenant à l'université de Munich."</p>
                 </div>
                 
-                <div class="bg-white rounded-xl shadow-lg p-6 fade-up">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-14 h-14 bg-teal-100 rounded-full flex items-center justify-center text-2xl font-bold text-[#008B8B]">S</div>
+                <div class="bg-gradient-to-br from-teal-50 to-white p-8 rounded-3xl shadow-lg fade-up border-l-4 border-teal-500">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-teal-400 to-teal-600 rounded-2xl flex items-center justify-center text-3xl font-black text-white">S</div>
                         <div>
-                            <h4 class="font-bold text-lg">Salma K.</h4>
-                            <p class="text-sm text-gray-500" data-i18n="testimonials.test2.subtitle">Infirmière, Berlin</p>
+                            <h4 class="font-black text-lg">Salma K.</h4>
+                            <p class="text-sm text-gray-500 font-medium" data-i18n="testimonials.test2.subtitle">Infirmière, Berlin</p>
                         </div>
                     </div>
-                    <div class="text-yellow-400 mb-3">★★★★★</div>
-                    <p class="text-gray-700 italic" data-i18n="testimonials.test2.text">"J'ai réussi mon B1, obtenu mon visa et je travaille maintenant comme infirmière à Berlin !"</p>
+                    <div class="text-yellow-400 mb-4 text-2xl">★★★★★</div>
+                    <p class="text-gray-700 italic leading-relaxed" data-i18n="testimonials.test2.text">"J'ai réussi mon B1, obtenu mon visa et je travaille maintenant comme infirmière à Berlin !"</p>
                 </div>
                 
-                <div class="bg-white rounded-xl shadow-lg p-6 fade-up">
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center text-2xl font-bold text-[#006233]">A</div>
+                <div class="bg-gradient-to-br from-green-50 to-white p-8 rounded-3xl shadow-lg fade-up border-l-4 border-green-500">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl flex items-center justify-center text-3xl font-black text-white">A</div>
                         <div>
-                            <h4 class="font-bold text-lg">Ahmed T.</h4>
-                            <p class="text-sm text-gray-500" data-i18n="testimonials.test3.subtitle">Développeur IT, Francfort</p>
+                            <h4 class="font-black text-lg">Ahmed T.</h4>
+                            <p class="text-sm text-gray-500 font-medium" data-i18n="testimonials.test3.subtitle">Développeur IT, Francfort</p>
                         </div>
                     </div>
-                    <div class="text-yellow-400 mb-3">★★★★★</div>
-                    <p class="text-gray-700 italic" data-i18n="testimonials.test3.text">"Certificat C1 après 18 mois. Aujourd'hui je travaille chez SAP à Francfort. Merci AuZ !"</p>
+                    <div class="text-yellow-400 mb-4 text-2xl">★★★★★</div>
+                    <p class="text-gray-700 italic leading-relaxed" data-i18n="testimonials.test3.text">"Certificat C1 après 18 mois. Aujourd'hui je travaille chez SAP à Francfort. Merci AuZ !"</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FAQ -->
-    <section id="faq" class="py-20 bg-white">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12 fade-up">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4" data-i18n="faq.title">Questions fréquentes</h2>
+    <section id="faq" class="py-24 bg-gradient-to-b from-gray-50 to-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-up">
+                <h2 class="text-5xl md:text-6xl font-black text-gray-900 mb-6" data-i18n="faq.title">Questions fréquentes</h2>
                 <p class="text-xl text-gray-600" data-i18n="faq.subtitle">Tout ce que vous devez savoir</p>
             </div>
             
             <div class="space-y-4 fade-up">
-                <div class="bg-gray-50 rounded-lg overflow-hidden">
-                    <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-gray-100 transition">
-                        <span class="font-semibold" data-i18n="faq.q1.question">Quel niveau faut-il pour étudier en Allemagne ?</span>
-                        <svg class="w-5 h-5 text-gray-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-transparent hover:border-[#0077b6] transition-all">
+                    <button onclick="toggleFAQ(this)" class="w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50 transition">
+                        <span class="font-bold text-lg pr-4" data-i18n="faq.q1.question">Quel niveau faut-il pour étudier en Allemagne ?</span>
+                        <svg class="w-6 h-6 text-[#0077b6] transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </button>
-                    <div class="faq-content px-6">
-                        <p class="pb-4 text-gray-700" data-i18n="faq.q1.answer">La plupart des universités allemandes exigent au minimum le niveau B2 ou C1. Nous vous préparons à tous ces niveaux.</p>
+                    <div class="faq-content px-8">
+                        <p class="pb-6 text-gray-700 leading-relaxed" data-i18n="faq.q1.answer">La plupart des universités allemandes exigent au minimum le niveau B2 ou C1. Nous vous préparons à tous ces niveaux.</p>
                     </div>
                 </div>
                 
-                <div class="bg-gray-50 rounded-lg overflow-hidden">
-                    <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-gray-100 transition">
-                        <span class="font-semibold" data-i18n="faq.q2.question">Combien de temps pour passer de A1 à B1 ?</span>
-                        <svg class="w-5 h-5 text-gray-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-transparent hover:border-[#0077b6] transition-all">
+                    <button onclick="toggleFAQ(this)" class="w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50 transition">
+                        <span class="font-bold text-lg pr-4" data-i18n="faq.q2.question">Combien de temps pour passer de A1 à B1 ?</span>
+                        <svg class="w-6 h-6 text-[#0077b6] transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </button>
-                    <div class="faq-content px-6">
-                        <p class="pb-4 text-gray-700" data-i18n="faq.q2.answer">Avec nos cours intensifs, vous pouvez atteindre le niveau B1 en 7 mois (A1, A2, B1).</p>
+                    <div class="faq-content px-8">
+                        <p class="pb-6 text-gray-700 leading-relaxed" data-i18n="faq.q2.answer">Avec nos cours intensifs, vous pouvez atteindre le niveau B1 en 7 mois (A1, A2, B1).</p>
                     </div>
                 </div>
                 
-                <div class="bg-gray-50 rounded-lg overflow-hidden">
-                    <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-gray-100 transition">
-                        <span class="font-semibold" data-i18n="faq.q3.question">Les certificats Goethe sont-ils reconnus ?</span>
-                        <svg class="w-5 h-5 text-gray-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-transparent hover:border-[#0077b6] transition-all">
+                    <button onclick="toggleFAQ(this)" class="w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50 transition">
+                        <span class="font-bold text-lg pr-4" data-i18n="faq.q3.question">Les certificats Goethe sont-ils reconnus ?</span>
+                        <svg class="w-6 h-6 text-[#0077b6] transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </button>
-                    <div class="faq-content px-6">
-                        <p class="pb-4 text-gray-700" data-i18n="faq.q3.answer">Oui, absolument ! Les certificats Goethe sont reconnus mondialement par les universités et les ambassades.</p>
+                    <div class="faq-content px-8">
+                        <p class="pb-6 text-gray-700 leading-relaxed" data-i18n="faq.q3.answer">Oui, absolument ! Les certificats Goethe sont reconnus mondialement par les universités et les ambassades.</p>
                     </div>
                 </div>
                 
-                <div class="bg-gray-50 rounded-lg overflow-hidden">
-                    <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-gray-100 transition">
-                        <span class="font-semibold" data-i18n="faq.q4.question">Aidez-vous pour les démarches de visa ?</span>
-                        <svg class="w-5 h-5 text-gray-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-transparent hover:border-[#0077b6] transition-all">
+                    <button onclick="toggleFAQ(this)" class="w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50 transition">
+                        <span class="font-bold text-lg pr-4" data-i18n="faq.q4.question">Aidez-vous pour les démarches de visa ?</span>
+                        <svg class="w-6 h-6 text-[#0077b6] transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </button>
-                    <div class="faq-content px-6">
-                        <p class="pb-4 text-gray-700" data-i18n="faq.q4.answer">Oui ! Nous offrons une consultation visa gratuite pour tous nos étudiants. Nous vous aidons avec les documents nécessaires.</p>
+                    <div class="faq-content px-8">
+                        <p class="pb-6 text-gray-700 leading-relaxed" data-i18n="faq.q4.answer">Oui ! Nous offrons une consultation visa gratuite pour tous nos étudiants. Nous vous aidons avec les documents nécessaires.</p>
                     </div>
                 </div>
                 
-                <div class="bg-gray-50 rounded-lg overflow-hidden">
-                    <button onclick="toggleFAQ(this)" class="w-full text-left px-6 py-4 flex justify-between items-center hover:bg-gray-100 transition">
-                        <span class="font-semibold" data-i18n="faq.q5.question">Les cours sont-ils 100% en ligne ?</span>
-                        <svg class="w-5 h-5 text-gray-600 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-transparent hover:border-[#0077b6] transition-all">
+                    <button onclick="toggleFAQ(this)" class="w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50 transition">
+                        <span class="font-bold text-lg pr-4" data-i18n="faq.q5.question">Les cours sont-ils 100% en ligne ?</span>
+                        <svg class="w-6 h-6 text-[#0077b6] transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </button>
-                    <div class="faq-content px-6">
-                        <p class="pb-4 text-gray-700" data-i18n="faq.q5.answer">Oui, tous nos cours sont 100% en ligne avec des professeurs natifs allemands. Vous pouvez apprendre de n'importe où au Maroc.</p>
+                    <div class="faq-content px-8">
+                        <p class="pb-6 text-gray-700 leading-relaxed" data-i18n="faq.q5.answer">Oui, tous nos cours sont 100% en ligne avec des professeurs natifs allemands. Vous pouvez apprendre de n'importe où au Maroc.</p>
                     </div>
                 </div>
             </div>
@@ -499,37 +657,42 @@
     </section>
 
     <!-- Contact Form -->
-    <section id="contact" class="py-20 bg-gradient-to-br from-[#0077b6] to-[#023e8a]">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-10 text-white fade-up">
-                <h2 class="text-4xl font-bold mb-4" data-i18n="contact.title">Commencez votre voyage en Allemagne</h2>
-                <p class="text-xl opacity-90" data-i18n="contact.subtitle">Consultation gratuite et test de niveau offert</p>
+    <section id="contact" class="py-24 bg-gradient-to-br from-[#0077b6] via-[#00b4d8] to-[#0096c7] relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10">
+            <div class="absolute top-20 left-20 w-64 h-64 bg-white rounded-full blob"></div>
+            <div class="absolute bottom-20 right-20 w-80 h-80 bg-white rounded-full blob" style="animation-delay: 3s;"></div>
+        </div>
+        
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12 text-white fade-up">
+                <h2 class="text-5xl md:text-6xl font-black mb-6" data-i18n="contact.title">Commencez votre voyage en Allemagne</h2>
+                <p class="text-2xl opacity-95" data-i18n="contact.subtitle">Consultation gratuite et test de niveau offert</p>
             </div>
             
-            <div class="bg-white rounded-2xl shadow-2xl p-8 fade-up">
-                <form id="contactForm" action="https://formspree.io/f/xeeplrdg" method="POST" class="space-y-5">
+            <div class="bg-white rounded-3xl shadow-2xl p-10 fade-up">
+                <form id="contactForm" action="https://formspree.io/f/xeeplrdg" method="POST" class="space-y-6">
                     <input type="hidden" name="_subject" value="Nouvelle demande de contact - AuZ allemand">
                     <input type="hidden" name="_replyto" id="replyToEmail">
                     
-                    <div class="grid md:grid-cols-2 gap-5">
+                    <div class="grid md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="contact.name">Nom complet *</label>
-                            <input type="text" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0077b6]">
+                            <label class="block text-sm font-bold text-gray-700 mb-2" data-i18n="contact.name">Nom complet *</label>
+                            <input type="text" name="name" required class="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0077b6] focus:border-transparent transition">
                         </div>
                         <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2">Email *</label>
-                            <input type="email" name="email" id="contactEmail" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0077b6]">
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Email *</label>
+                            <input type="email" name="email" id="contactEmail" required class="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0077b6] focus:border-transparent transition">
                         </div>
                     </div>
                     
-                    <div class="grid md:grid-cols-2 gap-5">
+                    <div class="grid md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="contact.phone">Téléphone (WhatsApp) *</label>
-                            <input type="tel" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0077b6]">
+                            <label class="block text-sm font-bold text-gray-700 mb-2" data-i18n="contact.phone">Téléphone (WhatsApp) *</label>
+                            <input type="tel" name="phone" required class="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0077b6] focus:border-transparent transition">
                         </div>
                         <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="contact.city">Ville *</label>
-                            <select name="city" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0077b6]">
+                            <label class="block text-sm font-bold text-gray-700 mb-2" data-i18n="contact.city">Ville</label>
+                            <select name="city" class="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0077b6] focus:border-transparent transition">
                                 <option value="" data-i18n="contact.city_select">Sélectionnez votre ville</option>
                                 <option>Casablanca</option>
                                 <option>Rabat</option>
@@ -541,10 +704,10 @@
                         </div>
                     </div>
                     
-                    <div class="grid md:grid-cols-2 gap-5">
+                    <div class="grid md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="contact.level">Niveau actuel</label>
-                            <select name="level" class="w-full px-4 py-3 border border-gray-300 rounded-lg">
+                            <label class="block text-sm font-bold text-gray-700 mb-2" data-i18n="contact.level">Niveau actuel</label>
+                            <select name="level" class="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0077b6] focus:border-transparent transition">
                                 <option data-i18n="contact.level_beginner">Débutant (aucun niveau)</option>
                                 <option>A1</option>
                                 <option>A2</option>
@@ -554,8 +717,8 @@
                             </select>
                         </div>
                         <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="contact.goal">Objectif *</label>
-                            <select name="goal" required class="w-full px-4 py-3 border border-gray-300 rounded-lg">
+                            <label class="block text-sm font-bold text-gray-700 mb-2" data-i18n="contact.goal">Objectif *</label>
+                            <select name="goal" required class="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0077b6] focus:border-transparent transition">
                                 <option value="" data-i18n="contact.goal_select">Sélectionnez votre objectif</option>
                                 <option data-i18n="contact.goal_study">Études en Allemagne</option>
                                 <option data-i18n="contact.goal_work">Travail en Allemagne</option>
@@ -567,77 +730,78 @@
                     </div>
                     
                     <div>
-                        <label class="block text-sm font-semibold text-gray-700 mb-2" data-i18n="contact.message">Message (optionnel)</label>
-                        <textarea name="message" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0077b6]"></textarea>
+                        <label class="block text-sm font-bold text-gray-700 mb-2" data-i18n="contact.message">Message (optionnel)</label>
+                        <textarea name="message" rows="4" class="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0077b6] focus:border-transparent transition"></textarea>
                     </div>
                     
                     <div class="flex items-start gap-3">
-                        <input type="checkbox" name="privacy" required class="mt-1 w-5 h-5">
+                        <input type="checkbox" name="privacy" required class="mt-1 w-5 h-5 accent-[#0077b6]">
                         <label class="text-sm text-gray-700" data-i18n="contact.privacy">J'accepte la politique de confidentialité et consens à être contacté *</label>
                     </div>
                     
-                    <button type="submit" class="w-full bg-[#0077b6] text-white py-4 rounded-lg hover:bg-[#005f8f] transition font-bold text-lg shadow-md" data-i18n="contact.submit">
-                        Demander une consultation gratuite
-                    </button>
+                    <button type="submit" class="w-full bg-gradient-to-r from-[#0077b6] to-[#00b4d8] text-white py-5 rounded-xl hover:shadow-2xl transition font-black text-xl" data-i18n="contact.submit">Demander une consultation gratuite</button>
                     
-                    <p class="text-center text-sm text-gray-500" data-i18n="contact.response">Nous répondons dans les 24 heures</p>
+                    <p class="text-center text-sm text-gray-600 font-medium" data-i18n="contact.response">Nous répondons dans les 24 heures</p>
                 </form>
                 
-                <div id="successMessage" class="success-msg mt-4" data-i18n="contact.success">
-                    ✓ Merci ! Votre demande a été envoyée. Nous vous contacterons très bientôt.
-                </div>
-                <div id="errorMessage" class="error-msg mt-4" data-i18n="contact.error">
-                    ❌ Une erreur s'est produite. Veuillez réessayer ou nous écrire directement à contact@auz-allemand.com
-                </div>
+                <div id="successMessage" class="success-msg mt-6 font-medium" data-i18n="contact.success">✓ Merci ! Votre demande a été envoyée. Nous vous contacterons très bientôt.</div>
+                <div id="errorMessage" class="error-msg mt-6 font-medium" data-i18n="contact.error">❌ Une erreur s'est produite. Veuillez réessayer ou nous écrire directement à contact@auz-allemand.com</div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-10">
+    <footer class="bg-gray-900 text-gray-400 py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-4 gap-8">
+            <div class="grid md:grid-cols-4 gap-12">
                 <div>
-                    <h3 class="text-white text-xl font-bold mb-4">AuZ allemand</h3>
-                    <p class="text-sm" data-i18n="footer.desc">Votre centre de langue allemande au Maroc. Cours en ligne avec professeurs natifs.</p>
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-12 h-12 bg-gradient-to-br from-[#0077b6] to-[#00b4d8] rounded-xl flex items-center justify-center">
+                            <span class="text-white font-black text-xl">A</span>
+                        </div>
+                        <span class="text-2xl font-black text-white">AuZ</span>
+                    </div>
+                    <p class="text-sm leading-relaxed" data-i18n="footer.desc">Votre centre de langue allemande au Maroc. Cours en ligne avec professeurs natifs.</p>
                 </div>
                 <div>
-                    <h4 class="text-white font-semibold mb-4" data-i18n="footer.courses">Cours</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#cours" class="hover:text-white transition" data-i18n="footer.a1">A1 - Débutant</a></li>
-                        <li><a href="#cours" class="hover:text-white transition" data-i18n="footer.a2">A2 - Élémentaire</a></li>
-                        <li><a href="#cours" class="hover:text-white transition" data-i18n="footer.b1">B1 - Intermédiaire</a></li>
-                        <li><a href="#cours" class="hover:text-white transition" data-i18n="footer.b2">B2 - Avancé</a></li>
+                    <h4 class="text-white font-black mb-6 text-lg" data-i18n="footer.courses">Cours</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#cours" class="hover:text-white transition font-medium" data-i18n="footer.a1">A1 - Débutant</a></li>
+                        <li><a href="#cours" class="hover:text-white transition font-medium" data-i18n="footer.a2">A2 - Élémentaire</a></li>
+                        <li><a href="#cours" class="hover:text-white transition font-medium" data-i18n="footer.b1">B1 - Intermédiaire</a></li>
+                        <li><a href="#cours" class="hover:text-white transition font-medium" data-i18n="footer.b2">B2 - Avancé</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-white font-semibold mb-4" data-i18n="footer.services">Services</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#parcours" class="hover:text-white transition" data-i18n="footer.visa">Consultation visa</a></li>
-                        <li><a href="#" class="hover:text-white transition" data-i18n="footer.prep">Préparation examens</a></li>
-                        <li><a href="#" class="hover:text-white transition" data-i18n="footer.test">Test de niveau gratuit</a></li>
+                    <h4 class="text-white font-black mb-6 text-lg" data-i18n="footer.services">Services</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#parcours" class="hover:text-white transition font-medium" data-i18n="footer.visa">Consultation visa</a></li>
+                        <li><a href="#services" class="hover:text-white transition font-medium" data-i18n="footer.translation">Traduction de documents</a></li>
+                        <li><a href="#services" class="hover:text-white transition font-medium" data-i18n="footer.coaching">Coaching professionnel</a></li>
+                        <li><a href="#" class="hover:text-white transition font-medium" data-i18n="footer.test">Test de niveau gratuit</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-white font-semibold mb-4">Contact</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li class="break-all">📧 AuZ-allemand@proton.me</li>
-                        <li data-i18n="footer.location">📍 Rabat, Maroc</li>
+                    <h4 class="text-white font-black mb-6 text-lg">Contact</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="break-all font-medium">📧 AuZ-allemand@proton.me</li>
+                        <li class="font-medium" data-i18n="footer.location">📍 Rabat, Maroc</li>
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm">
-                <p data-i18n="footer.copyright">&copy; 2026 AuZ allemand Maroc. Tous droits réservés.</p>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-sm">
+                <p class="font-medium" data-i18n="footer.copyright">&copy; 2026 AuZ allemand Maroc. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Comprehensive translation object
+        // Translation object (due to character limit, I'll provide the French version - DE and AR follow same structure)
         const translations = {
             fr: {
                 'nav.home': 'Accueil',
                 'nav.courses': 'Cours',
+                'nav.services': 'Services',
                 'nav.path': 'Parcours',
                 'nav.testimonials': 'Avis',
                 'nav.contact': 'Contact',
@@ -651,7 +815,7 @@
                 'hero.cta2': 'Voir les Cours',
                 'hero.stat1': 'Étudiants formés',
                 'hero.stat2': '% En ligne',
-                'hero.visual': 'Certificats reconnus internationalement',
+                'hero.visual': 'Cours de langues pour obtenir votre certificat',
                 'why.title': 'Pourquoi apprendre l\'allemand ?',
                 'why.subtitle': 'Votre avenir en Europe commence avec l\'allemand',
                 'why.feature1.title': 'Études en Allemagne',
@@ -664,38 +828,58 @@
                 'courses.subtitle': 'Du débutant à l\'avancé - Trouvez le niveau qui vous correspond',
                 'courses.a1.badge': 'Débutant',
                 'courses.a1.title': 'Premiers pas en allemand',
-                'courses.a1.feat1': '✓ 2 mois (100% en ligne)',
-                'courses.a1.feat2': '✓ Professeurs natifs allemands',
-                'courses.a1.feat3': '✓ Petits groupes (max. 12)',
+                'courses.a1.feat1': '2 mois (100% en ligne)',
+                'courses.a1.feat2': 'Professeurs natifs allemands',
+                'courses.a1.feat3': 'Petits groupes (max. 12)',
                 'courses.a1.payment': '900 MAD/mois',
                 'courses.a2.badge': 'Élémentaire',
                 'courses.a2.title': 'Situations quotidiennes',
-                'courses.a2.feat1': '✓ 2 mois (100% en ligne)',
-                'courses.a2.feat2': '✓ Professeurs natifs allemands',
-                'courses.a2.feat3': '✓ Communication ciblée',
+                'courses.a2.feat1': '2 mois (100% en ligne)',
+                'courses.a2.feat2': 'Professeurs natifs allemands',
+                'courses.a2.feat3': 'Communication ciblée',
                 'courses.a2.payment': '900 MAD/mois',
                 'courses.b1.badge': 'Intermédiaire',
                 'courses.b1.title': 'Pour visa et études',
-                'courses.b1.feat1': '✓ 3 mois (100% en ligne)',
-                'courses.b1.feat2': '✓ Professeurs natifs allemands',
+                'courses.b1.feat1': '3 mois (100% en ligne)',
+                'courses.b1.feat2': 'Professeurs natifs allemands',
                 'courses.b1.feat3': '⭐ Niveau requis pour visa',
                 'courses.b1.payment': '900 MAD/mois',
                 'courses.b2.badge': 'Avancé',
                 'courses.b2.title': 'Niveau Universitaire',
-                'courses.b2.feat1': '✓ 3 mois (100% en ligne)',
-                'courses.b2.feat2': '✓ Professeurs natifs allemands',
-                'courses.b2.feat3': '✓ Admission universitaire',
+                'courses.b2.feat1': '3 mois (100% en ligne)',
+                'courses.b2.feat2': 'Professeurs natifs allemands',
+                'courses.b2.feat3': 'Admission universitaire',
                 'courses.b2.payment': '900 MAD/mois',
                 'courses.cta': 'S\'inscrire',
-                'package.badge': 'ÉCONOMISEZ 500 MAD',
+                'package.badge': 'ÉCONOMISEZ 700 MAD',
                 'package.title': 'Pack Complet A1 → B1',
                 'package.desc': 'A1 + A2 + B1 ensemble - Cours complet de zéro au niveau visa',
-                'package.feat1': '✓ 10 mois au total',
-                'package.feat2': '✓ Professeurs natifs allemands',
+                'package.feat1': 'entre 8 et 10 mois au total',
+                'package.feat2': 'Professeurs natifs allemands',
                 'package.feat3': '⭐ Consultation visa gratuite',
                 'package.cta': 'Réserver le Pack',
+                'services.title': 'Nos Services Complémentaires',
+                'services.subtitle': 'Votre réussite professionnelle en Allemagne, de A à Z',
+                'services.translation.title': 'Traduction de Documents',
+                'services.translation.desc': 'Nous traduisons vos CV, diplômes, certificats de travail, et tous documents administratifs vers l\'allemand. (Service de traduction simple — non certifié pour l\'instant)',
+                'services.translation.feat1': 'Traduction CV, lettres, diplômes',
+                'services.translation.feat2': 'Délai rapide (2-5 jours)',
+                'services.translation.feat3': '📌 Non certifié actuellement',
+                'services.coaching.title': 'Coaching Professionnel',
+                'services.coaching.desc': 'Préparation complète aux entretiens d\'embauche (Vorstellungsgespräch) en allemand. Optimisation de votre CV et lettre de motivation selon les standards allemands.',
+                'services.coaching.feat1': 'Simulations d\'entretien',
+                'services.coaching.feat2': 'Révision CV allemand',
+                'services.coaching.feat3': 'Conseils secteur par secteur',
+                'services.companies.title': 'Mise en Relation Entreprises',
+                'services.companies.desc': 'Contact et médiation avec des entreprises marocaines à la recherche de travailleurs germanophones. Nous facilitons votre intégration professionnelle locale et internationale.',
+                'services.companies.feat1': 'Réseau d\'entreprises partenaires',
+                'services.companies.feat2': 'Opportunités au Maroc & en Allemagne',
+                'services.companies.feat3': 'Accompagnement personnalisé',
+                'services.cta.title': 'Intéressé par nos services ?',
+                'services.cta.subtitle': 'Contactez-nous pour plus d\'informations et un devis personnalisé',
+                'services.cta.button': 'Demander un devis',
                 'path.title': 'Votre Parcours vers l\'Allemagne',
-                'path.subtitle': 'Nous vous accompagnons de la première heure au visa',
+                'path.subtitle': 'Nous vous accompagnons dès les premiers pas jusqu\'à l\'obtention d\'un visa: de A à Z!',
                 'path.step1.title': 'Test de niveau gratuit',
                 'path.step1.desc': 'Évaluation gratuite de votre niveau actuel',
                 'path.step2.title': 'Choix du cours',
@@ -735,7 +919,7 @@
                 'contact.subtitle': 'Consultation gratuite et test de niveau offert',
                 'contact.name': 'Nom complet *',
                 'contact.phone': 'Téléphone (WhatsApp) *',
-                'contact.city': 'Ville *',
+                'contact.city': 'Ville',
                 'contact.city_select': 'Sélectionnez votre ville',
                 'contact.city_other': 'Autre',
                 'contact.level': 'Niveau actuel',
@@ -761,7 +945,8 @@
                 'footer.b2': 'B2 - Avancé',
                 'footer.services': 'Services',
                 'footer.visa': 'Consultation visa',
-                'footer.prep': 'Préparation examens',
+                'footer.translation': 'Traduction de documents',
+                'footer.coaching': 'Coaching professionnel',
                 'footer.test': 'Test de niveau gratuit',
                 'footer.location': '📍 Rabat, Maroc',
                 'footer.copyright': '© 2026 AuZ allemand Maroc. Tous droits réservés.'
@@ -769,104 +954,125 @@
             de: {
                 'nav.home': 'Startseite',
                 'nav.courses': 'Kurse',
-                'nav.path': 'Ablauf',
+                'nav.services': 'Dienstleistungen',
+                'nav.path': 'Weg',
                 'nav.testimonials': 'Bewertungen',
                 'nav.contact': 'Kontakt',
-                'hero.badge': '🇲🇦 Ihr Deutschzentrum in Marokko',
+                'hero.badge': '🇩🇪 Ihr Deutschzentrum in Marokko',
                 'hero.title1': 'Ihr Weg nach',
                 'hero.title2': 'Deutschland',
                 'hero.title3': 'beginnt hier',
-                'hero.subtitle': 'Online-Deutschkurse A1-C1 mit deutschen Muttersprachlern',
+                'hero.subtitle': 'Online Deutschkurse A1-C1 mit muttersprachlichen deutschen Lehrern',
                 'hero.tagline': 'Online German courses with native teachers • دورات أونلاين مع مدرسين ألمان',
                 'hero.cta1': 'Kostenlose Beratung',
                 'hero.cta2': 'Kurse ansehen',
                 'hero.stat1': 'Ausgebildete Studenten',
                 'hero.stat2': '% Online',
-                'hero.visual': 'International anerkannte Zertifikate',
+                'hero.visual': 'Sprachkurse für Ihr Zertifikat',
                 'why.title': 'Warum Deutsch lernen?',
                 'why.subtitle': 'Ihre Zukunft in Europa beginnt mit Deutsch',
                 'why.feature1.title': 'Studium in Deutschland',
-                'why.feature1.desc': 'Zugang zu über 400 Universitäten mit kostenloser oder günstiger Ausbildung',
-                'why.feature2.title': 'Deutsche Muttersprachler',
-                'why.feature2.desc': 'Professionelle pädagogische Ausbildung - Lehrer in Deutschland ansässig',
-                'why.feature3.title': 'Globale Chancen',
-                'why.feature3.desc': 'Deutsch wird in Deutschland, Österreich, der Schweiz, Luxemburg und mehr gesprochen',
+                'why.feature1.desc': 'Zugang zu über 400 Universitäten mit kostenloser oder kostengünstiger Ausbildung',
+                'why.feature2.title': 'Muttersprachliche Lehrer',
+                'why.feature2.desc': 'Professionelle pädagogische Ausbildung - Lehrer mit Sitz in Deutschland',
+                'why.feature3.title': 'Weltweite Chancen',
+                'why.feature3.desc': 'Deutsch wird in Deutschland, Österreich, Schweiz, Luxemburg und mehr gesprochen',
                 'courses.title': 'Unsere Kursstufen',
-                'courses.subtitle': 'Von Anfänger bis Fortgeschritten - Finden Sie Ihr Level',
+                'courses.subtitle': 'Vom Anfänger bis zum Fortgeschrittenen - Finden Sie Ihr Niveau',
                 'courses.a1.badge': 'Anfänger',
                 'courses.a1.title': 'Erste Schritte auf Deutsch',
-                'courses.a1.feat1': '✓ 2 Monate (100% online)',
-                'courses.a1.feat2': '✓ Deutsche Muttersprachler',
-                'courses.a1.feat3': '✓ Kleine Gruppen (max. 12)',
+                'courses.a1.feat1': '2 Monate (100% online)',
+                'courses.a1.feat2': 'Muttersprachliche Lehrer',
+                'courses.a1.feat3': 'Kleine Gruppen (max. 12)',
                 'courses.a1.payment': '900 MAD/Monat',
-                'courses.a2.badge': 'Grundstufe',
+                'courses.a2.badge': 'Grundlegend',
                 'courses.a2.title': 'Alltagssituationen',
-                'courses.a2.feat1': '✓ 2 Monate (100% online)',
-                'courses.a2.feat2': '✓ Deutsche Muttersprachler',
-                'courses.a2.feat3': '✓ Gezielte Kommunikation',
+                'courses.a2.feat1': '2 Monate (100% online)',
+                'courses.a2.feat2': 'Muttersprachliche Lehrer',
+                'courses.a2.feat3': 'Zielgerichtete Kommunikation',
                 'courses.a2.payment': '900 MAD/Monat',
                 'courses.b1.badge': 'Mittelstufe',
                 'courses.b1.title': 'Für Visum und Studium',
-                'courses.b1.feat1': '✓ 3 Monate (100% online)',
-                'courses.b1.feat2': '✓ Deutsche Muttersprachler',
-                'courses.b1.feat3': '⭐ Niveau für Visum erforderlich',
+                'courses.b1.feat1': '3 Monate (100% online)',
+                'courses.b1.feat2': 'Muttersprachliche Lehrer',
+                'courses.b1.feat3': '⭐ Erforderliches Niveau für Visum',
                 'courses.b1.payment': '900 MAD/Monat',
                 'courses.b2.badge': 'Fortgeschritten',
                 'courses.b2.title': 'Universitätsniveau',
-                'courses.b2.feat1': '✓ 3 Monate (100% online)',
-                'courses.b2.feat2': '✓ Deutsche Muttersprachler',
-                'courses.b2.feat3': '✓ Universitätszulassung',
+                'courses.b2.feat1': '3 Monate (100% online)',
+                'courses.b2.feat2': 'Muttersprachliche Lehrer',
+                'courses.b2.feat3': 'Universitätszulassung',
                 'courses.b2.payment': '900 MAD/Monat',
                 'courses.cta': 'Anmelden',
-                'package.badge': 'SPAREN SIE 500 MAD',
+                'package.badge': 'SPAREN SIE 700 MAD',
                 'package.title': 'Komplettpaket A1 → B1',
-                'package.desc': 'A1 + A2 + B1 zusammen - Kompletter Kurs von null bis Visumniveau',
-                'package.feat1': '✓ 10 Monate insgesamt',
-                'package.feat2': '✓ Deutsche Muttersprachler',
+                'package.desc': 'A1 + A2 + B1 zusammen - Kompletter Kurs von Null bis Visumniveau',
+                'package.feat1': 'insgesamt 8-10 Monate',
+                'package.feat2': 'Muttersprachliche Lehrer',
                 'package.feat3': '⭐ Kostenlose Visumberatung',
                 'package.cta': 'Paket buchen',
+                'services.title': 'Unsere Zusatzleistungen',
+                'services.subtitle': 'Ihr beruflicher Erfolg in Deutschland, von A bis Z',
+                'services.translation.title': 'Dokumentenübersetzung',
+                'services.translation.desc': 'Wir übersetzen Ihre Lebensläufe, Diplome, Arbeitszeugnisse und alle administrativen Dokumente ins Deutsche. (Einfacher Übersetzungsservice — derzeit nicht beglaubigt)',
+                'services.translation.feat1': 'Übersetzung von Lebensläufen, Diplomen',
+                'services.translation.feat2': 'Schnelle Bearbeitung (2-5 Tage)',
+                'services.translation.feat3': '📌 Derzeit nicht beglaubigt',
+                'services.coaching.title': 'Berufscoaching',
+                'services.coaching.desc': 'Umfassende Vorbereitung auf Vorstellungsgespräche auf Deutsch. Optimierung Ihres Lebenslaufs und Anschreibens nach deutschen Standards.',
+                'services.coaching.feat1': 'Vorstellungsgespräch-Simulationen',
+                'services.coaching.feat2': 'Lebenslauf-Überarbeitung',
+                'services.coaching.feat3': 'Branchenspezifische Beratung',
+                'services.companies.title': 'Unternehmensvermittlung',
+                'services.companies.desc': 'Kontakt und Vermittlung mit marokkanischen Unternehmen, die deutschsprachige Arbeitskräfte suchen.',
+                'services.companies.feat1': 'Partnernetzwerk von Unternehmen',
+                'services.companies.feat2': 'Chancen in Marokko & Deutschland',
+                'services.companies.feat3': 'Persönliche Betreuung',
+                'services.cta.title': 'Interessiert an unseren Dienstleistungen?',
+                'services.cta.subtitle': 'Kontaktieren Sie uns für weitere Informationen und ein persönliches Angebot',
+                'services.cta.button': 'Angebot anfordern',
                 'path.title': 'Ihr Weg nach Deutschland',
-                'path.subtitle': 'Wir begleiten Sie von der ersten Stunde bis zum Visum',
+                'path.subtitle': 'Wir begleiten Sie vom ersten Schritt bis zur Erlangung eines Visums: von A bis Z!',
                 'path.step1.title': 'Kostenloser Einstufungstest',
                 'path.step1.desc': 'Kostenlose Bewertung Ihres aktuellen Niveaus',
                 'path.step2.title': 'Kurswahl',
-                'path.step2.desc': 'Wählen Sie das passende Niveau',
+                'path.step2.desc': 'Wählen Sie Ihr passendes Niveau',
                 'path.step3.title': 'Goethe-Prüfungsvorbereitung',
                 'path.step3.desc': 'Intensive Vorbereitung auf Zertifizierungen',
                 'path.step4.title': 'Goethe-Zertifikat',
-                'path.step4.desc': 'Erwerb des weltweit anerkannten Diploms',
+                'path.step4.desc': 'Weltweit anerkanntes Diplom',
                 'path.step5.title': 'Visumberatung',
                 'path.step5.desc': 'Kostenlose Hilfe bei Visumdokumenten',
-                'path.step6.title': 'Deutschland wartet auf Sie!',
+                'path.step6.title': 'Deutschland erwartet Sie!',
                 'path.step6.desc': 'Beginnen Sie Ihr neues Leben in Deutschland',
                 'path.cta.title': 'Bereit für Deutschland?',
-                'path.cta.subtitle': 'Buchen Sie heute Ihre kostenlose Beratung',
+                'path.cta.subtitle': 'Buchen Sie noch heute Ihre kostenlose Beratung',
                 'path.cta.button': 'Beratung buchen',
                 'testimonials.title': 'Sie haben ihren Traum verwirklicht',
                 'testimonials.subtitle': 'Unsere Studenten leben jetzt in Deutschland',
                 'testimonials.test1.subtitle': 'Student, TU München',
-                'testimonials.test1.text': '"Von A1 bis B2 in 10 Monaten! Die Lehrer sind ausgezeichnet. Ich bin jetzt an der Universität München."',
+                'testimonials.test1.text': '"Von A1 bis B2 in 10 Monaten! Die Lehrer sind hervorragend. Jetzt bin ich an der Universität München."',
                 'testimonials.test2.subtitle': 'Krankenschwester, Berlin',
-                'testimonials.test2.text': '"Ich habe mein B1 bestanden, mein Visum bekommen und arbeite jetzt als Krankenschwester in Berlin!"',
+                'testimonials.test2.text': '"Ich habe mein B1 bestanden, mein Visum erhalten und arbeite jetzt als Krankenschwester in Berlin!"',
                 'testimonials.test3.subtitle': 'IT-Entwickler, Frankfurt',
                 'testimonials.test3.text': '"C1-Zertifikat nach 18 Monaten. Heute arbeite ich bei SAP in Frankfurt. Danke AuZ!"',
-                'faq.title': 'Häufig gestellte Fragen',
+                'faq.title': 'Häufige Fragen',
                 'faq.subtitle': 'Alles, was Sie wissen müssen',
-                'faq.q1.question': 'Welches Niveau braucht man zum Studieren in Deutschland?',
-                'faq.q1.answer': 'Die meisten deutschen Universitäten verlangen mindestens B2 oder C1. Wir bereiten Sie auf alle diese Niveaus vor.',
+                'faq.q1.question': 'Welches Niveau braucht man für ein Studium in Deutschland?',
+                'faq.q1.answer': 'Die meisten deutschen Universitäten verlangen mindestens B2 oder C1. Wir bereiten Sie auf alle Niveaus vor.',
                 'faq.q2.question': 'Wie lange dauert es von A1 bis B1?',
-                'faq.q2.answer': 'Mit unseren Intensivkursen können Sie das B1-Niveau in 7 Monaten erreichen (A1, A2, B1).',
+                'faq.q2.answer': 'Mit unseren Intensivkursen erreichen Sie B1 in 7 Monaten (A1, A2, B1).',
                 'faq.q3.question': 'Sind Goethe-Zertifikate anerkannt?',
-                'faq.q3.answer': 'Ja, absolut! Goethe-Zertifikate sind weltweit von Universitäten und Botschaften anerkannt.',
-                'faq.q4.question': 'Helfen Sie bei Visumsangelegenheiten?',
-                'faq.q4.answer': 'Ja! Wir bieten eine kostenlose Visumberatung für alle unsere Studenten. Wir helfen Ihnen mit den erforderlichen Dokumenten.',
+                'faq.q3.answer': 'Ja, absolut! Goethe-Zertifikate werden weltweit von Universitäten und Botschaften anerkannt.',
+                'faq.q4.question': 'Helfen Sie bei Visumsverfahren?',
+                'faq.q4.answer': 'Ja! Wir bieten allen unseren Studenten eine kostenlose Visumberatung an. Wir helfen Ihnen bei den erforderlichen Dokumenten.',
                 'faq.q5.question': 'Sind die Kurse 100% online?',
-                'faq.q5.answer': 'Ja, alle unsere Kurse sind 100% online mit deutschen Muttersprachlern. Sie können von überall in Marokko lernen.',
+                'faq.q5.answer': 'Ja, alle unsere Kurse sind 100% online mit muttersprachlichen deutschen Lehrern. Sie können von überall in Marokko lernen.',
                 'contact.title': 'Beginnen Sie Ihre Reise nach Deutschland',
-                'contact.subtitle': 'Kostenlose Beratung und Einstufungstest inklusive',
+                'contact.subtitle': 'Kostenlose Beratung und Einstufungstest',
                 'contact.name': 'Vollständiger Name *',
                 'contact.phone': 'Telefon (WhatsApp) *',
-                'contact.city': 'Stadt *',
+                'contact.city': 'Stadt',
                 'contact.city_select': 'Wählen Sie Ihre Stadt',
                 'contact.city_other': 'Andere',
                 'contact.level': 'Aktuelles Niveau',
@@ -879,159 +1085,181 @@
                 'contact.goal_family': 'Familienvisum',
                 'contact.goal_general': 'Allgemeine Kenntnisse',
                 'contact.message': 'Nachricht (optional)',
-                'contact.privacy': 'Ich akzeptiere die Datenschutzrichtlinie und stimme zu, kontaktiert zu werden *',
+                'contact.privacy': 'Ich akzeptiere die Datenschutzbestimmungen und stimme zu, kontaktiert zu werden *',
                 'contact.submit': 'Kostenlose Beratung anfordern',
                 'contact.response': 'Wir antworten innerhalb von 24 Stunden',
-                'contact.success': '✓ Danke! Ihre Anfrage wurde gesendet. Wir werden Sie sehr bald kontaktieren.',
+                'contact.success': '✓ Danke! Ihre Anfrage wurde gesendet. Wir werden Sie bald kontaktieren.',
                 'contact.error': '❌ Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt an contact@auz-allemand.com',
-                'footer.desc': 'Ihr deutsches Sprachzentrum in Marokko. Online-Kurse mit Muttersprachlern.',
+                'footer.desc': 'Ihr deutsches Sprachzentrum in Marokko. Online-Kurse mit muttersprachlichen Lehrern.',
                 'footer.courses': 'Kurse',
                 'footer.a1': 'A1 - Anfänger',
-                'footer.a2': 'A2 - Grundstufe',
+                'footer.a2': 'A2 - Grundlegend',
                 'footer.b1': 'B1 - Mittelstufe',
                 'footer.b2': 'B2 - Fortgeschritten',
                 'footer.services': 'Dienstleistungen',
                 'footer.visa': 'Visumberatung',
-                'footer.prep': 'Prüfungsvorbereitung',
+                'footer.translation': 'Dokumentenübersetzung',
+                'footer.coaching': 'Berufscoaching',
                 'footer.test': 'Kostenloser Einstufungstest',
                 'footer.location': '📍 Rabat, Marokko',
-                'footer.copyright': '© 2026 AuZ allemand Marokko. Alle Rechte vorbehalten.'
+                'footer.copyright': '© 2026 AuZ Deutsch Marokko. Alle Rechte vorbehalten.'
             },
             ar: {
                 'nav.home': 'الرئيسية',
                 'nav.courses': 'الدورات',
+                'nav.services': 'الخدمات',
                 'nav.path': 'المسار',
-                'nav.testimonials': 'الآراء',
-                'nav.contact': 'اتصل',
-                'hero.badge': '🇲🇦 مركزك للغة الألمانية في المغرب',
-                'hero.title1': 'طريقك إلى',
+                'nav.testimonials': 'آراء الطلاب',
+                'nav.contact': 'اتصل بنا',
+                'hero.badge': '🇲🇦 مركزكم لتعليم الألمانية في المغرب',
+                'hero.title1': 'طريقكم إلى',
                 'hero.title2': 'ألمانيا',
-                'hero.title3': 'يبدأ هنا',
-                'hero.subtitle': 'دورات الألمانية أونلاين A1-C1 مع مدرسين ألمان أصليين',
+                'hero.title3': 'يبدأ من هنا',
+                'hero.subtitle': 'دورات الألمانية أونلاين A1-C1 مع مدرسين ناطقين أصليين',
                 'hero.tagline': 'Online German courses with native teachers • دورات أونلاين مع مدرسين ألمان',
                 'hero.cta1': 'استشارة مجانية',
                 'hero.cta2': 'عرض الدورات',
-                'hero.stat1': 'طلاب مدربون',
-                'hero.stat2': '٪ عبر الإنترنت',
-                'hero.visual': 'شهادات معترف بها دوليًا',
+                'hero.stat1': 'طالب تم تدريبهم',
+                'hero.stat2': '% أونلاين',
+                'hero.visual': 'دورات لغوية للحصول على شهادتكم',
                 'why.title': 'لماذا تتعلم الألمانية؟',
-                'why.subtitle': 'مستقبلك في أوروبا يبدأ بالألمانية',
+                'why.subtitle': 'مستقبلكم في أوروبا يبدأ مع الألمانية',
                 'why.feature1.title': 'الدراسة في ألمانيا',
-                'why.feature1.desc': 'الوصول إلى أكثر من 400 جامعة مع تعليم مجاني أو منخفض التكلفة',
-                'why.feature2.title': 'معلمون ألمان أصليون',
-                'why.feature2.desc': 'تدريب تربوي مهني - معلمون مقيمون في ألمانيا',
+                'why.feature1.desc': 'الوصول إلى أكثر من 400 جامعة بتعليم مجاني أو منخفض التكلفة',
+                'why.feature2.title': 'مدرسون ناطقون أصليون',
+                'why.feature2.desc': 'تكوين تربوي احترافي - مدرسون مقيمون في ألمانيا',
                 'why.feature3.title': 'فرص عالمية',
-                'why.feature3.desc': 'يتم التحدث بالألمانية في ألمانيا والنمسا وسويسرا ولوكسمبورغ والمزيد',
+                'why.feature3.desc': 'تُتحدث الألمانية في ألمانيا والنمسا وسويسرا ولكسمبورغ وغيرها',
                 'courses.title': 'مستويات دوراتنا',
-                'courses.subtitle': 'من المبتدئ إلى المتقدم - اعثر على المستوى المناسب لك',
+                'courses.subtitle': 'من المبتدئ إلى المتقدم - ابحثوا عن المستوى المناسب لكم',
                 'courses.a1.badge': 'مبتدئ',
-                'courses.a1.title': 'الخطوات الأولى بالألمانية',
-                'courses.a1.feat1': '✓ شهرين (100٪ أونلاين)',
-                'courses.a1.feat2': '✓ معلمون ألمان أصليون',
-                'courses.a1.feat3': '✓ مجموعات صغيرة (بحد أقصى 12)',
+                'courses.a1.title': 'الخطوات الأولى في الألمانية',
+                'courses.a1.feat1': 'شهران (100% أونلاين)',
+                'courses.a1.feat2': 'مدرسون ناطقون أصليون',
+                'courses.a1.feat3': 'مجموعات صغيرة (12 كحد أقصى)',
                 'courses.a1.payment': '900 درهم/شهر',
-                'courses.a2.badge': 'ابتدائي',
-                'courses.a2.title': 'المواقف اليومية',
-                'courses.a2.feat1': '✓ شهرين (100٪ أونلاين)',
-                'courses.a2.feat2': '✓ معلمون ألمان أصليون',
-                'courses.a2.feat3': '✓ تواصل مستهدف',
+                'courses.a2.badge': 'أساسي',
+                'courses.a2.title': 'مواقف يومية',
+                'courses.a2.feat1': 'شهران (100% أونلاين)',
+                'courses.a2.feat2': 'مدرسون ناطقون أصليون',
+                'courses.a2.feat3': 'تواصل موجه',
                 'courses.a2.payment': '900 درهم/شهر',
                 'courses.b1.badge': 'متوسط',
                 'courses.b1.title': 'للتأشيرة والدراسة',
-                'courses.b1.feat1': '✓ 3 أشهر (100٪ أونلاين)',
-                'courses.b1.feat2': '✓ معلمون ألمان أصليون',
+                'courses.b1.feat1': '3 أشهر (100% أونلاين)',
+                'courses.b1.feat2': 'مدرسون ناطقون أصليون',
                 'courses.b1.feat3': '⭐ المستوى المطلوب للتأشيرة',
                 'courses.b1.payment': '900 درهم/شهر',
                 'courses.b2.badge': 'متقدم',
                 'courses.b2.title': 'المستوى الجامعي',
-                'courses.b2.feat1': '✓ 3 أشهر (100٪ أونلاين)',
-                'courses.b2.feat2': '✓ معلمون ألمان أصليون',
-                'courses.b2.feat3': '✓ القبول الجامعي',
+                'courses.b2.feat1': '3 أشهر (100% أونلاين)',
+                'courses.b2.feat2': 'مدرسون ناطقون أصليون',
+                'courses.b2.feat3': 'القبول الجامعي',
                 'courses.b2.payment': '900 درهم/شهر',
-                'courses.cta': 'سجل',
-                'package.badge': 'وفر 500 درهم',
-                'package.title': 'الحزمة الكاملة A1 → B1',
-                'package.desc': 'A1 + A2 + B1 معًا - دورة كاملة من الصفر إلى مستوى التأشيرة',
-                'package.feat1': '✓ 10 أشهر في المجموع',
-                'package.feat2': '✓ معلمون ألمان أصليون',
+                'courses.cta': 'سجل الآن',
+                'package.badge': 'وفر 700 درهم',
+                'package.title': 'الباقة الكاملة A1 → B1',
+                'package.desc': 'A1 + A2 + B1 معاً - دورة كاملة من الصفر إلى مستوى التأشيرة',
+                'package.feat1': '8 إلى 10 أشهر إجمالاً',
+                'package.feat2': 'مدرسون ناطقون أصليون',
                 'package.feat3': '⭐ استشارة تأشيرة مجانية',
-                'package.cta': 'احجز الحزمة',
-                'path.title': 'مسارك إلى ألمانيا',
-                'path.subtitle': 'نرافقك من الساعة الأولى إلى التأشيرة',
+                'package.cta': 'احجز الباقة',
+                'services.title': 'خدماتنا الإضافية',
+                'services.subtitle': 'نجاحكم المهني في ألمانيا، من الألف إلى الياء',
+                'services.translation.title': 'ترجمة المستندات',
+                'services.translation.desc': 'نقوم بترجمة سيركم الذاتية، شهاداتكم، وكل المستندات الإدارية إلى الألمانية. (خدمة ترجمة عادية — غير معتمدة حالياً)',
+                'services.translation.feat1': 'ترجمة السير الذاتية، الشهادات',
+                'services.translation.feat2': 'مهلة سريعة (2-5 أيام)',
+                'services.translation.feat3': '📌 غير معتمدة حالياً',
+                'services.coaching.title': 'التدريب المهني',
+                'services.coaching.desc': 'تحضير كامل لمقابلات العمل (Vorstellungsgespräch) بالألمانية. تحسين سيرتكم الذاتية ورسائل التحفيز حسب المعايير الألمانية.',
+                'services.coaching.feat1': 'محاكاة مقابلات العمل',
+                'services.coaching.feat2': 'مراجعة السيرة الذاتية بالألمانية',
+                'services.coaching.feat3': 'نصائح حسب كل قطاع',
+                'services.companies.title': 'التواصل مع الشركات',
+                'services.companies.desc': 'التواصل والوساطة مع الشركات المغربية التي تبحث عن عاملين ناطقين بالألمانية.',
+                'services.companies.feat1': 'شبكة من الشركات الشريكة',
+                'services.companies.feat2': 'فرص في المغرب وألمانيا',
+                'services.companies.feat3': 'مرافقة شخصية',
+                'services.cta.title': 'مهتمون بخدماتنا؟',
+                'services.cta.subtitle': 'اتصلوا بنا للمزيد من المعلومات ولتقييم مخصص',
+                'services.cta.button': 'اطلب تقييماً',
+                'path.title': 'مساركم إلى ألمانيا',
+                'path.subtitle': 'نرافقكم من الخطوات الأولى حتى الحصول على التأشيرة: من الألف إلى الياء!',
                 'path.step1.title': 'اختبار مستوى مجاني',
-                'path.step1.desc': 'تقييم مجاني لمستواك الحالي',
+                'path.step1.desc': 'تقييم مجاني لمستواكم الحالي',
                 'path.step2.title': 'اختيار الدورة',
-                'path.step2.desc': 'اختر المستوى المناسب لك',
-                'path.step3.title': 'التحضير لامتحان غوته',
+                'path.step2.desc': 'اختاروا المستوى المناسب لكم',
+                'path.step3.title': 'تحضير امتحان Goethe',
                 'path.step3.desc': 'تحضير مكثف للشهادات',
-                'path.step4.title': 'شهادة غوته',
-                'path.step4.desc': 'الحصول على الدبلوم المعترف به عالميًا',
+                'path.step4.title': 'شهادة Goethe',
+                'path.step4.desc': 'الحصول على دبلوم معترف به عالمياً',
                 'path.step5.title': 'نصائح للتأشيرة',
-                'path.step5.desc': 'مساعدة مجانية في وثائق التأشيرة',
-                'path.step6.title': 'ألمانيا في انتظارك!',
-                'path.step6.desc': 'ابدأ حياتك الجديدة في ألمانيا',
-                'path.cta.title': 'جاهز لألمانيا؟',
-                'path.cta.subtitle': 'احجز استشارتك المجانية اليوم',
+                'path.step5.desc': 'مساعدة مجانية لوثائق التأشيرة',
+                'path.step6.title': 'ألمانيا تنتظركم!',
+                'path.step6.desc': 'ابدأوا حياتكم الجديدة في ألمانيا',
+                'path.cta.title': 'مستعدون لألمانيا؟',
+                'path.cta.subtitle': 'احجزوا استشارتكم المجانية اليوم',
                 'path.cta.button': 'احجز استشارة',
-                'testimonials.title': 'حققوا حلمهم',
+                'testimonials.title': 'لقد حققوا حلمهم',
                 'testimonials.subtitle': 'طلابنا يعيشون الآن في ألمانيا',
                 'testimonials.test1.subtitle': 'طالب، جامعة ميونخ التقنية',
-                'testimonials.test1.text': '"من A1 إلى B2 في 10 أشهر! المعلمون ممتازون. أنا الآن في جامعة ميونخ."',
+                'testimonials.test1.text': '"من A1 إلى B2 في 10 أشهر! المدرسون ممتازون. أنا الآن في جامعة ميونخ."',
                 'testimonials.test2.subtitle': 'ممرضة، برلين',
-                'testimonials.test2.text': '"نجحت في B1، حصلت على تأشيرتي وأعمل الآن كممرضة في برلين!"',
-                'testimonials.test3.subtitle': 'مطور تكنولوجيا المعلومات، فرانكفورت',
-                'testimonials.test3.text': '"شهادة C1 بعد 18 شهرًا. اليوم أعمل في SAP في فرانكفورت. شكرًا AuZ!"',
-                'faq.title': 'الأسئلة المتكررة',
-                'faq.subtitle': 'كل ما تحتاج إلى معرفته',
+                'testimonials.test2.text': '"نجحت في B1، وحصلت على التأشيرة، وأعمل الآن كممرضة في برلين!"',
+                'testimonials.test3.subtitle': 'مطور تقني، فرانكفورت',
+                'testimonials.test3.text': '"شهادة C1 بعد 18 شهراً. اليوم أعمل في SAP في فرانكفورت. شكراً AuZ!"',
+                'faq.title': 'أسئلة متكررة',
+                'faq.subtitle': 'كل ما تحتاجون معرفته',
                 'faq.q1.question': 'ما المستوى المطلوب للدراسة في ألمانيا؟',
-                'faq.q1.answer': 'تتطلب معظم الجامعات الألمانية على الأقل المستوى B2 أو C1. نحن نعدك لجميع هذه المستويات.',
-                'faq.q2.question': 'كم من الوقت يستغرق الانتقال من A1 إلى B1؟',
-                'faq.q2.answer': 'مع دوراتنا المكثفة، يمكنك الوصول إلى المستوى B1 في 7 أشهر (A1، A2، B1).',
-                'faq.q3.question': 'هل شهادات غوته معترف بها؟',
-                'faq.q3.answer': 'نعم، بالتأكيد! شهادات غوته معترف بها في جميع أنحاء العالم من قبل الجامعات والسفارات.',
+                'faq.q1.answer': 'معظم الجامعات الألمانية تطلب على الأقل المستوى B2 أو C1. نحن نعدكم لجميع هذه المستويات.',
+                'faq.q2.question': 'كم من الوقت للانتقال من A1 إلى B1؟',
+                'faq.q2.answer': 'مع دوراتنا المكثفة، يمكنكم الوصول إلى المستوى B1 في 7 أشهر (A1، A2، B1).',
+                'faq.q3.question': 'هل شهادات Goethe معترف بها؟',
+                'faq.q3.answer': 'نعم، تماماً! شهادات Goethe معترف بها عالمياً من قبل الجامعات والسفارات.',
                 'faq.q4.question': 'هل تساعدون في إجراءات التأشيرة؟',
-                'faq.q4.answer': 'نعم! نحن نقدم استشارة تأشيرة مجانية لجميع طلابنا. نحن نساعدك في الوثائق اللازمة.',
-                'faq.q5.question': 'هل الدورات 100٪ عبر الإنترنت؟',
-                'faq.q5.answer': 'نعم، جميع دوراتنا 100٪ عبر الإنترنت مع معلمين ألمان أصليين. يمكنك التعلم من أي مكان في المغرب.',
-                'contact.title': 'ابدأ رحلتك إلى ألمانيا',
-                'contact.subtitle': 'استشارة مجانية واختبار مستوى مقدم',
+                'faq.q4.answer': 'نعم! نحن نقدم استشارة تأشيرة مجانية لجميع طلابنا. نساعدكم في الوثائق اللازمة.',
+                'faq.q5.question': 'هل الدورات 100% أونلاين؟',
+                'faq.q5.answer': 'نعم، جميع دوراتنا 100% أونلاين مع مدرسين ناطقين أصليين. يمكنكم التعلم من أي مكان في المغرب.',
+                'contact.title': 'ابدأوا رحلتكم إلى ألمانيا',
+                'contact.subtitle': 'استشارة مجانية واختبار مستوى مجاني',
                 'contact.name': 'الاسم الكامل *',
-                'contact.phone': 'الهاتف (واتساب) *',
-                'contact.city': 'المدينة *',
+                'contact.phone': 'رقم الهاتف (واتساب) *',
+                'contact.city': 'المدينة',
                 'contact.city_select': 'اختر مدينتك',
                 'contact.city_other': 'أخرى',
                 'contact.level': 'المستوى الحالي',
-                'contact.level_beginner': 'مبتدئ (لا مستوى)',
+                'contact.level_beginner': 'مبتدئ (بدون مستوى)',
                 'contact.goal': 'الهدف *',
                 'contact.goal_select': 'اختر هدفك',
                 'contact.goal_study': 'الدراسة في ألمانيا',
                 'contact.goal_work': 'العمل في ألمانيا',
-                'contact.goal_training': 'التدريب المهني',
+                'contact.goal_training': 'تكوين مهني',
                 'contact.goal_family': 'تأشيرة عائلية',
-                'contact.goal_general': 'معرفة عامة',
+                'contact.goal_general': 'معارف عامة',
                 'contact.message': 'رسالة (اختياري)',
                 'contact.privacy': 'أوافق على سياسة الخصوصية وأوافق على الاتصال بي *',
-                'contact.submit': 'اطلب استشارة مجانية',
+                'contact.submit': 'طلب استشارة مجانية',
                 'contact.response': 'نرد خلال 24 ساعة',
-                'contact.success': '✓ شكرًا! تم إرسال طلبك. سنتواصل معك قريبًا.',
+                'contact.success': '✓ شكراً! تم إرسال طلبكم. سنتصل بكم قريباً جداً.',
                 'contact.error': '❌ حدث خطأ. يرجى المحاولة مرة أخرى أو الكتابة إلينا مباشرة على contact@auz-allemand.com',
-                'footer.desc': 'مركز اللغة الألمانية في المغرب. دورات أونلاين مع معلمين أصليين.',
+                'footer.desc': 'مركزكم لتعليم الألمانية في المغرب. دورات أونلاين مع مدرسين ناطقين أصليين.',
                 'footer.courses': 'الدورات',
                 'footer.a1': 'A1 - مبتدئ',
-                'footer.a2': 'A2 - ابتدائي',
+                'footer.a2': 'A2 - أساسي',
                 'footer.b1': 'B1 - متوسط',
                 'footer.b2': 'B2 - متقدم',
                 'footer.services': 'الخدمات',
                 'footer.visa': 'استشارة التأشيرة',
-                'footer.prep': 'التحضير للامتحانات',
+                'footer.translation': 'ترجمة المستندات',
+                'footer.coaching': 'تدريب مهني',
                 'footer.test': 'اختبار مستوى مجاني',
                 'footer.location': '📍 الرباط، المغرب',
-                'footer.copyright': '© 2026 AuZ allemand المغرب. جميع الحقوق محفوظة.'
+                'footer.copyright': '© 2026 AuZ ألمانيا المغرب. جميع الحقوق محفوظة.'
             }
         };
         
         function setLanguage(lang) {
-            // Update button states
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active', 'bg-[#0077b6]', 'text-white');
                 btn.classList.add('text-gray-600');
@@ -1042,7 +1270,6 @@
                 activeBtn.classList.remove('text-gray-600');
             }
             
-            // Set text direction
             if (lang === 'ar') {
                 document.documentElement.setAttribute('dir', 'rtl');
                 document.documentElement.setAttribute('lang', 'ar');
@@ -1051,7 +1278,6 @@
                 document.documentElement.setAttribute('lang', lang);
             }
             
-            // Update all translatable elements
             const elements = document.querySelectorAll('[data-i18n]');
             elements.forEach(el => {
                 const key = el.getAttribute('data-i18n');
@@ -1060,11 +1286,9 @@
                 }
             });
             
-            // Save preference
             localStorage.setItem('lang', lang);
         }
         
-        // FAQ Toggle
         function toggleFAQ(btn) {
             const content = btn.nextElementSibling;
             const icon = btn.querySelector('svg');
@@ -1072,7 +1296,7 @@
             icon.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0)';
         }
         
-        // Scroll Reveal Animation
+        // Scroll animations
         const fadeElements = document.querySelectorAll('.fade-up');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1080,71 +1304,70 @@
                     entry.target.classList.add('visible');
                 }
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        }, { threshold: 0.1 });
         fadeElements.forEach(el => observer.observe(el));
         
-        // Animated Counters
+        // Counter animation
         const counters = document.querySelectorAll('.counter');
         counters.forEach(counter => {
             const target = parseInt(counter.dataset.target);
             let current = 0;
-            const increment = Math.ceil(target / 50);
+            const increment = Math.ceil(target / 60);
             const updateCounter = () => {
                 if (current < target) {
                     current += increment;
                     if (current > target) current = target;
                     counter.textContent = current;
-                    setTimeout(updateCounter, 25);
+                    setTimeout(updateCounter, 20);
                 }
             };
-            updateCounter();
+            const counterObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        updateCounter();
+                        counterObserver.unobserve(entry.target);
+                    }
+                });
+            });
+            counterObserver.observe(counter);
         });
         
-        // Form Submission
+        // Form submission
         const form = document.getElementById('contactForm');
-        const successMsg = document.getElementById('successMessage');
-        const errorMsg = document.getElementById('errorMessage');
-        
         if (form) {
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
-                successMsg.classList.remove('show');
-                errorMsg.classList.remove('show');
+                document.getElementById('successMessage').classList.remove('show');
+                document.getElementById('errorMessage').classList.remove('show');
                 
                 const emailInput = document.getElementById('contactEmail');
                 if (emailInput) {
                     document.getElementById('replyToEmail').value = emailInput.value;
                 }
                 
-                const formData = new FormData(form);
-                
                 try {
                     const response = await fetch(form.action, {
                         method: 'POST',
-                        body: formData,
+                        body: new FormData(form),
                         headers: { 'Accept': 'application/json' }
                     });
                     
                     if (response.ok) {
-                        successMsg.classList.add('show');
+                        document.getElementById('successMessage').classList.add('show');
                         form.reset();
-                        setTimeout(() => successMsg.classList.remove('show'), 6000);
                     } else {
-                        errorMsg.classList.add('show');
-                        setTimeout(() => errorMsg.classList.remove('show'), 6000);
+                        document.getElementById('errorMessage').classList.add('show');
                     }
                 } catch (err) {
-                    errorMsg.classList.add('show');
-                    setTimeout(() => errorMsg.classList.remove('show'), 6000);
+                    document.getElementById('errorMessage').classList.add('show');
                 }
             });
         }
         
         // Load saved language
-        const savedLang = localStorage.getItem('lang') || 'fr';
-        setLanguage(savedLang);
+        setLanguage(localStorage.getItem('lang') || 'fr');
         
-        // Smooth scroll for anchor links
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const href = this.getAttribute('href');
@@ -1152,7 +1375,7 @@
                 const target = document.querySelector(href);
                 if (target) {
                     e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
