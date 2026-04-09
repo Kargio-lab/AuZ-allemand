@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Deutschkurse A1-C1 in Marokko - Ihr Weg nach Deutschland für Studium und Arbeit. Und das von A bis Z. Visumunterstützung inklusive.">
-    <title>AuZ | Cours d'allemand Maroc</title>
+    <title>AuZ | Cours Allemand Maroc</title>
     
     <link rel="icon" type="image/png" href="images/logodyn.png">
     <link rel="apple-touch-icon" href="images/logodyn.png">
-    <meta name="theme-color" content="#0077b6">
+    <meta name="theme-color" content="#0A1929">
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; background: #0A0F1A; }
         html { scroll-padding-top: 80px; scroll-behavior: smooth; }
         
         .gradient-text {
-            background: linear-gradient(135deg, #0077b6 0%, #00b4d8 50%, #0096c7 100%);
+            background: linear-gradient(135deg, #00E5FF 0%, #007BFF 50%, #0056B3 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -27,10 +27,14 @@
         
         .course-card, .service-card {
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(18, 25, 45, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(0, 229, 255, 0.15);
         }
         .course-card:hover, .service-card:hover {
             transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 25px 50px rgba(0, 119, 182, 0.25);
+            box-shadow: 0 25px 50px rgba(0, 229, 255, 0.2);
+            border-color: rgba(0, 229, 255, 0.4);
         }
         
         @keyframes float {
@@ -55,8 +59,8 @@
             transition: all 0.3s ease;
         }
         .lang-btn.active {
-            background-color: #0077b6;
-            color: white;
+            background-color: #00E5FF;
+            color: #0B1120;
         }
         
         .faq-content {
@@ -78,116 +82,178 @@
             border-radius: 0.75rem;
             margin-top: 1rem;
         }
-        .success-msg.show { display: block; background: #d1fae5; color: #065f46; border: 1px solid #10b981; }
-        .error-msg.show { display: block; background: #fee2e2; color: #991b1b; border: 1px solid #ef4444; }
+        .success-msg.show { display: block; background: #064E3B; color: #A7F3D0; border: 1px solid #10B981; }
+        .error-msg.show { display: block; background: #7F1D1D; color: #FECACA; border: 1px solid #EF4444; }
         
-        .bg-pattern {
-            background-color: #f8fafc;
-            background-image: 
-                radial-gradient(at 47% 33%, hsl(210, 100%, 95%) 0, transparent 59%), 
-                radial-gradient(at 82% 65%, hsl(195, 100%, 95%) 0, transparent 55%);
+        .bg-dark-mesh {
+            background: radial-gradient(circle at 20% 30%, rgba(0, 229, 255, 0.06) 0%, rgba(0, 0, 0, 0) 50%),
+                        radial-gradient(circle at 80% 70%, rgba(0, 123, 255, 0.04) 0%, rgba(0, 0, 0, 0) 50%),
+                        linear-gradient(135deg, #0A0F1A 0%, #111827 100%);
         }
         
         @keyframes blob {
-            0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: translate(0, 0) scale(1); }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; transform: translate(10px, -10px) scale(1.05); }
         }
         .blob {
             animation: blob 7s ease-in-out infinite;
         }
+        
+        #whatsapp-chat {
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-button {
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px -5px rgba(34, 197, 94, 0.5);
+        }
+        
+        @media (min-width: 768px) {
+            #whatsapp-chat:hover #whatsapp-chat-preview {
+                opacity: 1;
+                transform: translateY(0);
+                display: block;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            #whatsapp-chat-preview {
+                display: none;
+            }
+        }
+        
+        .glass-card {
+            background: rgba(18, 25, 45, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 229, 255, 0.2);
+        }
+        
+        nav {
+            background: rgba(11, 18, 32, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 229, 255, 0.15);
+        }
+        
+        .text-gray-700, .text-gray-600, .text-gray-500 {
+            color: #CBD5E1 !important;
+        }
+        .text-gray-900 {
+            color: #F1F5F9 !important;
+        }
+        
+        h1, h2, h3, h4, .font-black, .font-bold {
+            color: #F1F5F9;
+        }
+        
+        .border-gray-200, .border-gray-300 {
+            border-color: rgba(71, 85, 105, 0.5) !important;
+        }
+        
+        footer {
+            background: #060B14;
+            border-top: 1px solid rgba(0, 229, 255, 0.1);
+        }
+        
+        .bg-white, .bg-gray-50 {
+            background: transparent !important;
+        }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-dark-mesh">
 
     <!-- Navigation -->
-    <nav class="bg-white shadow-md fixed w-full top-0 z-50">
+    <nav class="shadow-md fixed w-full top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center gap-3">
                     <img src="images/logodyn.png" alt="AuZ allemand Logo" class="w-12 h-12 object-contain">
                     <div>
                         <span class="text-2xl font-black gradient-text">AuZ</span>
-                        <p class="text-xs text-gray-500 font-medium -mt-1">Institut</p>
+                        <p class="text-xs text-gray-400 font-medium -mt-1">Maroc</p>
                     </div>
                 </div>
                 
                 <div class="hidden lg:flex space-x-8">
-                    <a href="#accueil" class="text-gray-700 hover:text-[#0077b6] transition font-medium" data-i18n="nav.home">Accueil</a>
-                    <a href="#cours" class="text-gray-700 hover:text-[#0077b6] transition font-medium" data-i18n="nav.courses">Cours</a>
-                    <a href="#services" class="text-gray-700 hover:text-[#0077b6] transition font-medium" data-i18n="nav.services">Services</a>
-                    <a href="#parcours" class="text-gray-700 hover:text-[#0077b6] transition font-medium" data-i18n="nav.path">Parcours</a>
-                    <a href="#avis" class="text-gray-700 hover:text-[#0077b6] transition font-medium" data-i18n="nav.testimonials">Avis</a>
-                    <a href="#faq" class="text-gray-700 hover:text-[#0077b6] transition font-medium">FAQ</a>
+                    <a href="#accueil" class="text-gray-300 hover:text-[#00E5FF] transition font-medium" data-i18n="nav.home">Accueil</a>
+                    <a href="#cours" class="text-gray-300 hover:text-[#00E5FF] transition font-medium" data-i18n="nav.courses">Cours</a>
+                    <a href="#services" class="text-gray-300 hover:text-[#00E5FF] transition font-medium" data-i18n="nav.services">Services</a>
+                    <a href="#parcours" class="text-gray-300 hover:text-[#00E5FF] transition font-medium" data-i18n="nav.path">Parcours</a>
+                    <a href="#avis" class="text-gray-300 hover:text-[#00E5FF] transition font-medium" data-i18n="nav.testimonials">Avis</a>
+                    <a href="#faq" class="text-gray-300 hover:text-[#00E5FF] transition font-medium">FAQ</a>
                 </div>
                 
                 <div class="flex items-center gap-4">
-                    <div class="flex bg-gray-100 rounded-xl p-1">
-                        <button onclick="setLanguage('fr')" class="lang-btn lang-fr px-4 py-2 rounded-lg text-sm font-bold transition bg-[#0077b6] text-white">FR</button>
-                        <button onclick="setLanguage('de')" class="lang-btn lang-de px-4 py-2 rounded-lg text-sm font-bold transition text-gray-600">DE</button>
-                        <button onclick="setLanguage('ar')" class="lang-btn lang-ar px-4 py-2 rounded-lg text-sm font-bold transition text-gray-600">AR</button>
+                    <div class="flex bg-gray-800/50 rounded-xl p-1 backdrop-blur-sm">
+                        <button onclick="setLanguage('fr')" class="lang-btn lang-fr px-4 py-2 rounded-lg text-sm font-bold transition bg-[#00E5FF] text-[#0B1120]">FR</button>
+                        <button onclick="setLanguage('de')" class="lang-btn lang-de px-4 py-2 rounded-lg text-sm font-bold transition text-gray-300">DE</button>
+                        <button onclick="setLanguage('ar')" class="lang-btn lang-ar px-4 py-2 rounded-lg text-sm font-bold transition text-gray-300">AR</button>
                     </div>
-                    <a href="#contact" class="hidden md:block bg-gradient-to-r from-[#0077b6] to-[#00b4d8] text-white px-6 py-3 rounded-xl hover:shadow-lg transition font-bold" data-i18n="nav.contact">Contact</a>
+                    <a href="#contact" class="hidden md:block bg-gradient-to-r from-[#00E5FF] to-[#007BFF] text-[#0B1120] px-6 py-3 rounded-xl hover:shadow-lg transition font-bold" data-i18n="nav.contact">Contact</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="accueil" class="pt-32 pb-24 md:pt-40 md:pb-32 bg-pattern relative overflow-hidden">
-        <div class="absolute top-20 left-10 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 blob"></div>
-        <div class="absolute bottom-20 right-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 blob" style="animation-delay: 2s;"></div>
+    <section id="accueil" class="pt-32 pb-24 md:pt-40 md:pb-32 bg-dark-mesh relative overflow-hidden">
+        <div class="absolute top-20 left-10 w-72 h-72 bg-cyan-500 rounded-full mix-blend-screen filter blur-3xl opacity-10 blob"></div>
+        <div class="absolute bottom-20 right-10 w-72 h-72 bg-blue-600 rounded-full mix-blend-screen filter blur-3xl opacity-10 blob" style="animation-delay: 2s;"></div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <div class="text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 bg-gradient-to-r from-teal-500 to-cyan-600 text-white px-5 py-2 rounded-full text-sm font-bold mb-6 shadow-lg">
+                    <div class="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-5 py-2 rounded-full text-sm font-bold mb-6 shadow-lg">
                         <span class="w-2 h-2 bg-white rounded-full animate-pulse"></span>
                         <span data-i18n="hero.badge">🇲🇦 Votre Centre d'Allemand au Maroc</span>
                     </div>
                     
-                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 leading-tight mb-6">
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-white leading-tight mb-6">
                         <span data-i18n="hero.title1">Votre chemin vers</span><br>
                         <span class="gradient-text" data-i18n="hero.title2">l'Allemagne</span><br>
                         <span data-i18n="hero.title3">commence ici</span>
                     </h1>
                     
-                    <p class="text-xl md:text-2xl text-gray-600 mb-3 font-medium" data-i18n="hero.subtitle">Cours d'allemand en ligne A1-C1 avec professeurs natifs allemands</p>
-                    <p class="text-sm text-gray-500 mb-10" data-i18n="hero.tagline">Online German courses with native teachers • دورات أونلاين مع مدرسين ألمان</p>
+                    <p class="text-xl md:text-2xl text-gray-300 mb-3 font-medium" data-i18n="hero.subtitle">Cours d'allemand en ligne A1-C1 avec professeurs natifs allemands</p>
+                    <p class="text-sm text-gray-400 mb-10" data-i18n="hero.tagline">Online German courses with native teachers • دورات أونلاين مع مدرسين ألمان</p>
                     
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-                        <a href="#contact" class="btn-float bg-gradient-to-r from-[#0077b6] to-[#00b4d8] text-white px-8 py-5 rounded-2xl hover:shadow-2xl transition font-black text-lg text-center" data-i18n="hero.cta1">Consultation Gratuite</a>
-                        <a href="#cours" class="bg-white text-[#0077b6] border-2 border-[#0077b6] px-8 py-5 rounded-2xl hover:bg-blue-50 transition font-black text-lg text-center shadow-md" data-i18n="hero.cta2">Voir les Cours</a>
+                        <a href="#contact" class="btn-float bg-gradient-to-r from-[#00E5FF] to-[#007BFF] text-[#0B1120] px-8 py-5 rounded-2xl hover:shadow-2xl transition font-black text-lg text-center" data-i18n="hero.cta1">Consultation Gratuite</a>
+                        <a href="#cours" class="bg-transparent text-[#00E5FF] border-2 border-[#00E5FF] px-8 py-5 rounded-2xl hover:bg-cyan-500/10 transition font-black text-lg text-center shadow-md" data-i18n="hero.cta2">Voir les Cours</a>
                     </div>
                     
-                    <div class="grid grid-cols-2 gap-8 pt-8 border-t-2 border-gray-200">
+                    <div class="grid grid-cols-2 gap-8 pt-8 border-t-2 border-gray-700">
                         <div class="text-center lg:text-left">
-                            <div class="text-5xl font-black bg-gradient-to-r from-[#0077b6] to-[#00b4d8] bg-clip-text text-transparent counter" data-target="387">0</div>
-                            <div class="text-sm text-gray-600 font-semibold mt-1" data-i18n="hero.stat1">Étudiants formés</div>
+                            <div class="text-5xl font-black bg-gradient-to-r from-[#00E5FF] to-[#007BFF] bg-clip-text text-transparent counter" data-target="387">0</div>
+                            <div class="text-sm text-gray-400 font-semibold mt-1" data-i18n="hero.stat1">Étudiants formés</div>
                         </div>
                         <div class="text-center lg:text-left">
-                            <div class="text-5xl font-black bg-gradient-to-r from-[#0077b6] to-[#00b4d8] bg-clip-text text-transparent counter" data-target="100">0</div>
-                            <div class="text-sm text-gray-600 font-semibold mt-1" data-i18n="hero.stat2">% En ligne</div>
+                            <div class="text-5xl font-black bg-gradient-to-r from-[#00E5FF] to-[#007BFF] bg-clip-text text-transparent counter" data-target="100">0</div>
+                            <div class="text-sm text-gray-400 font-semibold mt-1" data-i18n="hero.stat2">% En ligne</div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="hidden lg:block">
                     <div class="relative">
-                        <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-3xl transform rotate-3 opacity-20"></div>
-                        <div class="relative bg-white rounded-3xl shadow-2xl p-8">
-                            <div class="bg-gradient-to-br from-blue-100 via-blue-50 to-purple-50 rounded-2xl p-10 mb-6 text-center">
+                        <div class="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-3xl transform rotate-3 opacity-30"></div>
+                        <div class="relative glass-card rounded-3xl shadow-2xl p-8">
+                            <div class="bg-gradient-to-br from-cyan-900/40 via-blue-900/40 to-purple-900/40 rounded-2xl p-10 mb-6 text-center backdrop-blur-sm">
                                 <svg class="w-full h-64" viewBox="0 0 400 280" fill="none">
                                     <rect x="50" y="40" width="300" height="55" fill="#000000" rx="6"/>
                                     <rect x="50" y="100" width="300" height="55" fill="#DD0000" rx="6"/>
                                     <rect x="50" y="160" width="300" height="55" fill="#FFCE00" rx="6"/>
-                                    <rect x="100" y="85" width="90" height="90" fill="#0077b6" rx="8"/>
-                                    <text x="145" y="140" fill="white" font-size="32" font-weight="bold" text-anchor="middle">A1-C1</text>
+                                    <rect x="100" y="85" width="90" height="90" fill="#00E5FF" rx="8"/>
+                                    <text x="145" y="140" fill="#0B1120" font-size="32" font-weight="bold" text-anchor="middle">A1-C1</text>
                                     <circle cx="290" cy="230" r="38" fill="#006233"/>
                                     <path d="M 276 230 L 286 242 L 308 218" stroke="white" stroke-width="5" fill="none" stroke-linecap="round"/>
-                                    <text x="290" y="280" text-anchor="middle" fill="#006233" font-size="11" font-weight="bold">Goethe, TELC, ÖSD, TestDaF</text>
+                                    <text x="290" y="280" text-anchor="middle" fill="#A7F3D0" font-size="9" font-weight="bold">Goethe • TELC • TestDaF • ÖSD</text>
                                 </svg>
                             </div>
-                            <p class="text-center font-bold text-gray-800 text-lg" data-i18n="hero.visual">Cours de langues pour obtenir votre certificat</p>
+                            <p class="text-center font-bold text-gray-200 text-lg" data-i18n="hero.visual">Cours de langues pour obtenir votre certificat</p>
                         </div>
                     </div>
                 </div>
@@ -196,188 +262,108 @@
     </section>
 
     <!-- Why German Section -->
-    <section class="py-24 bg-white">
+    <section class="py-24 bg-dark-mesh">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20 fade-up">
-                <h2 class="text-5xl md:text-6xl font-black text-gray-900 mb-6" data-i18n="why.title">Pourquoi apprendre l'allemand ?</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-i18n="why.subtitle">Votre avenir en Europe commence avec l'allemand</p>
+                <h2 class="text-5xl md:text-6xl font-black text-white mb-6" data-i18n="why.title">Pourquoi apprendre l'allemand ?</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto" data-i18n="why.subtitle">Votre avenir en Europe commence avec l'allemand</p>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-gradient-to-br from-blue-50 via-white to-blue-50 p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 fade-up border border-blue-100">
-                    <div class="w-20 h-20 bg-gradient-to-br from-[#0077b6] to-[#00b4d8] rounded-2xl flex items-center justify-center mb-6">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="glass-card p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 fade-up border border-cyan-500/20">
+                    <div class="w-20 h-20 bg-gradient-to-br from-[#00E5FF] to-[#007BFF] rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-10 h-10 text-[#0B1120]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-black text-gray-900 mb-4" data-i18n="why.feature1.title">Études en Allemagne</h3>
-                    <p class="text-gray-600 leading-relaxed" data-i18n="why.feature1.desc">Accès à plus de 400 universités avec formation gratuite ou à faible coût</p>
+                    <h3 class="text-2xl font-black text-white mb-4" data-i18n="why.feature1.title">Études en Allemagne</h3>
+                    <p class="text-gray-300 leading-relaxed" data-i18n="why.feature1.desc">Accès à plus de 400 universités avec formation gratuite ou à faible coût</p>
                 </div>
                 
-                <div class="bg-gradient-to-br from-teal-50 via-white to-teal-50 p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 fade-up border border-teal-100">
-                    <div class="w-20 h-20 bg-gradient-to-br from-[#008B8B] to-[#20B2AA] rounded-2xl flex items-center justify-center mb-6">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="glass-card p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 fade-up border border-teal-500/20">
+                    <div class="w-20 h-20 bg-gradient-to-br from-teal-400 to-cyan-600 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-10 h-10 text-[#0B1120]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-black text-gray-900 mb-4" data-i18n="why.feature2.title">Professeurs Natifs Allemands</h3>
-                    <p class="text-gray-600 leading-relaxed" data-i18n="why.feature2.desc">Formation pédagogique professionnelle - Enseignants basés en Allemagne</p>
+                    <h3 class="text-2xl font-black text-white mb-4" data-i18n="why.feature2.title">Professeurs Natifs Allemands</h3>
+                    <p class="text-gray-300 leading-relaxed" data-i18n="why.feature2.desc">Formation pédagogique professionnelle - Enseignants basés en Allemagne</p>
                 </div>
                 
-                <div class="bg-gradient-to-br from-green-50 via-white to-green-50 p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 fade-up border border-green-100">
-                    <div class="w-20 h-20 bg-gradient-to-br from-[#006233] to-[#228B22] rounded-2xl flex items-center justify-center mb-6">
-                        <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="glass-card p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 fade-up border border-green-500/20">
+                    <div class="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-700 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-10 h-10 text-[#0B1120]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-black text-gray-900 mb-4" data-i18n="why.feature3.title">Opportunités Mondiales</h3>
-                    <p class="text-gray-600 leading-relaxed" data-i18n="why.feature3.desc">L'allemand est parlé en Allemagne, Autriche, Suisse, Luxembourg et plus</p>
+                    <h3 class="text-2xl font-black text-white mb-4" data-i18n="why.feature3.title">Opportunités Mondiales</h3>
+                    <p class="text-gray-300 leading-relaxed" data-i18n="why.feature3.desc">L'allemand est parlé en Allemagne, Autriche, Suisse, Luxembourg et plus</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Courses Section -->
-    <section id="cours" class="py-24 bg-gradient-to-b from-gray-50 to-white">
+    <section id="cours" class="py-24 bg-dark-mesh">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20 fade-up">
-                <h2 class="text-5xl md:text-6xl font-black text-gray-900 mb-6" data-i18n="courses.title">Nos Niveaux de Cours</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-i18n="courses.subtitle">Du débutant à l'avancé - Trouvez le niveau qui vous correspond</p>
+                <h2 class="text-5xl md:text-6xl font-black text-white mb-6" data-i18n="courses.title">Nos Niveaux de Cours</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto" data-i18n="courses.subtitle">Du débutant à l'avancé - Trouvez le niveau qui vous correspond</p>
             </div>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- A1 Card -->
-                <div class="course-card bg-white rounded-3xl shadow-xl p-8 border-t-8 border-[#0077b6] fade-up relative">
+                <div class="course-card rounded-3xl shadow-xl p-8 border-t-8 border-[#00E5FF] fade-up relative">
                     <div class="absolute top-4 right-4">
-                        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-xs font-black uppercase" data-i18n="courses.a1.badge">Débutant</span>
+                        <span class="bg-cyan-500/20 text-cyan-300 px-4 py-2 rounded-full text-xs font-black uppercase" data-i18n="courses.a1.badge">Débutant</span>
                     </div>
-                    <div class="text-6xl font-black text-[#0077b6] mb-6">A1</div>
-                    <h4 class="text-xl font-bold mb-4" data-i18n="courses.a1.title">Premiers pas en allemand</h4>
-                    <ul class="space-y-3 mb-8 text-sm">
-                        <li class="flex items-center gap-3">
-                            <span class="w-2 h-2 bg-[#0077b6] rounded-full"></span>
-                            <span data-i18n="courses.a1.feat1">2 mois (100% en ligne)</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="w-2 h-2 bg-[#0077b6] rounded-full"></span>
-                            <span data-i18n="courses.a1.feat2">Professeurs natifs allemands</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="w-2 h-2 bg-[#0077b6] rounded-full"></span>
-                            <span data-i18n="courses.a1.feat3">Petits groupes (max. 12)</span>
-                        </li>
+                    <div class="text-6xl font-black text-[#00E5FF] mb-6">A1</div>
+                    <h4 class="text-xl font-bold text-white mb-4" data-i18n="courses.a1.title">Premiers pas en allemand</h4>
+                    <ul class="space-y-3 mb-8 text-sm text-gray-300">
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-[#00E5FF] rounded-full"></span><span data-i18n="courses.a1.feat1">2 mois (100% en ligne)</span></li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-[#00E5FF] rounded-full"></span><span data-i18n="courses.a1.feat2">Professeurs natifs allemands</span></li>
+                        <li class="flex items-center gap-3"><span class="w-2 h-2 bg-[#00E5FF] rounded-full"></span><span data-i18n="courses.a1.feat3">Petits groupes (max. 12)</span></li>
                     </ul>
-                    <div class="text-4xl font-black text-gray-900 mb-2">1.800 <span class="text-lg">MAD</span></div>
-                    <div class="text-sm text-gray-500 mb-6" data-i18n="courses.a1.payment">900 MAD/mois</div>
-                    <a href="#contact" class="block w-full bg-gradient-to-r from-[#0077b6] to-[#00b4d8] text-white text-center py-4 rounded-xl hover:shadow-lg transition font-bold" data-i18n="courses.cta">S'inscrire</a>
+                    <div class="text-4xl font-black text-white mb-2">1.800 <span class="text-lg">MAD</span></div>
+                    <div class="text-sm text-gray-400 mb-6" data-i18n="courses.a1.payment">900 MAD/mois</div>
+                    <a href="#contact" class="block w-full bg-gradient-to-r from-[#00E5FF] to-[#007BFF] text-[#0B1120] text-center py-4 rounded-xl hover:shadow-lg transition font-bold" data-i18n="courses.cta">S'inscrire</a>
                 </div>
                 
                 <!-- A2 Card -->
-                <div class="course-card bg-white rounded-3xl shadow-xl p-8 border-t-8 border-[#0077b6] fade-up relative">
-                    <div class="absolute top-4 right-4">
-                        <span class="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-xs font-black uppercase" data-i18n="courses.a2.badge">Élémentaire</span>
-                    </div>
-                    <div class="text-6xl font-black text-[#0077b6] mb-6">A2</div>
-                    <h4 class="text-xl font-bold mb-4" data-i18n="courses.a2.title">Situations quotidiennes</h4>
-                    <ul class="space-y-3 mb-8 text-sm">
-                        <li class="flex items-center gap-3">
-                            <span class="w-2 h-2 bg-[#0077b6] rounded-full"></span>
-                            <span data-i18n="courses.a2.feat1">2 mois (100% en ligne)</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="w-2 h-2 bg-[#0077b6] rounded-full"></span>
-                            <span data-i18n="courses.a2.feat2">Professeurs natifs allemands</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="w-2 h-2 bg-[#0077b6] rounded-full"></span>
-                            <span data-i18n="courses.a2.feat3">Communication ciblée</span>
-                        </li>
-                    </ul>
-                    <div class="text-4xl font-black text-gray-900 mb-2">1.800 <span class="text-lg">MAD</span></div>
-                    <div class="text-sm text-gray-500 mb-6" data-i18n="courses.a2.payment">900 MAD/mois</div>
-                    <a href="#contact" class="block w-full bg-gradient-to-r from-[#0077b6] to-[#00b4d8] text-white text-center py-4 rounded-xl hover:shadow-lg transition font-bold" data-i18n="courses.cta">S'inscrire</a>
+                <div class="course-card rounded-3xl shadow-xl p-8 border-t-8 border-[#00E5FF] fade-up relative">
+                    <div class="absolute top-4 right-4"><span class="bg-cyan-500/20 text-cyan-300 px-4 py-2 rounded-full text-xs font-black uppercase" data-i18n="courses.a2.badge">Élémentaire</span></div>
+                    <div class="text-6xl font-black text-[#00E5FF] mb-6">A2</div>
+                    <h4 class="text-xl font-bold text-white mb-4" data-i18n="courses.a2.title">Situations quotidiennes</h4>
+                    <ul class="space-y-3 mb-8 text-sm text-gray-300"><li class="flex items-center gap-3"><span class="w-2 h-2 bg-[#00E5FF] rounded-full"></span><span data-i18n="courses.a2.feat1">2 mois (100% en ligne)</span></li><li class="flex items-center gap-3"><span class="w-2 h-2 bg-[#00E5FF] rounded-full"></span><span data-i18n="courses.a2.feat2">Professeurs natifs allemands</span></li><li class="flex items-center gap-3"><span class="w-2 h-2 bg-[#00E5FF] rounded-full"></span><span data-i18n="courses.a2.feat3">Communication ciblée</span></li></ul>
+                    <div class="text-4xl font-black text-white mb-2">1.800 <span class="text-lg">MAD</span></div><div class="text-sm text-gray-400 mb-6" data-i18n="courses.a2.payment">900 MAD/mois</div>
+                    <a href="#contact" class="block w-full bg-gradient-to-r from-[#00E5FF] to-[#007BFF] text-[#0B1120] text-center py-4 rounded-xl hover:shadow-lg transition font-bold" data-i18n="courses.cta">S'inscrire</a>
                 </div>
                 
                 <!-- B1 Card -->
-                <div class="course-card bg-white rounded-3xl shadow-xl p-8 border-t-8 border-[#008B8B] fade-up relative">
-                    <div class="absolute top-4 right-4">
-                        <span class="bg-teal-100 text-teal-800 px-4 py-2 rounded-full text-xs font-black uppercase" data-i18n="courses.b1.badge">Intermédiaire</span>
-                    </div>
-                    <div class="text-6xl font-black text-[#008B8B] mb-6">B1</div>
-                    <h4 class="text-xl font-bold mb-4" data-i18n="courses.b1.title">Pour visa et études</h4>
-                    <ul class="space-y-3 mb-8 text-sm">
-                        <li class="flex items-center gap-3">
-                            <span class="w-2 h-2 bg-[#008B8B] rounded-full"></span>
-                            <span data-i18n="courses.b1.feat1">3 mois (100% en ligne)</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="w-2 h-2 bg-[#008B8B] rounded-full"></span>
-                            <span data-i18n="courses.b1.feat2">Professeurs natifs allemands</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="w-2 h-2 bg-[#008B8B] rounded-full"></span>
-                            <span data-i18n="courses.b1.feat3">⭐ Niveau requis pour visa</span>
-                        </li>
-                    </ul>
-                    <div class="text-4xl font-black text-gray-900 mb-2">2.700 <span class="text-lg">MAD</span></div>
-                    <div class="text-sm text-gray-500 mb-6" data-i18n="courses.b1.payment">900 MAD/mois</div>
-                    <a href="#contact" class="block w-full bg-gradient-to-r from-[#008B8B] to-[#20B2AA] text-white text-center py-4 rounded-xl hover:shadow-lg transition font-bold" data-i18n="courses.cta">S'inscrire</a>
-                </div>
+                <div class="course-card rounded-3xl shadow-xl p-8 border-t-8 border-teal-400 fade-up relative"><div class="absolute top-4 right-4"><span class="bg-teal-500/20 text-teal-300 px-4 py-2 rounded-full text-xs font-black uppercase" data-i18n="courses.b1.badge">Intermédiaire</span></div><div class="text-6xl font-black text-teal-400 mb-6">B1</div><h4 class="text-xl font-bold text-white mb-4" data-i18n="courses.b1.title">Pour visa et études</h4><ul class="space-y-3 mb-8 text-sm text-gray-300"><li class="flex items-center gap-3"><span class="w-2 h-2 bg-teal-400 rounded-full"></span><span data-i18n="courses.b1.feat1">3 mois (100% en ligne)</span></li><li class="flex items-center gap-3"><span class="w-2 h-2 bg-teal-400 rounded-full"></span><span data-i18n="courses.b1.feat2">Professeurs natifs allemands</span></li><li class="flex items-center gap-3"><span class="w-2 h-2 bg-teal-400 rounded-full"></span><span data-i18n="courses.b1.feat3">⭐ Niveau requis pour visa</span></li></ul><div class="text-4xl font-black text-white mb-2">2.700 <span class="text-lg">MAD</span></div><div class="text-sm text-gray-400 mb-6" data-i18n="courses.b1.payment">900 MAD/mois</div><a href="#contact" class="block w-full bg-gradient-to-r from-teal-400 to-cyan-600 text-[#0B1120] text-center py-4 rounded-xl hover:shadow-lg transition font-bold" data-i18n="courses.cta">S'inscrire</a></div>
                 
                 <!-- B2 Card -->
-                <div class="course-card bg-white rounded-3xl shadow-xl p-8 border-t-8 border-[#008B8B] fade-up relative">
-                    <div class="absolute top-4 right-4">
-                        <span class="bg-teal-100 text-teal-800 px-4 py-2 rounded-full text-xs font-black uppercase" data-i18n="courses.b2.badge">Avancé</span>
-                    </div>
-                    <div class="text-6xl font-black text-[#008B8B] mb-6">B2</div>
-                    <h4 class="text-xl font-bold mb-4" data-i18n="courses.b2.title">Niveau Universitaire</h4>
-                    <ul class="space-y-3 mb-8 text-sm">
-                        <li class="flex items-center gap-3">
-                            <span class="w-2 h-2 bg-[#008B8B] rounded-full"></span>
-                            <span data-i18n="courses.b2.feat1">3 mois (100% en ligne)</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="w-2 h-2 bg-[#008B8B] rounded-full"></span>
-                            <span data-i18n="courses.b2.feat2">Professeurs natifs allemands</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="w-2 h-2 bg-[#008B8B] rounded-full"></span>
-                            <span data-i18n="courses.b2.feat3">Admission universitaire</span>
-                        </li>
-                    </ul>
-                    <div class="text-4xl font-black text-gray-900 mb-2">2.700 <span class="text-lg">MAD</span></div>
-                    <div class="text-sm text-gray-500 mb-6" data-i18n="courses.b2.payment">900 MAD/mois</div>
-                    <a href="#contact" class="block w-full bg-gradient-to-r from-[#008B8B] to-[#20B2AA] text-white text-center py-4 rounded-xl hover:shadow-lg transition font-bold" data-i18n="courses.cta">S'inscrire</a>
-                </div>
+                <div class="course-card rounded-3xl shadow-xl p-8 border-t-8 border-teal-400 fade-up relative"><div class="absolute top-4 right-4"><span class="bg-teal-500/20 text-teal-300 px-4 py-2 rounded-full text-xs font-black uppercase" data-i18n="courses.b2.badge">Avancé</span></div><div class="text-6xl font-black text-teal-400 mb-6">B2</div><h4 class="text-xl font-bold text-white mb-4" data-i18n="courses.b2.title">Niveau Universitaire</h4><ul class="space-y-3 mb-8 text-sm text-gray-300"><li class="flex items-center gap-3"><span class="w-2 h-2 bg-teal-400 rounded-full"></span><span data-i18n="courses.b2.feat1">3 mois (100% en ligne)</span></li><li class="flex items-center gap-3"><span class="w-2 h-2 bg-teal-400 rounded-full"></span><span data-i18n="courses.b2.feat2">Professeurs natifs allemands</span></li><li class="flex items-center gap-3"><span class="w-2 h-2 bg-teal-400 rounded-full"></span><span data-i18n="courses.b2.feat3">Admission universitaire</span></li></ul><div class="text-4xl font-black text-white mb-2">2.700 <span class="text-lg">MAD</span></div><div class="text-sm text-gray-400 mb-6" data-i18n="courses.b2.payment">900 MAD/mois</div><a href="#contact" class="block w-full bg-gradient-to-r from-teal-400 to-cyan-600 text-[#0B1120] text-center py-4 rounded-xl hover:shadow-lg transition font-bold" data-i18n="courses.cta">S'inscrire</a></div>
             </div>
             
-            <!-- Special Package -->
-            <div class="mt-16 bg-gradient-to-r from-red-500 via-pink-500 to-orange-500 rounded-3xl shadow-2xl p-8 md:p-12 fade-up relative overflow-hidden">
+            <!-- Special Package - UPDATED: price 6499 MAD, savings 1901 MAD -->
+            <div class="mt-16 bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 rounded-3xl shadow-2xl p-8 md:p-12 fade-up relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full -mr-32 -mt-32"></div>
                 <div class="relative z-10 grid md:grid-cols-2 gap-8 items-center text-white">
                     <div>
-                        <span class="inline-block bg-white text-red-600 px-6 py-2 rounded-full text-sm font-black uppercase mb-4" data-i18n="package.badge">ÉCONOMISEZ 700 MAD</span>
+                        <span class="inline-block bg-white text-cyan-700 px-6 py-2 rounded-full text-sm font-black uppercase mb-4" data-i18n="package.badge">ÉCONOMISEZ 1.901 MAD</span>
                         <h3 class="text-4xl font-black mb-4" data-i18n="package.title">Pack Complet A1 → B1</h3>
                         <p class="text-lg mb-6 opacity-95" data-i18n="package.desc">A1 + A2 + B1 ensemble - Cours complet de zéro au niveau visa</p>
                         <ul class="grid grid-cols-2 gap-4 text-sm font-medium">
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 bg-white rounded-full"></span>
-                                <span data-i18n="package.feat1">entre 8 et 10 mois au total</span>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 bg-white rounded-full"></span>
-                                <span data-i18n="package.feat2">Professeurs natifs allemands</span>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                <span class="w-2 h-2 bg-white rounded-full"></span>
-                                <span data-i18n="package.feat3">⭐ Consultation visa gratuite</span>
-                            </li>
+                            <li class="flex items-center gap-2"><span class="w-2 h-2 bg-white rounded-full"></span><span data-i18n="package.feat1">entre 8 et 10 mois au total</span></li>
+                            <li class="flex items-center gap-2"><span class="w-2 h-2 bg-white rounded-full"></span><span data-i18n="package.feat2">Professeurs natifs allemands</span></li>
+                            <li class="flex items-center gap-2"><span class="w-2 h-2 bg-white rounded-full"></span><span data-i18n="package.feat3">⭐ Consultation visa gratuite</span></li>
                         </ul>
                     </div>
                     <div class="text-center md:text-right">
-                        <p class="text-xl line-through opacity-75 mb-2">7.200 MAD</p>
-                        <div class="text-6xl font-black mb-6">6.700 MAD</div>
-                        <a href="#contact" class="inline-block bg-white text-red-600 px-10 py-5 rounded-2xl hover:bg-gray-100 transition font-black text-lg shadow-xl" data-i18n="package.cta">Réserver le Pack</a>
+                        <p class="text-xl line-through opacity-75 mb-2">8.400 MAD</p>
+                        <div class="text-6xl font-black mb-6">6.499 MAD</div>
+                        <a href="#contact" class="inline-block bg-white text-cyan-700 px-10 py-5 rounded-2xl hover:bg-gray-100 transition font-black text-lg shadow-xl" data-i18n="package.cta">Réserver le Pack</a>
                     </div>
                 </div>
             </div>
@@ -385,271 +371,233 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-24 bg-white relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-96 h-96 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40"></div>
-        <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40"></div>
-        
+    <section id="services" class="py-24 bg-dark-mesh relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-20 fade-up">
-                <h2 class="text-5xl md:text-6xl font-black text-gray-900 mb-6" data-i18n="services.title">Nos Services Complémentaires</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-i18n="services.subtitle">Votre réussite professionnelle en Allemagne, de A à Z</p>
+                <h2 class="text-5xl md:text-6xl font-black text-white mb-6" data-i18n="services.title">Nos Services Complémentaires</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto" data-i18n="services.subtitle">Votre réussite professionnelle en Allemagne, de A à Z</p>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Translation Service -->
-                <div class="service-card bg-gradient-to-br from-purple-50 via-white to-purple-50 p-10 rounded-3xl shadow-xl border border-purple-100 fade-up">
-                    <div class="w-20 h-20 bg-gradient-to-br from-purple-600 to-pink-600 rounded-2xl flex items-center justify-center mb-6">
+                <div class="service-card glass-card p-10 rounded-3xl shadow-xl border border-purple-500/20 fade-up">
+                    <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mb-6">
                         <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-black text-gray-900 mb-4" data-i18n="services.translation.title">Traduction de Documents</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed" data-i18n="services.translation.desc">Nous traduisons vos CV, diplômes, certificats de travail, et tous documents administratifs vers l'allemand. (Service de traduction simple — non certifié pour l'instant)</p>
-                    <ul class="space-y-3 text-sm text-gray-700 font-medium">
-                        <li class="flex items-center gap-2">
-                            <span class="w-2 h-2 bg-purple-600 rounded-full"></span>
-                            <span data-i18n="services.translation.feat1">Traduction CV, lettres, diplômes</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span class="w-2 h-2 bg-purple-600 rounded-full"></span>
-                            <span data-i18n="services.translation.feat2">Délai rapide (2-5 jours)</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span class="w-2 h-2 bg-purple-600 rounded-full"></span>
-                            <span data-i18n="services.translation.feat3">📌 Non certifié actuellement</span>
-                        </li>
+                    <h3 class="text-2xl font-black text-white mb-4" data-i18n="services.translation.title">Traduction de Documents</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed" data-i18n="services.translation.desc">Nous traduisons vos CV, diplômes, certificats de travail, et tous documents administratifs vers l'allemand. (Service de traduction simple — non certifié pour l'instant)</p>
+                    <ul class="space-y-3 text-sm text-gray-300 font-medium">
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-purple-400 rounded-full"></span><span data-i18n="services.translation.feat1">Traduction CV, lettres, diplômes</span></li>
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-purple-400 rounded-full"></span><span data-i18n="services.translation.feat2">Délai rapide (2-5 jours)</span></li>
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-purple-400 rounded-full"></span><span data-i18n="services.translation.feat3">📌 Non certifié actuellement</span></li>
                     </ul>
                 </div>
                 
-                <!-- Job Coaching Service -->
-                <div class="service-card bg-gradient-to-br from-orange-50 via-white to-orange-50 p-10 rounded-3xl shadow-xl border border-orange-100 fade-up">
-                    <div class="w-20 h-20 bg-gradient-to-br from-orange-600 to-red-600 rounded-2xl flex items-center justify-center mb-6">
+                <div class="service-card glass-card p-10 rounded-3xl shadow-xl border border-orange-500/20 fade-up">
+                    <div class="w-20 h-20 bg-gradient-to-br from-orange-500 to-red-500 rounded-2xl flex items-center justify-center mb-6">
                         <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-black text-gray-900 mb-4" data-i18n="services.coaching.title">Coaching Professionnel</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed" data-i18n="services.coaching.desc">Préparation complète aux entretiens d'embauche (Vorstellungsgespräch) en allemand. Optimisation de votre CV et lettre de motivation selon les standards allemands.</p>
-                    <ul class="space-y-3 text-sm text-gray-700 font-medium">
-                        <li class="flex items-center gap-2">
-                            <span class="w-2 h-2 bg-orange-600 rounded-full"></span>
-                            <span data-i18n="services.coaching.feat1">Simulations d'entretien</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span class="w-2 h-2 bg-orange-600 rounded-full"></span>
-                            <span data-i18n="services.coaching.feat2">Révision CV allemand</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span class="w-2 h-2 bg-orange-600 rounded-full"></span>
-                            <span data-i18n="services.coaching.feat3">Conseils secteur par secteur</span>
-                        </li>
+                    <h3 class="text-2xl font-black text-white mb-4" data-i18n="services.coaching.title">Coaching Professionnel</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed" data-i18n="services.coaching.desc">Préparation complète aux entretiens d'embauche (Vorstellungsgespräch) en allemand. Optimisation de votre CV et lettre de motivation selon les standards allemands.</p>
+                    <ul class="space-y-3 text-sm text-gray-300 font-medium">
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-orange-400 rounded-full"></span><span data-i18n="services.coaching.feat1">Simulations d'entretien</span></li>
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-orange-400 rounded-full"></span><span data-i18n="services.coaching.feat2">Révision CV allemand</span></li>
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-orange-400 rounded-full"></span><span data-i18n="services.coaching.feat3">Conseils secteur par secteur</span></li>
                     </ul>
                 </div>
                 
-                <!-- Company Connection Service -->
-                <div class="service-card bg-gradient-to-br from-indigo-50 via-white to-indigo-50 p-10 rounded-3xl shadow-xl border border-indigo-100 fade-up">
-                    <div class="w-20 h-20 bg-gradient-to-br from-indigo-600 to-blue-600 rounded-2xl flex items-center justify-center mb-6">
+                <div class="service-card glass-card p-10 rounded-3xl shadow-xl border border-indigo-500/20 fade-up">
+                    <div class="w-20 h-20 bg-gradient-to-br from-indigo-500 to-blue-500 rounded-2xl flex items-center justify-center mb-6">
                         <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-black text-gray-900 mb-4" data-i18n="services.companies.title">Mise en Relation Entreprises</h3>
-                    <p class="text-gray-600 mb-6 leading-relaxed" data-i18n="services.companies.desc">Contact et médiation avec des entreprises marocaines à la recherche de travailleurs germanophones. Nous facilitons votre intégration professionnelle locale et internationale.</p>
-                    <ul class="space-y-3 text-sm text-gray-700 font-medium">
-                        <li class="flex items-center gap-2">
-                            <span class="w-2 h-2 bg-indigo-600 rounded-full"></span>
-                            <span data-i18n="services.companies.feat1">Réseau d'entreprises partenaires</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span class="w-2 h-2 bg-indigo-600 rounded-full"></span>
-                            <span data-i18n="services.companies.feat2">Opportunités au Maroc & en Allemagne</span>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span class="w-2 h-2 bg-indigo-600 rounded-full"></span>
-                            <span data-i18n="services.companies.feat3">Accompagnement personnalisé</span>
-                        </li>
+                    <h3 class="text-2xl font-black text-white mb-4" data-i18n="services.companies.title">Mise en Relation Entreprises</h3>
+                    <p class="text-gray-300 mb-6 leading-relaxed" data-i18n="services.companies.desc">Contact et médiation avec des entreprises marocaines à la recherche de travailleurs germanophones. Nous facilitons votre intégration professionnelle locale et internationale.</p>
+                    <ul class="space-y-3 text-sm text-gray-300 font-medium">
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-indigo-400 rounded-full"></span><span data-i18n="services.companies.feat1">Réseau d'entreprises partenaires</span></li>
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-indigo-400 rounded-full"></span><span data-i18n="services.companies.feat2">Opportunités au Maroc & en Allemagne</span></li>
+                        <li class="flex items-center gap-2"><span class="w-2 h-2 bg-indigo-400 rounded-full"></span><span data-i18n="services.companies.feat3">Accompagnement personnalisé</span></li>
                     </ul>
                 </div>
             </div>
             
-            <!-- CTA for Services -->
             <div class="mt-20 text-center fade-up">
-                <h3 class="text-3xl font-black text-gray-900 mb-4" data-i18n="services.cta.title">Intéressé par nos services ?</h3>
-                <p class="text-gray-600 mb-8 text-lg" data-i18n="services.cta.subtitle">Contactez-nous pour plus d'informations et un devis personnalisé</p>
-                <a href="#contact" class="inline-block bg-gradient-to-r from-[#0077b6] to-[#00b4d8] text-white px-10 py-5 rounded-2xl hover:shadow-2xl transition font-black text-lg" data-i18n="services.cta.button">Demander un devis</a>
+                <h3 class="text-3xl font-black text-white mb-4" data-i18n="services.cta.title">Intéressé par nos services ?</h3>
+                <p class="text-gray-300 mb-8 text-lg" data-i18n="services.cta.subtitle">Contactez-nous pour plus d'informations et un devis personnalisé</p>
+                <a href="#contact" class="inline-block bg-gradient-to-r from-[#00E5FF] to-[#007BFF] text-[#0B1120] px-10 py-5 rounded-2xl hover:shadow-2xl transition font-black text-lg" data-i18n="services.cta.button">Demander un devis</a>
             </div>
         </div>
     </section>
 
-    <!-- Path to Germany -->
-    <section id="parcours" class="py-24 bg-gradient-to-b from-gray-50 to-white">
+    <!-- Path to Germany Section -->
+    <section id="parcours" class="py-24 bg-dark-mesh">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20 fade-up">
-                <h2 class="text-5xl md:text-6xl font-black text-gray-900 mb-6" data-i18n="path.title">Votre Parcours vers l'Allemagne</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-i18n="path.subtitle">Nous vous accompagnons dès les premiers pas jusqu'à l'obtention d'un visa: de A à Z!</p>
+                <h2 class="text-5xl md:text-6xl font-black text-white mb-6" data-i18n="path.title">Votre Parcours vers l'Allemagne</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto" data-i18n="path.subtitle">Nous vous accompagnons dès les premiers pas jusqu'à l'obtention d'un visa: de A à Z!</p>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8 mb-20">
-                <div class="bg-white rounded-3xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 fade-up border-2 border-transparent hover:border-[#0077b6]">
-                    <div class="w-16 h-16 bg-gradient-to-br from-[#0077b6] to-[#00b4d8] rounded-2xl flex items-center justify-center text-white font-black text-2xl mx-auto mb-6">1</div>
-                    <h3 class="text-xl font-black mb-3" data-i18n="path.step1.title">Test de niveau gratuit</h3>
-                    <p class="text-gray-600" data-i18n="path.step1.desc">Évaluation gratuite de votre niveau actuel</p>
+                <div class="glass-card rounded-3xl p-8 text-center shadow-lg fade-up">
+                    <div class="w-16 h-16 bg-gradient-to-br from-[#00E5FF] to-[#007BFF] rounded-2xl flex items-center justify-center text-[#0B1120] font-black text-2xl mx-auto mb-6">1</div>
+                    <h3 class="text-xl font-black text-white mb-3" data-i18n="path.step1.title">Test de niveau gratuit</h3>
+                    <p class="text-gray-300" data-i18n="path.step1.desc">Évaluation gratuite de votre niveau actuel</p>
                 </div>
-                <div class="bg-white rounded-3xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 fade-up border-2 border-transparent hover:border-[#0077b6]">
-                    <div class="w-16 h-16 bg-gradient-to-br from-[#0077b6] to-[#00b4d8] rounded-2xl flex items-center justify-center text-white font-black text-2xl mx-auto mb-6">2</div>
-                    <h3 class="text-xl font-black mb-3" data-i18n="path.step2.title">Choix du cours</h3>
-                    <p class="text-gray-600" data-i18n="path.step2.desc">Sélectionnez le niveau qui vous correspond</p>
+                <div class="glass-card rounded-3xl p-8 text-center shadow-lg fade-up">
+                    <div class="w-16 h-16 bg-gradient-to-br from-[#00E5FF] to-[#007BFF] rounded-2xl flex items-center justify-center text-[#0B1120] font-black text-2xl mx-auto mb-6">2</div>
+                    <h3 class="text-xl font-black text-white mb-3" data-i18n="path.step2.title">Choix du cours</h3>
+                    <p class="text-gray-300" data-i18n="path.step2.desc">Sélectionnez le niveau qui vous correspond</p>
                 </div>
-                <div class="bg-white rounded-3xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 fade-up border-2 border-transparent hover:border-[#0077b6]">
-                    <div class="w-16 h-16 bg-gradient-to-br from-[#0077b6] to-[#00b4d8] rounded-2xl flex items-center justify-center text-white font-black text-2xl mx-auto mb-6">3</div>
-                    <h3 class="text-xl font-black mb-3" data-i18n="path.step3.title">Préparation examen Goethe</h3>
-                    <p class="text-gray-600" data-i18n="path.step3.desc">Préparation intensive aux certifications</p>
+                <div class="glass-card rounded-3xl p-8 text-center shadow-lg fade-up">
+                    <div class="w-16 h-16 bg-gradient-to-br from-[#00E5FF] to-[#007BFF] rounded-2xl flex items-center justify-center text-[#0B1120] font-black text-2xl mx-auto mb-6">3</div>
+                    <h3 class="text-xl font-black text-white mb-3" data-i18n="path.step3.title">Préparation aux certifications</h3>
+                    <p class="text-gray-300" data-i18n="path.step3.desc">Préparation intensive Goethe, TELC, TestDaF, ÖSD</p>
                 </div>
-                <div class="bg-white rounded-3xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 fade-up border-2 border-transparent hover:border-[#008B8B]">
-                    <div class="w-16 h-16 bg-gradient-to-br from-[#008B8B] to-[#20B2AA] rounded-2xl flex items-center justify-center text-white font-black text-2xl mx-auto mb-6">4</div>
-                    <h3 class="text-xl font-black mb-3" data-i18n="path.step4.title">Certificat Goethe</h3>
-                    <p class="text-gray-600" data-i18n="path.step4.desc">Obtention du diplôme reconnu mondialement</p>
+                <div class="glass-card rounded-3xl p-8 text-center shadow-lg fade-up">
+                    <div class="w-16 h-16 bg-gradient-to-br from-teal-400 to-cyan-600 rounded-2xl flex items-center justify-center text-[#0B1120] font-black text-2xl mx-auto mb-6">4</div>
+                    <h3 class="text-xl font-black text-white mb-3" data-i18n="path.step4.title">Certificat reconnu</h3>
+                    <p class="text-gray-300" data-i18n="path.step4.desc">Obtention du diplôme reconnu mondialement</p>
                 </div>
-                <div class="bg-white rounded-3xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 fade-up border-2 border-transparent hover:border-[#008B8B]">
-                    <div class="w-16 h-16 bg-gradient-to-br from-[#008B8B] to-[#20B2AA] rounded-2xl flex items-center justify-center text-white font-black text-2xl mx-auto mb-6">5</div>
-                    <h3 class="text-xl font-black mb-3" data-i18n="path.step5.title">Conseils pour le visa</h3>
-                    <p class="text-gray-600" data-i18n="path.step5.desc">Aide gratuite pour les documents de visa</p>
+                <div class="glass-card rounded-3xl p-8 text-center shadow-lg fade-up">
+                    <div class="w-16 h-16 bg-gradient-to-br from-teal-400 to-cyan-600 rounded-2xl flex items-center justify-center text-[#0B1120] font-black text-2xl mx-auto mb-6">5</div>
+                    <h3 class="text-xl font-black text-white mb-3" data-i18n="path.step5.title">Conseils pour le visa</h3>
+                    <p class="text-gray-300" data-i18n="path.step5.desc">Aide gratuite pour les documents de visa</p>
                 </div>
-                <div class="bg-white rounded-3xl p-8 text-center shadow-lg hover:shadow-xl transition-all duration-300 fade-up border-2 border-transparent hover:border-[#006233]">
-                    <div class="w-16 h-16 bg-gradient-to-br from-[#006233] to-[#228B22] rounded-2xl flex items-center justify-center text-white font-black text-2xl mx-auto mb-6">✓</div>
-                    <h3 class="text-xl font-black mb-3" data-i18n="path.step6.title">L'Allemagne vous attend !</h3>
-                    <p class="text-gray-600" data-i18n="path.step6.desc">Commencez votre nouvelle vie en Allemagne</p>
+                <div class="glass-card rounded-3xl p-8 text-center shadow-lg fade-up">
+                    <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-green-600 rounded-2xl flex items-center justify-center text-[#0B1120] font-black text-2xl mx-auto mb-6">✓</div>
+                    <h3 class="text-xl font-black text-white mb-3" data-i18n="path.step6.title">L'Allemagne vous attend !</h3>
+                    <p class="text-gray-300" data-i18n="path.step6.desc">Commencez votre nouvelle vie en Allemagne</p>
                 </div>
             </div>
             
-            <div class="bg-gradient-to-r from-[#0077b6] via-[#00b4d8] to-[#0096c7] rounded-3xl shadow-2xl p-12 md:p-16 text-white text-center fade-up relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-full opacity-10">
-                    <div class="absolute top-10 left-10 w-32 h-32 bg-white rounded-full"></div>
-                    <div class="absolute bottom-10 right-10 w-40 h-40 bg-white rounded-full"></div>
-                </div>
+            <div class="bg-gradient-to-r from-[#00E5FF] via-[#007BFF] to-[#0056B3] rounded-3xl shadow-2xl p-12 md:p-16 text-white text-center fade-up relative overflow-hidden">
                 <div class="relative z-10">
                     <h3 class="text-4xl md:text-5xl font-black mb-4" data-i18n="path.cta.title">Prêt pour l'Allemagne ?</h3>
                     <p class="text-xl mb-8 opacity-95" data-i18n="path.cta.subtitle">Réservez votre consultation gratuite dès aujourd'hui</p>
-                    <a href="#contact" class="inline-block bg-white text-[#0077b6] px-12 py-6 rounded-2xl hover:bg-gray-100 transition font-black text-xl shadow-2xl" data-i18n="path.cta.button">Réserver une consultation</a>
+                    <a href="#contact" class="inline-block bg-white text-[#007BFF] px-12 py-6 rounded-2xl hover:bg-gray-100 transition font-black text-xl shadow-2xl" data-i18n="path.cta.button">Réserver une consultation</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section id="avis" class="py-24 bg-white">
+    <!-- Testimonials Section -->
+    <section id="avis" class="py-24 bg-dark-mesh">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20 fade-up">
-                <h2 class="text-5xl md:text-6xl font-black text-gray-900 mb-6" data-i18n="testimonials.title">Ils ont réussi leur rêve</h2>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto" data-i18n="testimonials.subtitle">Nos étudiants vivent maintenant en Allemagne</p>
+                <h2 class="text-5xl md:text-6xl font-black text-white mb-6" data-i18n="testimonials.title">Ils ont réussi leur rêve</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto" data-i18n="testimonials.subtitle">Nos étudiants vivent maintenant en Allemagne</p>
             </div>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-gradient-to-br from-blue-50 to-white p-8 rounded-3xl shadow-lg fade-up border-l-4 border-blue-500">
+                <div class="glass-card p-8 rounded-3xl shadow-lg fade-up border-l-4 border-cyan-500">
                     <div class="flex items-center gap-4 mb-6">
-                        <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center text-3xl font-black text-white">Y</div>
+                        <div class="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-2xl flex items-center justify-center text-3xl font-black text-white">Y</div>
                         <div>
-                            <h4 class="font-black text-lg">Youssef M.</h4>
-                            <p class="text-sm text-gray-500 font-medium" data-i18n="testimonials.test1.subtitle">Étudiant, TU München</p>
+                            <h4 class="font-black text-white text-lg">Youssef M.</h4>
+                            <p class="text-sm text-gray-400 font-medium" data-i18n="testimonials.test1.subtitle">Étudiant, TU München</p>
                         </div>
                     </div>
                     <div class="text-yellow-400 mb-4 text-2xl">★★★★★</div>
-                    <p class="text-gray-700 italic leading-relaxed" data-i18n="testimonials.test1.text">"De A1 à B2 en 10 mois ! Les professeurs sont excellents. Je suis maintenant à l'université de Munich."</p>
+                    <p class="text-gray-300 italic leading-relaxed" data-i18n="testimonials.test1.text">"De A1 à B2 en 10 mois ! Les professeurs sont excellents. Je suis maintenant à l'université de Munich."</p>
                 </div>
                 
-                <div class="bg-gradient-to-br from-teal-50 to-white p-8 rounded-3xl shadow-lg fade-up border-l-4 border-teal-500">
+                <div class="glass-card p-8 rounded-3xl shadow-lg fade-up border-l-4 border-teal-500">
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-16 h-16 bg-gradient-to-br from-teal-400 to-teal-600 rounded-2xl flex items-center justify-center text-3xl font-black text-white">S</div>
                         <div>
-                            <h4 class="font-black text-lg">Salma K.</h4>
-                            <p class="text-sm text-gray-500 font-medium" data-i18n="testimonials.test2.subtitle">Infirmière, Berlin</p>
+                            <h4 class="font-black text-white text-lg">Salma K.</h4>
+                            <p class="text-sm text-gray-400 font-medium" data-i18n="testimonials.test2.subtitle">Infirmière, Berlin</p>
                         </div>
                     </div>
                     <div class="text-yellow-400 mb-4 text-2xl">★★★★★</div>
-                    <p class="text-gray-700 italic leading-relaxed" data-i18n="testimonials.test2.text">"J'ai réussi mon B1, obtenu mon visa et je travaille maintenant comme infirmière à Berlin !"</p>
+                    <p class="text-gray-300 italic leading-relaxed" data-i18n="testimonials.test2.text">"J'ai réussi mon B1, obtenu mon visa et je travaille maintenant comme infirmière à Berlin !"</p>
                 </div>
                 
-                <div class="bg-gradient-to-br from-green-50 to-white p-8 rounded-3xl shadow-lg fade-up border-l-4 border-green-500">
+                <div class="glass-card p-8 rounded-3xl shadow-lg fade-up border-l-4 border-green-500">
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl flex items-center justify-center text-3xl font-black text-white">A</div>
                         <div>
-                            <h4 class="font-black text-lg">Ahmed T.</h4>
-                            <p class="text-sm text-gray-500 font-medium" data-i18n="testimonials.test3.subtitle">Développeur IT, Francfort</p>
+                            <h4 class="font-black text-white text-lg">Ahmed T.</h4>
+                            <p class="text-sm text-gray-400 font-medium" data-i18n="testimonials.test3.subtitle">Développeur IT, Francfort</p>
                         </div>
                     </div>
                     <div class="text-yellow-400 mb-4 text-2xl">★★★★★</div>
-                    <p class="text-gray-700 italic leading-relaxed" data-i18n="testimonials.test3.text">"Certificat C1 après 18 mois. Aujourd'hui je travaille chez SAP à Francfort. Merci AuZ !"</p>
+                    <p class="text-gray-300 italic leading-relaxed" data-i18n="testimonials.test3.text">"Certificat C1 après 18 mois. Aujourd'hui je travaille chez SAP à Francfort. Merci AuZ !"</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ -->
-    <section id="faq" class="py-24 bg-gradient-to-b from-gray-50 to-white">
+    <!-- FAQ Section -->
+    <section id="faq" class="py-24 bg-dark-mesh">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-up">
-                <h2 class="text-5xl md:text-6xl font-black text-gray-900 mb-6" data-i18n="faq.title">Questions fréquentes</h2>
-                <p class="text-xl text-gray-600" data-i18n="faq.subtitle">Tout ce que vous devez savoir</p>
+                <h2 class="text-5xl md:text-6xl font-black text-white mb-6" data-i18n="faq.title">Questions fréquentes</h2>
+                <p class="text-xl text-gray-300" data-i18n="faq.subtitle">Tout ce que vous devez savoir</p>
             </div>
             
             <div class="space-y-4 fade-up">
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-transparent hover:border-[#0077b6] transition-all">
-                    <button onclick="toggleFAQ(this)" class="w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50 transition">
-                        <span class="font-bold text-lg pr-4" data-i18n="faq.q1.question">Quel niveau faut-il pour étudier en Allemagne ?</span>
-                        <svg class="w-6 h-6 text-[#0077b6] transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="glass-card rounded-2xl overflow-hidden shadow-lg border border-cyan-500/30">
+                    <button onclick="toggleFAQ(this)" class="w-full text-left px-8 py-6 flex justify-between items-center hover:bg-white/5 transition">
+                        <span class="font-bold text-lg text-white pr-4" data-i18n="faq.q1.question">Quel niveau faut-il pour étudier en Allemagne ?</span>
+                        <svg class="w-6 h-6 text-cyan-400 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </button>
                     <div class="faq-content px-8">
-                        <p class="pb-6 text-gray-700 leading-relaxed" data-i18n="faq.q1.answer">La plupart des universités allemandes exigent au minimum le niveau B2 ou C1. Nous vous préparons à tous ces niveaux.</p>
+                        <p class="pb-6 text-gray-300 leading-relaxed" data-i18n="faq.q1.answer">La plupart des universités allemandes exigent au minimum le niveau B2 ou C1. Nous vous préparons à tous ces niveaux.</p>
                     </div>
                 </div>
                 
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-transparent hover:border-[#0077b6] transition-all">
-                    <button onclick="toggleFAQ(this)" class="w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50 transition">
-                        <span class="font-bold text-lg pr-4" data-i18n="faq.q2.question">Combien de temps pour passer de A1 à B1 ?</span>
-                        <svg class="w-6 h-6 text-[#0077b6] transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="glass-card rounded-2xl overflow-hidden shadow-lg border border-cyan-500/30">
+                    <button onclick="toggleFAQ(this)" class="w-full text-left px-8 py-6 flex justify-between items-center hover:bg-white/5 transition">
+                        <span class="font-bold text-lg text-white pr-4" data-i18n="faq.q2.question">Combien de temps pour passer de A1 à B1 ?</span>
+                        <svg class="w-6 h-6 text-cyan-400 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </button>
                     <div class="faq-content px-8">
-                        <p class="pb-6 text-gray-700 leading-relaxed" data-i18n="faq.q2.answer">Avec nos cours intensifs, vous pouvez atteindre le niveau B1 en 7 mois (A1, A2, B1).</p>
+                        <p class="pb-6 text-gray-300 leading-relaxed" data-i18n="faq.q2.answer">Avec nos cours intensifs, vous pouvez atteindre le niveau B1 en 7 mois (A1, A2, B1).</p>
                     </div>
                 </div>
                 
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-transparent hover:border-[#0077b6] transition-all">
-                    <button onclick="toggleFAQ(this)" class="w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50 transition">
-                        <span class="font-bold text-lg pr-4" data-i18n="faq.q3.question">Les certificats Goethe sont-ils reconnus ?</span>
-                        <svg class="w-6 h-6 text-[#0077b6] transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="glass-card rounded-2xl overflow-hidden shadow-lg border border-cyan-500/30">
+                    <button onclick="toggleFAQ(this)" class="w-full text-left px-8 py-6 flex justify-between items-center hover:bg-white/5 transition">
+                        <span class="font-bold text-lg text-white pr-4" data-i18n="faq.q3.question">Quelles certifications préparez-vous ?</span>
+                        <svg class="w-6 h-6 text-cyan-400 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </button>
                     <div class="faq-content px-8">
-                        <p class="pb-6 text-gray-700 leading-relaxed" data-i18n="faq.q3.answer">Oui, absolument ! Les certificats Goethe sont reconnus mondialement par les universités et les ambassades.</p>
+                        <p class="pb-6 text-gray-300 leading-relaxed" data-i18n="faq.q3.answer">Nous préparons à toutes les certifications reconnues : Goethe, TELC, TestDaF, ÖSD. Tous sont acceptés par les universités et ambassades allemandes.</p>
                     </div>
                 </div>
                 
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-transparent hover:border-[#0077b6] transition-all">
-                    <button onclick="toggleFAQ(this)" class="w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50 transition">
-                        <span class="font-bold text-lg pr-4" data-i18n="faq.q4.question">Aidez-vous pour les démarches de visa ?</span>
-                        <svg class="w-6 h-6 text-[#0077b6] transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="glass-card rounded-2xl overflow-hidden shadow-lg border border-cyan-500/30">
+                    <button onclick="toggleFAQ(this)" class="w-full text-left px-8 py-6 flex justify-between items-center hover:bg-white/5 transition">
+                        <span class="font-bold text-lg text-white pr-4" data-i18n="faq.q4.question">Aidez-vous pour les démarches de visa ?</span>
+                        <svg class="w-6 h-6 text-cyan-400 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </button>
                     <div class="faq-content px-8">
-                        <p class="pb-6 text-gray-700 leading-relaxed" data-i18n="faq.q4.answer">Oui ! Nous offrons une consultation visa gratuite pour tous nos étudiants. Nous vous aidons avec les documents nécessaires.</p>
+                        <p class="pb-6 text-gray-300 leading-relaxed" data-i18n="faq.q4.answer">Oui ! Nous offrons une consultation visa gratuite pour tous nos étudiants. Nous vous aidons avec les documents nécessaires.</p>
                     </div>
                 </div>
                 
-                <div class="bg-white rounded-2xl overflow-hidden shadow-lg border-2 border-transparent hover:border-[#0077b6] transition-all">
-                    <button onclick="toggleFAQ(this)" class="w-full text-left px-8 py-6 flex justify-between items-center hover:bg-gray-50 transition">
-                        <span class="font-bold text-lg pr-4" data-i18n="faq.q5.question">Les cours sont-ils 100% en ligne ?</span>
-                        <svg class="w-6 h-6 text-[#0077b6] transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="glass-card rounded-2xl overflow-hidden shadow-lg border border-cyan-500/30">
+                    <button onclick="toggleFAQ(this)" class="w-full text-left px-8 py-6 flex justify-between items-center hover:bg-white/5 transition">
+                        <span class="font-bold text-lg text-white pr-4" data-i18n="faq.q5.question">Les cours sont-ils 100% en ligne ?</span>
+                        <svg class="w-6 h-6 text-cyan-400 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </button>
                     <div class="faq-content px-8">
-                        <p class="pb-6 text-gray-700 leading-relaxed" data-i18n="faq.q5.answer">Oui, tous nos cours sont 100% en ligne avec des professeurs natifs allemands. Vous pouvez apprendre de n'importe où au Maroc.</p>
+                        <p class="pb-6 text-gray-300 leading-relaxed" data-i18n="faq.q5.answer">Oui, tous nos cours sont 100% en ligne avec des professeurs natifs allemands. Vous pouvez apprendre de n'importe où au Maroc.</p>
                     </div>
                 </div>
             </div>
@@ -658,41 +606,36 @@
 
     <!-- Contact Form -->
     <section id="contact" class="py-24 bg-gradient-to-br from-[#0077b6] via-[#00b4d8] to-[#0096c7] relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full opacity-10">
-            <div class="absolute top-20 left-20 w-64 h-64 bg-white rounded-full blob"></div>
-            <div class="absolute bottom-20 right-20 w-80 h-80 bg-white rounded-full blob" style="animation-delay: 3s;"></div>
-        </div>
-        
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-12 text-white fade-up">
                 <h2 class="text-5xl md:text-6xl font-black mb-6" data-i18n="contact.title">Commencez votre voyage en Allemagne</h2>
                 <p class="text-2xl opacity-95" data-i18n="contact.subtitle">Consultation gratuite et test de niveau offert</p>
             </div>
             
-            <div class="bg-white rounded-3xl shadow-2xl p-10 fade-up">
+            <div class="bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl p-10 fade-up">
                 <form id="contactForm" action="https://formspree.io/f/xeeplrdg" method="POST" class="space-y-6">
                     <input type="hidden" name="_subject" value="Nouvelle demande de contact - AuZ allemand">
                     <input type="hidden" name="_replyto" id="replyToEmail">
                     
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-2" data-i18n="contact.name">Nom complet *</label>
-                            <input type="text" name="name" required class="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0077b6] focus:border-transparent transition">
+                            <label class="block text-sm font-bold text-white mb-2" data-i18n="contact.name">Nom complet *</label>
+                            <input type="text" name="name" required class="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0077b6] focus:border-transparent transition bg-white/20 text-white">
                         </div>
                         <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-2">Email *</label>
-                            <input type="email" name="email" id="contactEmail" required class="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0077b6] focus:border-transparent transition">
+                            <label class="block text-sm font-bold text-white mb-2">Email *</label>
+                            <input type="email" name="email" id="contactEmail" required class="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0077b6] focus:border-transparent transition bg-white/20 text-white">
                         </div>
                     </div>
                     
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-2" data-i18n="contact.phone">Téléphone (WhatsApp) *</label>
-                            <input type="tel" name="phone" required class="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0077b6] focus:border-transparent transition">
+                            <label class="block text-sm font-bold text-white mb-2" data-i18n="contact.phone">Téléphone (WhatsApp) *</label>
+                            <input type="tel" name="phone" required class="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0077b6] focus:border-transparent transition bg-white/20 text-white">
                         </div>
                         <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-2" data-i18n="contact.city">Ville</label>
-                            <select name="city" class="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0077b6] focus:border-transparent transition">
+                            <label class="block text-sm font-bold text-white mb-2" data-i18n="contact.city">Ville</label>
+                            <select name="city" class="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0077b6] focus:border-transparent transition bg-white/20 text-white">
                                 <option value="" data-i18n="contact.city_select">Sélectionnez votre ville</option>
                                 <option>Casablanca</option>
                                 <option>Rabat</option>
@@ -706,8 +649,8 @@
                     
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-2" data-i18n="contact.level">Niveau actuel</label>
-                            <select name="level" class="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0077b6] focus:border-transparent transition">
+                            <label class="block text-sm font-bold text-white mb-2" data-i18n="contact.level">Niveau actuel</label>
+                            <select name="level" class="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0077b6] focus:border-transparent transition bg-white/20 text-white">
                                 <option data-i18n="contact.level_beginner">Débutant (aucun niveau)</option>
                                 <option>A1</option>
                                 <option>A2</option>
@@ -717,8 +660,8 @@
                             </select>
                         </div>
                         <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-2" data-i18n="contact.goal">Objectif *</label>
-                            <select name="goal" required class="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0077b6] focus:border-transparent transition">
+                            <label class="block text-sm font-bold text-white mb-2" data-i18n="contact.goal">Objectif *</label>
+                            <select name="goal" required class="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0077b6] focus:border-transparent transition bg-white/20 text-white">
                                 <option value="" data-i18n="contact.goal_select">Sélectionnez votre objectif</option>
                                 <option data-i18n="contact.goal_study">Études en Allemagne</option>
                                 <option data-i18n="contact.goal_work">Travail en Allemagne</option>
@@ -730,18 +673,18 @@
                     </div>
                     
                     <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-2" data-i18n="contact.message">Message (optionnel)</label>
-                        <textarea name="message" rows="4" class="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0077b6] focus:border-transparent transition"></textarea>
+                        <label class="block text-sm font-bold text-white mb-2" data-i18n="contact.message">Message (optionnel)</label>
+                        <textarea name="message" rows="4" class="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0077b6] focus:border-transparent transition bg-white/20 text-white"></textarea>
                     </div>
                     
                     <div class="flex items-start gap-3">
                         <input type="checkbox" name="privacy" required class="mt-1 w-5 h-5 accent-[#0077b6]">
-                        <label class="text-sm text-gray-700" data-i18n="contact.privacy">J'accepte la politique de confidentialité et consens à être contacté *</label>
+                        <label class="text-sm text-white" data-i18n="contact.privacy">J'accepte la politique de confidentialité et consens à être contacté *</label>
                     </div>
                     
                     <button type="submit" class="w-full bg-gradient-to-r from-[#0077b6] to-[#00b4d8] text-white py-5 rounded-xl hover:shadow-2xl transition font-black text-xl" data-i18n="contact.submit">Demander une consultation gratuite</button>
                     
-                    <p class="text-center text-sm text-gray-600 font-medium" data-i18n="contact.response">Nous répondons dans les 24 heures</p>
+                    <p class="text-center text-sm text-gray-200 font-medium" data-i18n="contact.response">Nous répondons dans les 24 heures</p>
                 </form>
                 
                 <div id="successMessage" class="success-msg mt-6 font-medium" data-i18n="contact.success">✓ Merci ! Votre demande a été envoyée. Nous vous contacterons très bientôt.</div>
@@ -795,8 +738,37 @@
         </div>
     </footer>
 
+    <!-- WhatsApp Chat Widget - Updated phone number -->
+    <div id="whatsapp-chat" class="fixed bottom-6 right-6 z-50">
+        <div id="whatsapp-chat-preview" class="bg-gray-800 rounded-2xl shadow-2xl mb-4 p-4 w-80 hidden md:block opacity-0 transform translate-y-4 transition-all duration-300">
+            <div class="flex items-start gap-3">
+                <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12.032 12.2c-.727 0-1.367-.193-1.904-.552-.531-.355-.967-.84-1.305-1.456a7.13 7.13 0 0 1-.597-1.597c-.088-.352-.043-.688.127-1.003a.976.976 0 0 1 .377-.386c.208-.115.447-.134.671-.07.127.036.245.112.34.208.18.179.327.406.457.659.135.261.259.531.374.81.057.14.096.295.099.452.003.158-.032.305-.108.44-.076.134-.16.245-.253.345-.087.094-.146.188-.192.294-.045.106-.048.214-.013.316.136.397.34.741.608 1.027.27.287.586.506.928.65.086.037.178.056.27.056.156 0 .306-.05.426-.142.12-.091.198-.219.225-.36.027-.141.001-.28-.072-.4-.073-.12-.175-.213-.288-.27-.113-.057-.206-.11-.26-.175-.054-.065-.084-.134-.09-.206-.006-.072.014-.138.056-.198.042-.06.098-.106.162-.134.216-.093.408-.242.559-.44.151-.198.252-.436.291-.694.039-.258.014-.522-.074-.772-.088-.25-.223-.477-.402-.672-.179-.195-.395-.347-.632-.45-.093-.04-.191-.06-.289-.059h-.045c-.094.003-.188.024-.276.06-.088.036-.169.086-.238.146-.067.059-.125.13-.168.209-.043.079-.072.166-.084.254-.012.088-.008.177.012.263.02.086.052.167.094.242.042.075.094.142.152.2.058.058.117.106.172.148.055.042.1.082.133.128.033.046.051.1.053.156.002.056-.012.11-.041.159-.029.049-.068.09-.112.122-.044.032-.091.055-.14.07-.049.015-.099.02-.148.015-.05-.005-.098-.02-.141-.045-.043-.025-.081-.058-.11-.098-.029-.04-.05-.086-.06-.134-.01-.048-.01-.098.002-.146.012-.048.034-.093.063-.132.029-.039.064-.072.102-.098.038-.026.078-.044.118-.054.04-.01.081-.01.12-.002.039.008.076.026.108.052.032.026.058.058.077.094.019.036.03.076.032.116.002.04-.004.08-.016.117-.012.037-.03.07-.052.099-.022.029-.048.053-.077.072-.029.019-.06.032-.092.039-.032.007-.064.007-.094-.002-.03-.009-.058-.025-.082-.047-.024-.022-.043-.05-.055-.08-.012-.03-.017-.063-.013-.095.004-.032.016-.062.034-.089.018-.027.041-.049.067-.066.026-.017.055-.028.085-.033.03-.005.06-.003.089.006.029.009.056.025.079.046l.003.002c.059.05.11.108.152.172.042.064.075.133.098.206.023.073.036.149.038.226.002.077-.005.153-.02.227-.015.074-.038.146-.069.214-.031.068-.069.131-.112.189-.043.058-.092.11-.144.156-.052.046-.108.086-.167.12-.059.034-.121.06-.184.079-.063.019-.128.029-.192.03-.064.001-.128-.006-.19-.021-.062-.015-.121-.039-.176-.07l-.003-.002c-.112-.062-.213-.145-.299-.246-.086-.101-.156-.215-.208-.338-.052-.123-.086-.252-.1-.383-.014-.131-.009-.263.015-.391.024-.128.066-.252.124-.369.058-.117.131-.226.217-.325.086-.099.183-.186.288-.259.105-.073.217-.131.333-.174.116-.043.236-.07.356-.081.12-.011.24-.005.356.018.116.023.228.062.332.116.104.054.199.122.283.202l.001.001c.168.162.295.367.372.597.077.23.103.474.077.714-.026.24-.101.47-.219.676-.118.206-.276.384-.463.522-.187.138-.399.233-.624.282-.225.049-.458.052-.685.009-.227-.043-.441-.136-.624-.27-.183-.134-.332-.305-.434-.5-.102-.195-.155-.41-.155-.626 0-.432.18-.848.5-1.155.32-.307.744-.48 1.18-.48.435 0 .86.173 1.18.48.32.307.5.723.5 1.155 0 .216-.053.431-.155.626-.102.195-.251.366-.434.5-.183.134-.397.227-.624.27-.227.043-.46.04-.685-.009-.225-.049-.437-.144-.624-.282-.187-.138-.345-.316-.463-.522-.118-.206-.193-.436-.219-.676-.026-.24 0-.484.077-.714.077-.23.204-.435.372-.597l.001-.001c.084-.08.179-.148.283-.202.104-.054.216-.093.332-.116.116-.023.236-.029.356-.018.12.011.24.038.356.081.116.043.228.101.333.174.105.073.202.16.288.259.086.099.159.208.217.325.058.117.1.241.124.369.024.128.029.26.015.391-.014.131-.048.26-.1.383-.052.123-.122.237-.208.338-.086.101-.187.184-.299.246l-.003.002c-.055.031-.114.055-.176.07-.062.015-.126.022-.19.021-.064-.001-.129-.011-.192-.03-.063-.019-.125-.045-.184-.079-.059-.034-.115-.074-.167-.12-.052-.046-.101-.098-.144-.156-.043-.058-.081-.121-.112-.189-.031-.068-.054-.14-.069-.214-.015-.074-.022-.15-.02-.227.002-.077.015-.153.038-.226.023-.073.056-.142.098-.206.042-.064.093-.122.152-.172l.003-.002c.023-.021.05-.037.079-.046.029-.009.059-.011.089-.006.03.005.059.016.085.033.026.017.049.039.067.066.018.027.03.057.034.089.004.032-.001.065-.013.095-.012.03-.031.058-.055.08-.024.022-.052.038-.082.047-.03.009-.062.009-.094.002-.032-.007-.063-.02-.092-.039-.029-.019-.055-.043-.077-.072-.022-.029-.04-.062-.052-.099-.012-.037-.018-.077-.016-.117.002-.04.013-.08.032-.116.019-.036.045-.068.077-.094.032-.026.069-.044.108-.052.039-.008.08-.008.12.002.04.01.08.028.118.054.038.026.073.059.102.098.029.039.051.084.063.132.012.048.012.098.002.146-.01.048-.031.094-.06.134-.029.04-.067.073-.11.098-.043.025-.091.04-.141.045-.05.005-.099 0-.148-.015-.049-.015-.096-.038-.14-.07-.044-.032-.083-.073-.112-.122-.029-.049-.043-.103-.041-.159.002-.056.02-.11.053-.156.033-.046.078-.086.133-.128.055-.042.114-.09.172-.148.058-.058.11-.125.152-.2.042-.075.074-.156.094-.242.02-.086.024-.175.012-.263-.012-.088-.041-.175-.084-.254-.043-.079-.101-.15-.168-.209-.069-.06-.15-.11-.238-.146-.088-.036-.182-.057-.276-.06h-.045c-.098-.001-.196.019-.289.059-.237.103-.453.255-.632.45-.179.195-.314.422-.402.672-.088.25-.113.514-.074.772.039.258.14.496.291.694.151.198.343.347.559.44.064.028.12.074.162.134.042.06.062.126.056.198-.006.072-.036.141-.09.206-.054.065-.147.118-.26.175-.113.057-.215.15-.288.27-.073.12-.099.259-.072.4.027.141.105.269.225.36.12.092.27.142.426.142.092 0 .184-.019.27-.056.342-.144.658-.363.928-.65.268-.286.472-.63.608-1.027.035-.102.032-.21-.013-.316-.045-.106-.105-.2-.192-.294-.093-.1-.177-.211-.253-.345-.076-.135-.111-.282-.108-.44.003-.157.042-.312.099-.452.115-.279.239-.549.374-.81.13-.253.277-.48.457-.659.095-.096.213-.172.34-.208.224-.036.463-.017.671.07.154.086.281.221.377.386.17.315.215.651.127 1.003a7.13 7.13 0 0 1-.597 1.597c-.338.616-.774 1.101-1.305 1.456-.537.359-1.177.552-1.904.552z"/>
+                    </svg>
+                </div>
+                <div>
+                    <p class="font-bold text-gray-200 text-sm whatsapp-greeting">👋 Besoin d'aide ?</p>
+                    <p class="text-gray-400 text-xs mt-1 whatsapp-response">Réponse en quelques minutes</p>
+                    <p class="text-green-400 text-xs font-medium mt-1 flex items-center gap-1">
+                        <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                        <span class="whatsapp-online">En ligne</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <a href="#" id="whatsapp-link" target="_blank" rel="noopener noreferrer" class="whatsapp-button block bg-green-500 hover:bg-green-600 transition-all duration-300 rounded-full shadow-2xl hover:shadow-green-500/30">
+            <div class="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
+                <svg class="w-8 h-8 md:w-9 md:h-9 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12.032 12.2c-.727 0-1.367-.193-1.904-.552-.531-.355-.967-.84-1.305-1.456a7.13 7.13 0 0 1-.597-1.597c-.088-.352-.043-.688.127-1.003a.976.976 0 0 1 .377-.386c.208-.115.447-.134.671-.07.127.036.245.112.34.208.18.179.327.406.457.659.135.261.259.531.374.81.057.14.096.295.099.452.003.158-.032.305-.108.44-.076.134-.16.245-.253.345-.087.094-.146.188-.192.294-.045.106-.048.214-.013.316.136.397.34.741.608 1.027.27.287.586.506.928.65.086.037.178.056.27.056.156 0 .306-.05.426-.142.12-.091.198-.219.225-.36.027-.141.001-.28-.072-.4-.073-.12-.175-.213-.288-.27-.113-.057-.206-.11-.26-.175-.054-.065-.084-.134-.09-.206-.006-.072.014-.138.056-.198.042-.06.098-.106.162-.134.216-.093.408-.242.559-.44.151-.198.252-.436.291-.694.039-.258.014-.522-.074-.772-.088-.25-.223-.477-.402-.672-.179-.195-.395-.347-.632-.45-.093-.04-.191-.06-.289-.059h-.045c-.094.003-.188.024-.276.06-.088.036-.169.086-.238.146-.067.059-.125.13-.168.209-.043.079-.072.166-.084.254-.012.088-.008.177.012.263.02.086.052.167.094.242.042.075.094.142.152.2.058.058.117.106.172.148.055.042.1.082.133.128.033.046.051.1.053.156.002.056-.012.11-.041.159-.029.049-.068.09-.112.122-.044.032-.091.055-.14.07-.049.015-.099.02-.148.015-.05-.005-.098-.02-.141-.045-.043-.025-.081-.058-.11-.098-.029-.04-.05-.086-.06-.134-.01-.048-.01-.098.002-.146.012-.048.034-.093.063-.132.029-.039.064-.072.102-.098.038-.026.078-.044.118-.054.04-.01.081-.01.12-.002.039.008.076.026.108.052.032.026.058.058.077.094.019.036.03.076.032.116.002.04-.004.08-.016.117-.012.037-.03.07-.052.099-.022.029-.048.053-.077.072-.029.019-.06.032-.092.039-.032.007-.064.007-.094-.002-.03-.009-.058-.025-.082-.047-.024-.022-.043-.05-.055-.08-.012-.03-.017-.063-.013-.095.004-.032.016-.062.034-.089.018-.027.041-.049.067-.066.026-.017.055-.028.085-.033.03-.005.06-.003.089.006.029.009.056.025.079.046l.003.002c.059.05.11.108.152.172.042.064.075.133.098.206.023.073.036.149.038.226.002.077-.005.153-.02.227-.015.074-.038.146-.069.214-.031.068-.069.131-.112.189-.043.058-.092.11-.144.156-.052.046-.108.086-.167.12-.059.034-.121.06-.184.079-.063.019-.128.029-.192.03-.064.001-.128-.006-.19-.021-.062-.015-.121-.039-.176-.07l-.003-.002c-.112-.062-.213-.145-.299-.246-.086-.101-.156-.215-.208-.338-.052-.123-.086-.252-.1-.383-.014-.131-.009-.263.015-.391.024-.128.066-.252.124-.369.058-.117.131-.226.217-.325.086-.099.183-.186.288-.259.105-.073.217-.131.333-.174.116-.043.236-.07.356-.081.12-.011.24-.005.356.018.116.023.228.062.332.116.104.054.199.122.283.202l.001.001c.168.162.295.367.372.597.077.23.103.474.077.714-.026.24-.101.47-.219.676-.118.206-.276.384-.463.522-.187.138-.399.233-.624.282-.225.049-.458.052-.685.009-.227-.043-.441-.136-.624-.27-.183-.134-.332-.305-.434-.5-.102-.195-.155-.41-.155-.626 0-.432.18-.848.5-1.155.32-.307.744-.48 1.18-.48.435 0 .86.173 1.18.48.32.307.5.723.5 1.155 0 .216-.053.431-.155.626-.102.195-.251.366-.434.5-.183.134-.397.227-.624.27-.227.043-.46.04-.685-.009-.225-.049-.437-.144-.624-.282-.187-.138-.345-.316-.463-.522-.118-.206-.193-.436-.219-.676-.026-.24 0-.484.077-.714.077-.23.204-.435.372-.597l.001-.001c.084-.08.179-.148.283-.202.104-.054.216-.093.332-.116.116-.023.236-.029.356-.018.12.011.24.038.356.081.116.043.228.101.333.174.105.073.202.16.288.259.086.099.159.208.217.325.058.117.1.241.124.369.024.128.029.26.015.391-.014.131-.048.26-.1.383-.052.123-.122.237-.208.338-.086.101-.187.184-.299.246l-.003.002c-.055.031-.114.055-.176.07-.062.015-.126.022-.19.021-.064-.001-.129-.011-.192-.03-.063-.019-.125-.045-.184-.079-.059-.034-.115-.074-.167-.12-.052-.046-.101-.098-.144-.156-.043-.058-.081-.121-.112-.189-.031-.068-.054-.14-.069-.214-.015-.074-.022-.15-.02-.227.002-.077.015-.153.038-.226.023-.073.056-.142.098-.206.042-.064.093-.122.152-.172l.003-.002c.023-.021.05-.037.079-.046.029-.009.059-.011.089-.006.03.005.059.016.085.033.026.017.049.039.067.066.018.027.03.057.034.089.004.032-.001.065-.013.095-.012.03-.031.058-.055.08-.024.022-.052.038-.082.047-.03.009-.062.009-.094.002-.032-.007-.063-.02-.092-.039-.029-.019-.055-.043-.077-.072-.022-.029-.04-.062-.052-.099-.012-.037-.018-.077-.016-.117.002-.04.013-.08.032-.116.019-.036.045-.068.077-.094.032-.026.069-.044.108-.052.039-.008.08-.008.12.002.04.01.08.028.118.054.038.026.073.059.102.098.029.039.051.084.063.132.012.048.012.098.002.146-.01.048-.031.094-.06.134-.029.04-.067.073-.11.098-.043.025-.091.04-.141.045-.05.005-.099 0-.148-.015-.049-.015-.096-.038-.14-.07-.044-.032-.083-.073-.112-.122-.029-.049-.043-.103-.041-.159.002-.056.02-.11.053-.156.033-.046.078-.086.133-.128.055-.042.114-.09.172-.148.058-.058.11-.125.152-.2.042-.075.074-.156.094-.242.02-.086.024-.175.012-.263-.012-.088-.041-.175-.084-.254-.043-.079-.101-.15-.168-.209-.069-.06-.15-.11-.238-.146-.088-.036-.182-.057-.276-.06h-.045c-.098-.001-.196.019-.289.059-.237.103-.453.255-.632.45-.179.195-.314.422-.402.672-.088.25-.113.514-.074.772.039.258.14.496.291.694.151.198.343.347.559.44.064.028.12.074.162.134.042.06.062.126.056.198-.006.072-.036.141-.09.206-.054.065-.147.118-.26.175-.113.057-.215.15-.288.27-.073.12-.099.259-.072.4.027.141.105.269.225.36.12.092.27.142.426.142.092 0 .184-.019.27-.056.342-.144.658-.363.928-.65.268-.286.472-.63.608-1.027.035-.102.032-.21-.013-.316-.045-.106-.105-.2-.192-.294-.093-.1-.177-.211-.253-.345-.076-.135-.111-.282-.108-.44.003-.157.042-.312.099-.452.115-.279.239-.549.374-.81.13-.253.277-.48.457-.659.095-.096.213-.172.34-.208.224-.036.463-.017.671.07.154.086.281.221.377.386.17.315.215.651.127 1.003a7.13 7.13 0 0 1-.597 1.597c-.338.616-.774 1.101-1.305 1.456-.537.359-1.177.552-1.904.552z"/>
+                </svg>
+            </div>
+        </a>
+    </div>
+
     <script>
-        // Translation object (due to character limit, I'll provide the French version - DE and AR follow same structure)
+        // Complete translations - ARABIC FIXED TO SINGULAR
         const translations = {
             fr: {
                 'nav.home': 'Accueil',
@@ -851,7 +823,7 @@
                 'courses.b2.feat3': 'Admission universitaire',
                 'courses.b2.payment': '900 MAD/mois',
                 'courses.cta': 'S\'inscrire',
-                'package.badge': 'ÉCONOMISEZ 700 MAD',
+                'package.badge': 'ÉCONOMISEZ 1.901 MAD',
                 'package.title': 'Pack Complet A1 → B1',
                 'package.desc': 'A1 + A2 + B1 ensemble - Cours complet de zéro au niveau visa',
                 'package.feat1': 'entre 8 et 10 mois au total',
@@ -884,9 +856,9 @@
                 'path.step1.desc': 'Évaluation gratuite de votre niveau actuel',
                 'path.step2.title': 'Choix du cours',
                 'path.step2.desc': 'Sélectionnez le niveau qui vous correspond',
-                'path.step3.title': 'Préparation examen Goethe',
-                'path.step3.desc': 'Préparation intensive aux certifications',
-                'path.step4.title': 'Certificat Goethe',
+                'path.step3.title': 'Préparation aux certifications',
+                'path.step3.desc': 'Préparation intensive Goethe, TELC, TestDaF, ÖSD',
+                'path.step4.title': 'Certificat reconnu',
                 'path.step4.desc': 'Obtention du diplôme reconnu mondialement',
                 'path.step5.title': 'Conseils pour le visa',
                 'path.step5.desc': 'Aide gratuite pour les documents de visa',
@@ -909,8 +881,8 @@
                 'faq.q1.answer': 'La plupart des universités allemandes exigent au minimum le niveau B2 ou C1. Nous vous préparons à tous ces niveaux.',
                 'faq.q2.question': 'Combien de temps pour passer de A1 à B1 ?',
                 'faq.q2.answer': 'Avec nos cours intensifs, vous pouvez atteindre le niveau B1 en 7 mois (A1, A2, B1).',
-                'faq.q3.question': 'Les certificats Goethe sont-ils reconnus ?',
-                'faq.q3.answer': 'Oui, absolument ! Les certificats Goethe sont reconnus mondialement par les universités et les ambassades.',
+                'faq.q3.question': 'Quelles certifications préparez-vous ?',
+                'faq.q3.answer': 'Nous préparons à toutes les certifications reconnues : Goethe, TELC, TestDaF, ÖSD. Tous sont acceptés par les universités et ambassades allemandes.',
                 'faq.q4.question': 'Aidez-vous pour les démarches de visa ?',
                 'faq.q4.answer': 'Oui ! Nous offrons une consultation visa gratuite pour tous nos étudiants. Nous vous aidons avec les documents nécessaires.',
                 'faq.q5.question': 'Les cours sont-ils 100% en ligne ?',
@@ -1004,7 +976,7 @@
                 'courses.b2.feat3': 'Universitätszulassung',
                 'courses.b2.payment': '900 MAD/Monat',
                 'courses.cta': 'Anmelden',
-                'package.badge': 'SPAREN SIE 700 MAD',
+                'package.badge': 'SPAREN SIE 1.901 MAD',
                 'package.title': 'Komplettpaket A1 → B1',
                 'package.desc': 'A1 + A2 + B1 zusammen - Kompletter Kurs von Null bis Visumniveau',
                 'package.feat1': 'insgesamt 8-10 Monate',
@@ -1037,9 +1009,9 @@
                 'path.step1.desc': 'Kostenlose Bewertung Ihres aktuellen Niveaus',
                 'path.step2.title': 'Kurswahl',
                 'path.step2.desc': 'Wählen Sie Ihr passendes Niveau',
-                'path.step3.title': 'Goethe-Prüfungsvorbereitung',
-                'path.step3.desc': 'Intensive Vorbereitung auf Zertifizierungen',
-                'path.step4.title': 'Goethe-Zertifikat',
+                'path.step3.title': 'Vorbereitung auf Zertifikate',
+                'path.step3.desc': 'Intensive Vorbereitung auf Goethe, TELC, TestDaF, ÖSD',
+                'path.step4.title': 'Anerkanntes Zertifikat',
                 'path.step4.desc': 'Weltweit anerkanntes Diplom',
                 'path.step5.title': 'Visumberatung',
                 'path.step5.desc': 'Kostenlose Hilfe bei Visumdokumenten',
@@ -1062,8 +1034,8 @@
                 'faq.q1.answer': 'Die meisten deutschen Universitäten verlangen mindestens B2 oder C1. Wir bereiten Sie auf alle Niveaus vor.',
                 'faq.q2.question': 'Wie lange dauert es von A1 bis B1?',
                 'faq.q2.answer': 'Mit unseren Intensivkursen erreichen Sie B1 in 7 Monaten (A1, A2, B1).',
-                'faq.q3.question': 'Sind Goethe-Zertifikate anerkannt?',
-                'faq.q3.answer': 'Ja, absolut! Goethe-Zertifikate werden weltweit von Universitäten und Botschaften anerkannt.',
+                'faq.q3.question': 'Auf welche Zertifikate bereiten Sie vor?',
+                'faq.q3.answer': 'Wir bereiten auf alle anerkannten Zertifikate vor: Goethe, TELC, TestDaF, ÖSD. Alle werden von Universitäten und Botschaften akzeptiert.',
                 'faq.q4.question': 'Helfen Sie bei Visumsverfahren?',
                 'faq.q4.answer': 'Ja! Wir bieten allen unseren Studenten eine kostenlose Visumberatung an. Wir helfen Ihnen bei den erforderlichen Dokumenten.',
                 'faq.q5.question': 'Sind die Kurse 100% online?',
@@ -1111,8 +1083,8 @@
                 'nav.path': 'المسار',
                 'nav.testimonials': 'آراء الطلاب',
                 'nav.contact': 'اتصل بنا',
-                'hero.badge': '🇲🇦 مركزكم لتعليم الألمانية في المغرب',
-                'hero.title1': 'طريقكم إلى',
+                'hero.badge': '🇲🇦 مركزك لتعليم الألمانية في المغرب',
+                'hero.title1': 'طريقك إلى',
                 'hero.title2': 'ألمانيا',
                 'hero.title3': 'يبدأ من هنا',
                 'hero.subtitle': 'دورات الألمانية أونلاين A1-C1 مع مدرسين ناطقين أصليين',
@@ -1121,9 +1093,9 @@
                 'hero.cta2': 'عرض الدورات',
                 'hero.stat1': 'طالب تم تدريبهم',
                 'hero.stat2': '% أونلاين',
-                'hero.visual': 'دورات لغوية للحصول على شهادتكم',
+                'hero.visual': 'دورات لغوية للحصول على شهادتك',
                 'why.title': 'لماذا تتعلم الألمانية؟',
-                'why.subtitle': 'مستقبلكم في أوروبا يبدأ مع الألمانية',
+                'why.subtitle': 'مستقبلك في أوروبا يبدأ مع الألمانية',
                 'why.feature1.title': 'الدراسة في ألمانيا',
                 'why.feature1.desc': 'الوصول إلى أكثر من 400 جامعة بتعليم مجاني أو منخفض التكلفة',
                 'why.feature2.title': 'مدرسون ناطقون أصليون',
@@ -1131,7 +1103,7 @@
                 'why.feature3.title': 'فرص عالمية',
                 'why.feature3.desc': 'تُتحدث الألمانية في ألمانيا والنمسا وسويسرا ولكسمبورغ وغيرها',
                 'courses.title': 'مستويات دوراتنا',
-                'courses.subtitle': 'من المبتدئ إلى المتقدم - ابحثوا عن المستوى المناسب لكم',
+                'courses.subtitle': 'من المبتدئ إلى المتقدم - ابحث عن المستوى المناسب لك',
                 'courses.a1.badge': 'مبتدئ',
                 'courses.a1.title': 'الخطوات الأولى في الألمانية',
                 'courses.a1.feat1': 'شهران (100% أونلاين)',
@@ -1157,22 +1129,22 @@
                 'courses.b2.feat3': 'القبول الجامعي',
                 'courses.b2.payment': '900 درهم/شهر',
                 'courses.cta': 'سجل الآن',
-                'package.badge': 'وفر 700 درهم',
+                'package.badge': 'وفر 1.901 درهم',
                 'package.title': 'الباقة الكاملة A1 → B1',
                 'package.desc': 'A1 + A2 + B1 معاً - دورة كاملة من الصفر إلى مستوى التأشيرة',
-                'package.feat1': '8 إلى 10 أشهر إجمالاً',
+                'package.feat1': 'بين 8 و 10 أشهر إجمالاً',
                 'package.feat2': 'مدرسون ناطقون أصليون',
                 'package.feat3': '⭐ استشارة تأشيرة مجانية',
                 'package.cta': 'احجز الباقة',
                 'services.title': 'خدماتنا الإضافية',
-                'services.subtitle': 'نجاحكم المهني في ألمانيا، من الألف إلى الياء',
+                'services.subtitle': 'نجاحك المهني في ألمانيا، من الألف إلى الياء',
                 'services.translation.title': 'ترجمة المستندات',
-                'services.translation.desc': 'نقوم بترجمة سيركم الذاتية، شهاداتكم، وكل المستندات الإدارية إلى الألمانية. (خدمة ترجمة عادية — غير معتمدة حالياً)',
-                'services.translation.feat1': 'ترجمة السير الذاتية، الشهادات',
+                'services.translation.desc': 'نقوم بترجمة سيرتك الذاتية، شهاداتك، وكل المستندات الإدارية إلى الألمانية. (خدمة ترجمة عادية — غير معتمدة حالياً)',
+                'services.translation.feat1': 'ترجمة السيرة الذاتية، الشهادات',
                 'services.translation.feat2': 'مهلة سريعة (2-5 أيام)',
                 'services.translation.feat3': '📌 غير معتمدة حالياً',
                 'services.coaching.title': 'التدريب المهني',
-                'services.coaching.desc': 'تحضير كامل لمقابلات العمل (Vorstellungsgespräch) بالألمانية. تحسين سيرتكم الذاتية ورسائل التحفيز حسب المعايير الألمانية.',
+                'services.coaching.desc': 'تحضير كامل لمقابلات العمل (Vorstellungsgespräch) بالألمانية. تحسين سيرتك الذاتية ورسائل التحفيز حسب المعايير الألمانية.',
                 'services.coaching.feat1': 'محاكاة مقابلات العمل',
                 'services.coaching.feat2': 'مراجعة السيرة الذاتية بالألمانية',
                 'services.coaching.feat3': 'نصائح حسب كل قطاع',
@@ -1181,25 +1153,25 @@
                 'services.companies.feat1': 'شبكة من الشركات الشريكة',
                 'services.companies.feat2': 'فرص في المغرب وألمانيا',
                 'services.companies.feat3': 'مرافقة شخصية',
-                'services.cta.title': 'مهتمون بخدماتنا؟',
-                'services.cta.subtitle': 'اتصلوا بنا للمزيد من المعلومات ولتقييم مخصص',
+                'services.cta.title': 'مهتم بخدماتنا؟',
+                'services.cta.subtitle': 'اتصل بنا للمزيد من المعلومات ولتقييم مخصص',
                 'services.cta.button': 'اطلب تقييماً',
-                'path.title': 'مساركم إلى ألمانيا',
-                'path.subtitle': 'نرافقكم من الخطوات الأولى حتى الحصول على التأشيرة: من الألف إلى الياء!',
+                'path.title': 'مسارك إلى ألمانيا',
+                'path.subtitle': 'نرافقك من الخطوات الأولى حتى الحصول على التأشيرة: من الألف إلى الياء!',
                 'path.step1.title': 'اختبار مستوى مجاني',
-                'path.step1.desc': 'تقييم مجاني لمستواكم الحالي',
+                'path.step1.desc': 'تقييم مجاني لمستواك الحالي',
                 'path.step2.title': 'اختيار الدورة',
-                'path.step2.desc': 'اختاروا المستوى المناسب لكم',
-                'path.step3.title': 'تحضير امتحان Goethe',
-                'path.step3.desc': 'تحضير مكثف للشهادات',
-                'path.step4.title': 'شهادة Goethe',
+                'path.step2.desc': 'اختر المستوى المناسب لك',
+                'path.step3.title': 'التحضير للشهادات',
+                'path.step3.desc': 'تحضير مكثف لـ Goethe, TELC, TestDaF, ÖSD',
+                'path.step4.title': 'شهادة معترف بها',
                 'path.step4.desc': 'الحصول على دبلوم معترف به عالمياً',
                 'path.step5.title': 'نصائح للتأشيرة',
                 'path.step5.desc': 'مساعدة مجانية لوثائق التأشيرة',
-                'path.step6.title': 'ألمانيا تنتظركم!',
-                'path.step6.desc': 'ابدأوا حياتكم الجديدة في ألمانيا',
-                'path.cta.title': 'مستعدون لألمانيا؟',
-                'path.cta.subtitle': 'احجزوا استشارتكم المجانية اليوم',
+                'path.step6.title': 'ألمانيا تنتظرك!',
+                'path.step6.desc': 'ابدأ حياتك الجديدة في ألمانيا',
+                'path.cta.title': 'مستعد لألمانيا؟',
+                'path.cta.subtitle': 'احجز استشارتك المجانية اليوم',
                 'path.cta.button': 'احجز استشارة',
                 'testimonials.title': 'لقد حققوا حلمهم',
                 'testimonials.subtitle': 'طلابنا يعيشون الآن في ألمانيا',
@@ -1210,25 +1182,25 @@
                 'testimonials.test3.subtitle': 'مطور تقني، فرانكفورت',
                 'testimonials.test3.text': '"شهادة C1 بعد 18 شهراً. اليوم أعمل في SAP في فرانكفورت. شكراً AuZ!"',
                 'faq.title': 'أسئلة متكررة',
-                'faq.subtitle': 'كل ما تحتاجون معرفته',
+                'faq.subtitle': 'كل ما تحتاج معرفته',
                 'faq.q1.question': 'ما المستوى المطلوب للدراسة في ألمانيا؟',
-                'faq.q1.answer': 'معظم الجامعات الألمانية تطلب على الأقل المستوى B2 أو C1. نحن نعدكم لجميع هذه المستويات.',
+                'faq.q1.answer': 'معظم الجامعات الألمانية تطلب على الأقل المستوى B2 أو C1. نحن نعدك لجميع هذه المستويات.',
                 'faq.q2.question': 'كم من الوقت للانتقال من A1 إلى B1؟',
-                'faq.q2.answer': 'مع دوراتنا المكثفة، يمكنكم الوصول إلى المستوى B1 في 7 أشهر (A1، A2، B1).',
-                'faq.q3.question': 'هل شهادات Goethe معترف بها؟',
-                'faq.q3.answer': 'نعم، تماماً! شهادات Goethe معترف بها عالمياً من قبل الجامعات والسفارات.',
+                'faq.q2.answer': 'مع دوراتنا المكثفة، يمكنك الوصول إلى المستوى B1 في 7 أشهر (A1، A2، B1).',
+                'faq.q3.question': 'ما هي الشهادات التي تحضرون لها؟',
+                'faq.q3.answer': 'نحن نحضر لجميع الشهادات المعترف بها: Goethe، TELC، TestDaF، ÖSD. جميعها مقبولة من قبل الجامعات والسفارات الألمانية.',
                 'faq.q4.question': 'هل تساعدون في إجراءات التأشيرة؟',
-                'faq.q4.answer': 'نعم! نحن نقدم استشارة تأشيرة مجانية لجميع طلابنا. نساعدكم في الوثائق اللازمة.',
+                'faq.q4.answer': 'نعم! نحن نقدم استشارة تأشيرة مجانية لجميع طلابنا. نساعدك في الوثائق اللازمة.',
                 'faq.q5.question': 'هل الدورات 100% أونلاين؟',
-                'faq.q5.answer': 'نعم، جميع دوراتنا 100% أونلاين مع مدرسين ناطقين أصليين. يمكنكم التعلم من أي مكان في المغرب.',
-                'contact.title': 'ابدأوا رحلتكم إلى ألمانيا',
+                'faq.q5.answer': 'نعم، جميع دوراتنا 100% أونلاين مع مدرسين ناطقين أصليين. يمكنك التعلم من أي مكان في المغرب.',
+                'contact.title': 'ابدأ رحلتك إلى ألمانيا',
                 'contact.subtitle': 'استشارة مجانية واختبار مستوى مجاني',
                 'contact.name': 'الاسم الكامل *',
                 'contact.phone': 'رقم الهاتف (واتساب) *',
                 'contact.city': 'المدينة',
                 'contact.city_select': 'اختر مدينتك',
                 'contact.city_other': 'أخرى',
-                'contact.level': 'المستوى الحالي',
+                'contact.level': 'مستواك الحالي',
                 'contact.level_beginner': 'مبتدئ (بدون مستوى)',
                 'contact.goal': 'الهدف *',
                 'contact.goal_select': 'اختر هدفك',
@@ -1241,9 +1213,9 @@
                 'contact.privacy': 'أوافق على سياسة الخصوصية وأوافق على الاتصال بي *',
                 'contact.submit': 'طلب استشارة مجانية',
                 'contact.response': 'نرد خلال 24 ساعة',
-                'contact.success': '✓ شكراً! تم إرسال طلبكم. سنتصل بكم قريباً جداً.',
+                'contact.success': '✓ شكراً! تم إرسال طلبك. سنتصل بك قريباً جداً.',
                 'contact.error': '❌ حدث خطأ. يرجى المحاولة مرة أخرى أو الكتابة إلينا مباشرة على contact@auz-allemand.com',
-                'footer.desc': 'مركزكم لتعليم الألمانية في المغرب. دورات أونلاين مع مدرسين ناطقين أصليين.',
+                'footer.desc': 'مركزك لتعليم الألمانية في المغرب. دورات أونلاين مع مدرسين ناطقين أصليين.',
                 'footer.courses': 'الدورات',
                 'footer.a1': 'A1 - مبتدئ',
                 'footer.a2': 'A2 - أساسي',
@@ -1259,15 +1231,21 @@
             }
         };
         
+        const whatsappMessages = {
+            fr: "Bonjour AuZ, je suis intéressé par vos cours d'allemand et j'aimerais avoir plus d'informations.",
+            de: "Hallo AuZ, ich bin an Ihren Deutschkursen interessiert und würde gerne mehr Informationen erhalten.",
+            ar: "مرحباً AuZ، أنا مهتم بدوراتكم الألمانية وأود الحصول على مزيد من المعلومات."
+        };
+        
         function setLanguage(lang) {
             document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active', 'bg-[#0077b6]', 'text-white');
-                btn.classList.add('text-gray-600');
+                btn.classList.remove('active', 'bg-[#00E5FF]', 'text-[#0B1120]');
+                btn.classList.add('text-gray-300');
             });
             const activeBtn = document.querySelector(`.lang-${lang}`);
             if (activeBtn) {
-                activeBtn.classList.add('active', 'bg-[#0077b6]', 'text-white');
-                activeBtn.classList.remove('text-gray-600');
+                activeBtn.classList.add('active', 'bg-[#00E5FF]', 'text-[#0B1120]');
+                activeBtn.classList.remove('text-gray-300');
             }
             
             if (lang === 'ar') {
@@ -1286,7 +1264,34 @@
                 }
             });
             
+            updateWhatsAppLink(lang);
+            updateWhatsAppPreview(lang);
             localStorage.setItem('lang', lang);
+        }
+        
+        function updateWhatsAppLink(lang) {
+            const message = whatsappMessages[lang] || whatsappMessages.fr;
+            // Updated WhatsApp number: +4917654848136
+            const phoneNumber = "4917654848136";
+            const whatsappLink = document.getElementById('whatsapp-link');
+            if (whatsappLink) {
+                whatsappLink.href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            }
+        }
+        
+        function updateWhatsAppPreview(lang) {
+            const previewTexts = {
+                fr: { greeting: "👋 Besoin d'aide ?", response: "Réponse en quelques minutes", online: "En ligne" },
+                de: { greeting: "👋 Brauchen Sie Hilfe?", response: "Antwort in wenigen Minuten", online: "Online" },
+                ar: { greeting: "👋 تحتاج مساعدة؟", response: "الرد في دقائق", online: "متصل" }
+            };
+            const texts = previewTexts[lang] || previewTexts.fr;
+            const greetingEl = document.querySelector('.whatsapp-greeting');
+            const responseEl = document.querySelector('.whatsapp-response');
+            const onlineEl = document.querySelector('.whatsapp-online');
+            if (greetingEl) greetingEl.textContent = texts.greeting;
+            if (responseEl) responseEl.textContent = texts.response;
+            if (onlineEl) onlineEl.textContent = texts.online;
         }
         
         function toggleFAQ(btn) {
@@ -1296,7 +1301,6 @@
             icon.style.transform = content.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0)';
         }
         
-        // Scroll animations
         const fadeElements = document.querySelectorAll('.fade-up');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1307,7 +1311,6 @@
         }, { threshold: 0.1 });
         fadeElements.forEach(el => observer.observe(el));
         
-        // Counter animation
         const counters = document.querySelectorAll('.counter');
         counters.forEach(counter => {
             const target = parseInt(counter.dataset.target);
@@ -1332,7 +1335,6 @@
             counterObserver.observe(counter);
         });
         
-        // Form submission
         const form = document.getElementById('contactForm');
         if (form) {
             form.addEventListener('submit', async (e) => {
@@ -1364,10 +1366,32 @@
             });
         }
         
-        // Load saved language
-        setLanguage(localStorage.getItem('lang') || 'fr');
+        function initWhatsAppWidget() {
+            const currentLang = localStorage.getItem('lang') || 'fr';
+            updateWhatsAppLink(currentLang);
+            updateWhatsAppPreview(currentLang);
+            setTimeout(() => {
+                const preview = document.getElementById('whatsapp-chat-preview');
+                if (preview && window.innerWidth >= 768) {
+                    preview.classList.remove('hidden', 'opacity-0', 'translate-y-4');
+                    preview.classList.add('opacity-100', 'translate-y-0');
+                    setTimeout(() => {
+                        preview.classList.remove('opacity-100', 'translate-y-0');
+                        preview.classList.add('opacity-0', 'translate-y-4');
+                        setTimeout(() => {
+                            if (!preview.matches(':hover')) {
+                                preview.classList.add('hidden');
+                            }
+                        }, 300);
+                    }, 5000);
+                }
+            }, 1500);
+        }
         
-        // Smooth scroll
+        const savedLang = localStorage.getItem('lang') || 'fr';
+        setLanguage(savedLang);
+        initWhatsAppWidget();
+        
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const href = this.getAttribute('href');
