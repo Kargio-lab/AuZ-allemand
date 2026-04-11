@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Deutschkurse A1-C1 in Marokko - Ihr Weg nach Deutschland für Studium und Arbeit. Und das von A bis Z. Visumunterstützung inklusive.">
-    <title>AuZ | Cours Allemand Maroc</title>
+    <title>AuZ | Cours d'allemand Maroc</title>
     
     <link rel="icon" type="image/png" href="images/logodyn.png">
     <link rel="apple-touch-icon" href="images/logodyn.png">
@@ -346,7 +346,7 @@
                 <div class="course-card rounded-3xl shadow-xl p-8 border-t-8 border-teal-400 fade-up relative"><div class="absolute top-4 right-4"><span class="bg-teal-500/20 text-teal-300 px-4 py-2 rounded-full text-xs font-black uppercase" data-i18n="courses.b2.badge">Avancé</span></div><div class="text-6xl font-black text-teal-400 mb-6">B2</div><h4 class="text-xl font-bold text-white mb-4" data-i18n="courses.b2.title">Niveau Universitaire</h4><ul class="space-y-3 mb-8 text-sm text-gray-300"><li class="flex items-center gap-3"><span class="w-2 h-2 bg-teal-400 rounded-full"></span><span data-i18n="courses.b2.feat1">3 mois (100% en ligne)</span></li><li class="flex items-center gap-3"><span class="w-2 h-2 bg-teal-400 rounded-full"></span><span data-i18n="courses.b2.feat2">Professeurs natifs allemands</span></li><li class="flex items-center gap-3"><span class="w-2 h-2 bg-teal-400 rounded-full"></span><span data-i18n="courses.b2.feat3">Admission universitaire</span></li></ul><div class="text-4xl font-black text-white mb-2">2.700 <span class="text-lg">MAD</span></div><div class="text-sm text-gray-400 mb-6" data-i18n="courses.b2.payment">900 MAD/mois</div><a href="#contact" class="block w-full bg-gradient-to-r from-teal-400 to-cyan-600 text-[#0B1120] text-center py-4 rounded-xl hover:shadow-lg transition font-bold" data-i18n="courses.cta">S'inscrire</a></div>
             </div>
             
-            <!-- Special Package - UPDATED: price 6499 MAD, savings 1901 MAD -->
+            <!-- Special Package - price 6499 MAD -->
             <div class="mt-16 bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 rounded-3xl shadow-2xl p-8 md:p-12 fade-up relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-10 rounded-full -mr-32 -mt-32"></div>
                 <div class="relative z-10 grid md:grid-cols-2 gap-8 items-center text-white">
@@ -363,7 +363,8 @@
                     <div class="text-center md:text-right">
                         <p class="text-xl line-through opacity-75 mb-2">8.400 MAD</p>
                         <div class="text-6xl font-black mb-6">6.499 MAD</div>
-                        <a href="#contact" class="inline-block bg-white text-cyan-700 px-10 py-5 rounded-2xl hover:bg-gray-100 transition font-black text-lg shadow-xl" data-i18n="package.cta">Réserver le Pack</a>
+                        <!-- FIXED: Button visibility - changed to high contrast gold/orange gradient -->
+                        <a href="#contact" class="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 text-gray-900 px-10 py-5 rounded-2xl hover:shadow-xl transition font-black text-lg shadow-lg" data-i18n="package.cta">Réserver le Pack</a>
                     </div>
                 </div>
             </div>
@@ -478,7 +479,8 @@
                 <div class="relative z-10">
                     <h3 class="text-4xl md:text-5xl font-black mb-4" data-i18n="path.cta.title">Prêt pour l'Allemagne ?</h3>
                     <p class="text-xl mb-8 opacity-95" data-i18n="path.cta.subtitle">Réservez votre consultation gratuite dès aujourd'hui</p>
-                    <a href="#contact" class="inline-block bg-white text-[#007BFF] px-12 py-6 rounded-2xl hover:bg-gray-100 transition font-black text-xl shadow-2xl" data-i18n="path.cta.button">Réserver une consultation</a>
+                    <!-- FIXED: Button visibility - changed to high contrast vibrant blue gradient -->
+                    <a href="#contact" class="inline-block bg-gradient-to-r from-blue-500 to-cyan-400 text-white px-12 py-6 rounded-2xl hover:shadow-xl transition font-black text-xl shadow-lg" data-i18n="path.cta.button">Réserver une consultation</a>
                 </div>
             </div>
         </div>
@@ -732,13 +734,18 @@
                     </ul>
                 </div>
             </div>
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-sm">
+            <!-- ADDED: Impressum and Datenschutz links -->
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-sm flex justify-center gap-6">
+                <a href="#" class="hover:text-white transition font-medium">Impressum</a>
+                <a href="#" class="hover:text-white transition font-medium">Datenschutz</a>
+            </div>
+            <div class="mt-4 text-center text-sm">
                 <p class="font-medium" data-i18n="footer.copyright">&copy; 2026 AuZ allemand Maroc. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
 
-    <!-- WhatsApp Chat Widget - Updated phone number -->
+    <!-- WhatsApp Chat Widget -->
     <div id="whatsapp-chat" class="fixed bottom-6 right-6 z-50">
         <div id="whatsapp-chat-preview" class="bg-gray-800 rounded-2xl shadow-2xl mb-4 p-4 w-80 hidden md:block opacity-0 transform translate-y-4 transition-all duration-300">
             <div class="flex items-start gap-3">
@@ -768,7 +775,7 @@
     </div>
 
     <script>
-        // Complete translations - ARABIC FIXED TO SINGULAR
+        // Complete translations object - FULLY INTACT from original code
         const translations = {
             fr: {
                 'nav.home': 'Accueil',
@@ -1271,8 +1278,8 @@
         
         function updateWhatsAppLink(lang) {
             const message = whatsappMessages[lang] || whatsappMessages.fr;
-            // Updated WhatsApp number: +4917654848136
-            const phoneNumber = "4917654848136";
+            // UPDATED: New WhatsApp number +491639741550
+            const phoneNumber = "491639741550";
             const whatsappLink = document.getElementById('whatsapp-link');
             if (whatsappLink) {
                 whatsappLink.href = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
